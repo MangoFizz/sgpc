@@ -122,7 +122,7 @@ namespace SGSC.Pages
 
                         db.SaveChanges();
 
-                        MessageBox.Show("Referencias guardadas correctamente", "Referencias guardadas", MessageBoxButton.OK, MessageBoxImage.Information);
+                        App.Current.NotificationsPanel.ShowSuccess("Datos guardados.");
 
                         App.Current.MainFrame.Content = new RegisterCreditRequest(customerId);
                     }

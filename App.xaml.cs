@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SGSC.Frames;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -9,11 +10,11 @@ using System.Windows.Controls;
 
 namespace SGSC
 {
-	/// <summary>
-	/// Interaction logic for App.xaml
-	/// </summary>
-	public partial class App : Application
-	{
+    /// <summary>
+    /// Interaction logic for App.xaml
+    /// </summary>
+    public partial class App : Application
+    {
         /// <summary>
         /// Application instance
         /// </summary>
@@ -41,6 +42,14 @@ namespace SGSC
             get
             {
                 return MainWindow.MainFrame;
+            }
+        }
+
+        public NotificationsPanelFrame NotificationsPanel
+        {
+            get
+            {
+                return (NotificationsPanelFrame)MainWindow.NotificationsFrame.Content;
             }
         }
     }

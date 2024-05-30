@@ -138,8 +138,14 @@
     <Compile Include="Frames\CustomerRegisterStepsSidebar.xaml.cs">
       <DependentUpon>CustomerRegisterStepsSidebar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Frames\NotificationsPanelFrame.xaml.cs">
+      <DependentUpon>NotificationsPanelFrame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Frames\UserSessionFrame.xaml.cs">
       <DependentUpon>UserSessionFrame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messages\SuccessNotification.xaml.cs">
+      <DependentUpon>SuccessNotification.xaml</DependentUpon>
     </Compile>
     <Compile Include="Messages\ToastNotification.xaml.cs">
       <DependentUpon>ToastNotification.xaml</DependentUpon>
@@ -271,7 +277,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Frames\NotificationsPanelFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Frames\UserSessionFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messages\SuccessNotification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

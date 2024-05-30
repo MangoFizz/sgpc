@@ -172,7 +172,7 @@ namespace SGSC.Pages
                     dbContext.WorkCenters.AddOrUpdate(NewWorkcenter);
                     dbContext.SaveChanges();
 
-                    ShowNotification("Se ha registrado con éxito la información", "Success");
+                    App.Current.NotificationsPanel.ShowSuccess("Datos guardados.");
 
                     foreach (var pair in textBoxLabelMap)
                     {

@@ -14,7 +14,7 @@ namespace SGSC.Pages
 
         private void ButtonClicNuevo_Cliente(object sender, RoutedEventArgs e)
         {
-            var customerInfoPage = new CustomerInfoPage();
+            var customerInfoPage = new CustomerInfoPage(1);
             if (NavigationService != null)
             {
                 NavigationService.Navigate(customerInfoPage);

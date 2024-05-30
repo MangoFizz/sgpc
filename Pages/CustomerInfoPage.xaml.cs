@@ -164,7 +164,7 @@ namespace SGSC.Pages
                     customerToRegister = db.Customers.Add(customerToRegister);
 
 					db.SaveChanges();
-                    MessageBox.Show("Cliente registrado exitosamente.");
+                    App.Current.NotificationsPanel.ShowSuccess("Datos guardados.");
                     tbCURP.Text = "";
                     tbName.Text = "";
                     tbFirstSurname.Text = "";

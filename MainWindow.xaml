@@ -5,15 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SGSC"
         xmlns:pages="clr-namespace:SGSC.Pages"
+        xmlns:frames="clr-namespace:SGSC.Frames"
         mc:Ignorable="d"
         Title="Sistema de gestión de solucitudes crediticias" SizeToContent="WidthAndHeight" Background="White">
     <Grid>
         <Viewbox Name="MainViewBox">
-            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Height="720" Width="1280">
-                <Frame.Content>
-                    <pages:LogIn/>
-                </Frame.Content>
-            </Frame>
+            <Grid>
+                <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Height="720" Width="1280">
+                    <Frame.Content>
+                        <pages:LogIn/>
+                    </Frame.Content>
+                </Frame>
+                <Frame Name="NotificationsFrame" NavigationUIVisibility="Hidden" >
+                    <Frame.Content>
+                        <frames:NotificationsPanelFrame/>
+                    </Frame.Content>
+                </Frame>
+            </Grid>
+            
+            
         </Viewbox>
 
     </Grid>

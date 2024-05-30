@@ -75,7 +75,7 @@ namespace SGSC.Pages
                     context.SaveChanges();
                 }
 
-                MessageBox.Show("Los datos de contacto se han guardado correctamente.");
+                App.Current.NotificationsPanel.ShowSuccess("Datos guardados.");
 
                 App.Current.MainFrame.Content = new PageWorkCenter(customerId);
             }

@@ -127,7 +127,7 @@ namespace SGSC.Pages
                     db.SaveChanges();
                 }
 
-                MessageBox.Show("Información de contacto guardada exitosamente.");
+                App.Current.NotificationsPanel.ShowSuccess("Datos guardados.");
 
                 App.Current.MainFrame.Content = new CustomerReferencesPage(customerId);
             }

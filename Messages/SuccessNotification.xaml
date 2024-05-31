@@ -20,8 +20,8 @@
                                     <ExponentialEase Exponent="4" EasingMode="EaseOut"/>
                                 </EasingThicknessKeyFrame.EasingFunction>
                             </EasingThicknessKeyFrame>
-                            <EasingThicknessKeyFrame KeyTime="00:00:05.30" Value="0,0,0,0" />
-                            <EasingThicknessKeyFrame KeyTime="00:00:05.60" Value="-335,0,0,0">
+                            <EasingThicknessKeyFrame KeyTime="00:00:03.30" Value="0,0,0,0" />
+                            <EasingThicknessKeyFrame KeyTime="00:00:03.60" Value="-335,0,0,0">
                                 <EasingThicknessKeyFrame.EasingFunction>
                                     <ExponentialEase Exponent="4" EasingMode="EaseIn"/>
                                 </EasingThicknessKeyFrame.EasingFunction>

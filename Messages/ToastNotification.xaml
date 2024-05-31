@@ -1,0 +1,18 @@
+﻿<Window x:Class="SGSC.Messages.ToastNotification"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        WindowStyle="None" 
+        xmlns:local="clr-namespace:SGSC.Messages"
+        mc:Ignorable="d"
+        Title="ToastNotification" Height="60" Width="500">
+    <Grid>
+        <Rectangle HorizontalAlignment="Left" Height="80" Fill="#A3D68A" VerticalAlignment="Center" Width="24"/>
+        <Image x:Name="SuccessIcon" Source="C:\Users\Dani\Desktop\Desarrollo de Software\Development\sgsc\Images\icon-check.png" HorizontalAlignment="Left" Height="36" Margin="39,0,0,0" VerticalAlignment="Center" Width="39" Visibility="Hidden" />
+
+        <Image x:Name="ErrorIcon" Source="C:\Users\Dani\Desktop\Desarrollo de Software\Development\sgsc\Images\icon-error.png" HorizontalAlignment="Left" Height="38" Margin="39,0,0,0" VerticalAlignment="Center" Width="40" Visibility="Hidden"/>
+        <Label FontFamily="{StaticResource FontNunito}" FontSize="16" x:Name="lbMesagge" Content="" HorizontalAlignment="Left" Margin="99,0,0,0" VerticalAlignment="Center"/>
+
+    </Grid>
+</Window>

@@ -147,9 +147,7 @@
     <Compile Include="Messages\SuccessNotification.xaml.cs">
       <DependentUpon>SuccessNotification.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Messages\ToastNotification.xaml.cs">
-      <DependentUpon>ToastNotification.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Messages\ToastNotification.xaml.cs" />
     <Compile Include="Modelsgsc.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -290,8 +288,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Messages\ToastNotification.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\ActiveCreditsPage.xaml">
       <SubType>Designer</SubType>

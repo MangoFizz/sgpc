@@ -9,9 +9,9 @@
       Title="NotificationsPanelFrame">
 
     <Grid HorizontalAlignment="Left" Margin="0,0,0,0">
-        <Frame NavigationUIVisibility="Hidden" Width="335">
+        <Frame NavigationUIVisibility="Hidden" Width="335" VerticalAlignment="Bottom">
             <Frame.Content>
-                <StackPanel Name="NotificationsStackPanel" />
+                <StackPanel Name="NotificationsStackPanel" FlowDirection="RightToLeft" />
             </Frame.Content>
         </Frame>
     </Grid>

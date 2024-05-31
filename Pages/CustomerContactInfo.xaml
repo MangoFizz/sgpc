@@ -50,7 +50,8 @@
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Correo electrónico" HorizontalAlignment="Left" Margin="314,288,0,0" VerticalAlignment="Top" Width="237" Height="20"/>
         <Label Name="lbEmailAddressError" Content="Error" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="314,364,0,0" VerticalAlignment="Top" Width="407" Foreground="#FFCE2222" FontStyle="Italic"/>
 
-        <Button Style="{StaticResource ButtonStyleCancel}" Content="Cancelar" FontSize="22" HorizontalAlignment="Left" Margin="844,614,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="CancelRegister" />
+        <Button Style="{StaticResource ButtonStyleDanger}" Content="Cancelar" FontSize="22" HorizontalAlignment="Left" Margin="641,614,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnCancel_Click" />
+        <Button Style="{StaticResource ButtonStyleCancel}" Content="Regresar" FontSize="22" HorizontalAlignment="Left" Margin="844,614,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnBack_Click" />
         <Button Style="{StaticResource ButtonStyleConfirm}" Content="Continuar" FontSize="22" HorizontalAlignment="Left" Margin="1048,614,0,0" VerticalAlignment="Top" Width="180" Height="54" Click="btnSaveContactInfo_Click" />
     </Grid>
 </Page>

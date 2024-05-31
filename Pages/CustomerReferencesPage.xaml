@@ -33,7 +33,8 @@
         <Frame Name="StepsSidebarFrame" NavigationUIVisibility="Hidden" Margin="27,138,1009,28"/>
         <Viewbox Stretch="Fill">
             <Grid Height="490" Width="950">
-                <Button x:Name="btnCancel" Style="{StaticResource ButtonStyleCancel}" Content="Cancelar" FontSize="15" HorizontalAlignment="Left" Margin="613,426,0,0" VerticalAlignment="Top" Height="39" Width="130" Click="CancelRegister"/>
+                <Button x:Name="btnBack" Style="{StaticResource ButtonStyleDanger}" Content="Cancelar" FontSize="15" HorizontalAlignment="Left" Margin="469,426,0,0" VerticalAlignment="Top" Height="39" Width="130" Click="CancelRegister"/>
+                <Button x:Name="btnCancel" Style="{StaticResource ButtonStyleCancel}" Content="Regresar" FontSize="15" HorizontalAlignment="Left" Margin="613,426,0,0" VerticalAlignment="Top" Height="39" Width="130" Click="btnBack_Click"/>
                 <Button x:Name="btnContinue" Style="{StaticResource ButtonStyleConfirm}" Content="Continuar" FontSize="15" HorizontalAlignment="Left" Margin="756,426,0,0" VerticalAlignment="Top" Width="130" Height="38" Click="btnContinue_Click"/>
                 <Rectangle Style="{StaticResource RoundedRectangleStyle}" Margin="270,109,29,243"/>
                 <TextBox x:Name="tbName" Style="{StaticResource CustomTextBoxStyle}" Margin="300,141,378,317" PreviewTextInput="tbName_PreviewTextInput" TextChanged="tbName_TextChanged"/>

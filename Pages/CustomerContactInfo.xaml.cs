@@ -116,20 +116,25 @@ namespace SGSC.Pages
                     CustomerId = customerId
                 };
 
-                if(contactInfoId != null)
-                {
-                    contactInfo.CustomerContactInfoId = contactInfoId.Value;
-                }
-
                 using (sgscEntities db = new sgscEntities())
                 {
-                    db.CustomerContactInfoes.AddOrUpdate(contactInfo);
-                    db.SaveChanges();
+                    if(contactInfoId != null)
+                    {
+                        contactInfo.CustomerContactInfoId = contactInfoId.Value;
+                        db.CustomerContactInfoes.AddOrUpdate(contactInfo);
+                        db.SaveChanges();
+                        App.Current.NotificationsPanel.ShowSuccess("Datos actualizados");
+                    }
+                    else
+                    {
+						db.CustomerContactInfoes.Add(contactInfo);
+						db.SaveChanges();
+                        contactInfoId = contactInfo.CustomerContactInfoId;
+						App.Current.NotificationsPanel.ShowSuccess("Datos guardados");
+					}
                 }
 
-                App.Current.NotificationsPanel.ShowSuccess("Datos guardados.");
-
-                App.Current.MainFrame.Content = new CustomerReferencesPage(customerId);
+                App.Current.MainFrame.Navigate(new CustomerReferencesPage(customerId));
             }
             catch (Exception ex)
             {
@@ -137,7 +142,7 @@ namespace SGSC.Pages
             }
         }
 
-        private void CancelRegister(object sender, RoutedEventArgs e)
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             var result = System.Windows.Forms.MessageBox.Show("Está seguro que desea cancelar el registro?\nSi decide cancelarlo puede retomarlo más tarde.", "Cancelar registro", System.Windows.Forms.MessageBoxButtons.YesNo);
             if (result == System.Windows.Forms.DialogResult.Yes)
@@ -145,5 +150,10 @@ namespace SGSC.Pages
                 App.Current.MainFrame.Content = new HomePageCreditAdvisor();
             }
         }
-    }
+
+		private void btnBack_Click(object sender, RoutedEventArgs e)
+		{
+			App.Current.MainFrame.GoBack();
+		}
+	}
 }

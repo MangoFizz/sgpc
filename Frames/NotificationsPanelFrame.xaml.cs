@@ -25,6 +25,8 @@ namespace SGSC.Frames
 		public NotificationsPanelFrame()
 		{
 			InitializeComponent();
+			NotificationsStackPanel.Orientation = Orientation.Vertical;
+			NotificationsStackPanel.FlowDirection = FlowDirection.LeftToRight;
 		}
 
 		private void SetNotificationEntryCloseTimer(Frame notificationFrame)
@@ -45,6 +47,7 @@ namespace SGSC.Frames
 			{
 				Content = page
 			};
+			inviteFrame.VerticalAlignment = VerticalAlignment.Bottom;
 			NotificationsStackPanel.Children.Add(inviteFrame);
 
 			SetNotificationEntryCloseTimer(inviteFrame);

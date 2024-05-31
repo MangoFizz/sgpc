@@ -153,24 +153,22 @@ namespace SGSC.Pages
                 try
                 {
                     Customer customerToRegister = new Customer();
-                    customerToRegister.Curp = tbCURP.Text.ToUpper();
-                    customerToRegister.Name = tbName.Text;
-                    customerToRegister.FirstSurname = tbFirstSurname.Text;
-                    customerToRegister.SecondSurname = tbSecondSurname.Text;
-                    customerToRegister.Rfc = tbRfc.Text.ToUpper();
+                    customerToRegister.Curp = tbCURP.Text.ToUpper().Trim();
+                    customerToRegister.Name = tbName.Text.Trim();
+                    customerToRegister.FirstSurname = tbFirstSurname.Text.Trim();
+                    customerToRegister.SecondSurname = tbSecondSurname.Text.Trim();
+                    customerToRegister.Rfc = tbRfc.Text.ToUpper().Trim();
                     customerToRegister.BirthDate = dpBirthdate.SelectedDate.Value;
                     customerToRegister.Genre = cbGenre.Text == "Masculino" ? "M" : "F";
                     customerToRegister.CivilStatus = cbCivilStatus.SelectedIndex;
-                    customerToRegister = db.Customers.Add(customerToRegister);
 
+                    customerToRegister = db.Customers.Add(customerToRegister);
 					db.SaveChanges();
-                    App.Current.NotificationsPanel.ShowSuccess("Datos guardados.");
-                    tbCURP.Text = "";
-                    tbName.Text = "";
-                    tbFirstSurname.Text = "";
-                    tbSecondSurname.Text = "";
+
+                    CustomerId = customerToRegister.CustomerId;
                     
-                    App.Current.MainFrame.Content = new AddressInformationPage(customerToRegister.CustomerId);
+                    App.Current.NotificationsPanel.ShowSuccess("Datos guardados");
+                    App.Current.MainFrame.Content = new AddressInformationPage(CustomerId.Value);
                 }
                 catch (Exception ex)
                 {
@@ -187,19 +185,19 @@ namespace SGSC.Pages
                 try
                 {
                     Customer customerToUpdate = db.Customers.Find(CustomerId);
-                    customerToUpdate.Curp = tbCURP.Text.ToUpper();
-                    customerToUpdate.Name = tbName.Text;
-                    customerToUpdate.FirstSurname = tbFirstSurname.Text;
-                    customerToUpdate.SecondSurname = tbSecondSurname.Text;
-                    customerToUpdate.Rfc = tbRfc.Text.ToUpper();
+                    customerToUpdate.Curp = tbCURP.Text.ToUpper().Trim();
+                    customerToUpdate.Name = tbName.Text.Trim();
+                    customerToUpdate.FirstSurname = tbFirstSurname.Text.Trim();
+                    customerToUpdate.SecondSurname = tbSecondSurname.Text.Trim();
+                    customerToUpdate.Rfc = tbRfc.Text.ToUpper().Trim();
                     customerToUpdate.BirthDate = dpBirthdate.SelectedDate.Value;
                     customerToUpdate.Genre = cbGenre.Text == "Masculino" ? "M" : "F";
                     customerToUpdate.CivilStatus = cbCivilStatus.SelectedIndex;
 
                     db.SaveChanges();
-                    MessageBox.Show("Cliente actualizado exitosamente.");
                     
-                    App.Current.MainFrame.Content = new AddressInformationPage(CustomerId.Value);
+                    App.Current.NotificationsPanel.ShowSuccess("Datos actualizados");
+                    App.Current.MainFrame.Navigate(new AddressInformationPage(CustomerId.Value));
                 }
                 catch (Exception ex)
                 {
@@ -239,9 +237,14 @@ namespace SGSC.Pages
             }
         }
 
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
+		private void btnBack_Click(object sender, RoutedEventArgs e)
+		{
+			App.Current.MainFrame.GoBack();
+		}
+
+		private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            App.Current.MainFrame.GoBack();
+            App.Current.MainFrame.Content = new HomePageCreditAdvisor();
         }
     }
 }

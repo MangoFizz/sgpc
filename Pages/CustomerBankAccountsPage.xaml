@@ -25,11 +25,11 @@
         <Button Style="{StaticResource ButtonStyleCancel}" Content="Cancelar" FontSize="22" HorizontalAlignment="Left" Margin="780,614,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="CancelRegister" />
         <Button Style="{StaticResource ButtonStyleConfirm}" Content="Continuar" FontSize="22" HorizontalAlignment="Left" Margin="984,614,0,0" VerticalAlignment="Top" Width="180" Height="54" Click="SaveBankAccounts" />
 
-        <SGSC:NumericBox x:Name="tbTansAccInterbankCode" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="250,220,623,455" TextChanged="tbTansAccInterbankCode_TextChanged"/>
+        <SGSC:NumericTextBox x:Name="tbTansAccInterbankCode" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="250,220,623,455" TextChanged="tbTansAccInterbankCode_TextChanged"/>
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="CLABE " HorizontalAlignment="Left" Margin="250,190,0,0" VerticalAlignment="Top" x:Name="NombreLabel" Width="237" Height="20"/>
         <Label x:Name="lbTansAccInterbankCodeError" Content="Error" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="250,266,0,0" VerticalAlignment="Top" Width="407" Foreground="#FFCE2222" FontStyle="Italic"/>
 
-        <SGSC:NumericBox x:Name="tbTansAccCardNumber" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="735,221,138,454"/>
+        <SGSC:NumericTextBox x:Name="tbTansAccCardNumber" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="735,221,138,454"/>
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Número de tarjeta " HorizontalAlignment="Left" Margin="735,190,0,0" VerticalAlignment="Top" x:Name="NombreLabel_Copy1" Width="237" Height="21"/>
         <Label x:Name="lbTansAccCardNumberError" Content="Error" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="735,266,0,0" VerticalAlignment="Top" Width="407" Foreground="#FFCE2222" FontStyle="Italic"/>
 
@@ -37,11 +37,11 @@
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Banco " HorizontalAlignment="Left" Margin="250,288,0,0" VerticalAlignment="Top" Width="58" Height="20"/>
 
 
-        <SGSC:NumericBox x:Name="tbDomAccBankInterbankCode" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="250,510,623,165" TextChanged="tbDomAccBank_TextChanged"/>
+        <SGSC:NumericTextBox x:Name="tbDomAccBankInterbankCode" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="250,510,623,165" TextChanged="tbDomAccBank_TextChanged"/>
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="CLABE " HorizontalAlignment="Left" Margin="250,480,0,0" VerticalAlignment="Top" Width="237" Height="20"/>
         <Label Name="lbDomAccBankInterbankCodeError" Content="Error" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="250,556,0,0" VerticalAlignment="Top" Width="407" Foreground="#FFCE2222" FontStyle="Italic"/>
 
-        <SGSC:NumericBox x:Name="tbDomAccBankCardNumber" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="735,511,138,164"/>
+        <SGSC:NumericTextBox x:Name="tbDomAccBankCardNumber" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="735,511,138,164"/>
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Número de tarjeta " HorizontalAlignment="Left" Margin="735,480,0,0" VerticalAlignment="Top" Width="237" Height="21"/>
         <Label Name="lbDomAccBankCardNumberError" Content="Error" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="735,556,0,0" VerticalAlignment="Top" Width="407" Foreground="#FFCE2222" FontStyle="Italic"/>
 

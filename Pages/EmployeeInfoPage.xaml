@@ -200,15 +200,15 @@
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="30" Content="Información del empleado" HorizontalAlignment="Left" Margin="254,158,0,0" VerticalAlignment="Top" x:Name="NombreLabel_Copiar" Width="407" Height="37"/>
 
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Nombre (s)" HorizontalAlignment="Left" Margin="254,207,0,0" VerticalAlignment="Top" x:Name="NombreLabel" Width="237" Height="21"/>
-        <SGSC:TextBoxName x:Name="tbName" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="254,238,619,437"/>
+        <SGSC:AlphabeticTextBox x:Name="tbName" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="254,238,619,437"/>
         <Label x:Name="lbName" Content="Error" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="254,283,0,0" VerticalAlignment="Top" Width="407" Foreground="#FFCE2222" FontStyle="Italic"/>
 
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Apellido paterno" HorizontalAlignment="Left" Margin="726,207,0,0" VerticalAlignment="Top"/>
-        <SGSC:TextBoxName x:Name="tbFirstSurname" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="726,238,138,437"/>
+        <SGSC:AlphabeticTextBox x:Name="tbFirstSurname" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="726,238,138,437"/>
         <Label x:Name="lbFirstSurname" Content="Error" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="726,284,0,0" VerticalAlignment="Top" Width="416" Foreground="#FFCE2222" FontStyle="Italic" FontSize="11"/>
 
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Apellido materno" HorizontalAlignment="Left" Margin="254,305,0,0" VerticalAlignment="Top" Height="34"/>
-        <SGSC:TextBoxName x:Name ="tbSecondSurname" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="254,340,619,335"/>
+        <SGSC:AlphabeticTextBox x:Name ="tbSecondSurname" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="254,340,619,335"/>
         <Label x:Name="lbSecondSurname" Content="Error" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="254,385,0,0" VerticalAlignment="Top" Width="407" Foreground="#FFCE2222" FontStyle="Italic"/>
 
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Correo electrónico" HorizontalAlignment="Left" Margin="726,305,0,0" VerticalAlignment="Top" Height="28"/>

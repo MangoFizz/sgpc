@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace SGSC
 {
-	internal class NumericBox : TextBox
+	internal class NumericTextBox : TextBox
 	{
 		private void previewTextInput(object sender, TextCompositionEventArgs e)
 		{

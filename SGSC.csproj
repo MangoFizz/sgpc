@@ -53,13 +53,13 @@
     </Reference>
     <Reference Include="Microsoft.Vbe.Interop, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-      <HintPath>Lib\Microsoft.Vbe.Interop.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>Libraries\Microsoft.Vbe.Interop.dll</HintPath>
     </Reference>
     <Reference Include="OFFICE, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-      <HintPath>Lib\OFFICE.DLL</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>Libraries\OFFICE.DLL</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -95,7 +95,7 @@
     <Compile Include="Colony.cs">
       <DependentUpon>Modelsgsc.tt</DependentUpon>
     </Compile>
-    <Compile Include="Components\NumericBox.cs" />
+    <Compile Include="Controls\NumericTextBox.cs" />
     <Compile Include="Contact.cs">
       <DependentUpon>Modelsgsc.tt</DependentUpon>
     </Compile>
@@ -129,28 +129,30 @@
     <Compile Include="Employee.cs">
       <DependentUpon>Modelsgsc.tt</DependentUpon>
     </Compile>
-    <Compile Include="Frames\CollectionExecutiveSidebar.xaml.cs">
+    <Compile Include="Components\CollectionExecutiveSidebar.xaml.cs">
       <DependentUpon>CollectionExecutiveSidebar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frames\AdminSidebar.xaml.cs">
+    <Compile Include="Components\AdminSidebar.xaml.cs">
       <DependentUpon>AdminSidebar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frames\CreditAdvisorSidebar.xaml.cs">
+    <Compile Include="Components\CreditAdvisorSidebar.xaml.cs">
       <DependentUpon>CreditAdvisorSidebar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frames\CustomerRegisterStepsSidebar.xaml.cs">
+    <Compile Include="Components\CustomerRegisterStepsSidebar.xaml.cs">
       <DependentUpon>CustomerRegisterStepsSidebar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frames\NotificationsPanelFrame.xaml.cs">
+    <Compile Include="Components\NotificationsPanelFrame.xaml.cs">
       <DependentUpon>NotificationsPanelFrame.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frames\UserSessionFrame.xaml.cs">
+    <Compile Include="Components\UserSessionFrame.xaml.cs">
       <DependentUpon>UserSessionFrame.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Messages\SuccessNotification.xaml.cs">
+    <Compile Include="Components\SuccessNotification.xaml.cs">
       <DependentUpon>SuccessNotification.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Messages\ToastNotification.xaml.cs" />
+    <Compile Include="Components\ToastNotification.xaml.cs">
+      <DependentUpon>ToastNotification.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modelsgsc.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -262,35 +264,35 @@
     <Compile Include="WorkCenter.cs">
       <DependentUpon>Modelsgsc.tt</DependentUpon>
     </Compile>
-    <Page Include="Frames\CollectionExecutiveSidebar.xaml">
+    <Page Include="Components\CollectionExecutiveSidebar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Frames\AdminSidebar.xaml">
+    <Page Include="Components\AdminSidebar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Frames\CreditAdvisorSidebar.xaml">
+    <Page Include="Components\CreditAdvisorSidebar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frames\CustomerRegisterStepsSidebar.xaml">
+    <Page Include="Components\CustomerRegisterStepsSidebar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frames\NotificationsPanelFrame.xaml">
+    <Page Include="Components\NotificationsPanelFrame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frames\UserSessionFrame.xaml">
+    <Page Include="Components\UserSessionFrame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Messages\SuccessNotification.xaml">
+    <Page Include="Components\SuccessNotification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Messages\ToastNotification.xaml">
+    <Page Include="Components\ToastNotification.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -398,7 +400,7 @@
     <Compile Include="Pages\AddressInformationPage.xaml.cs">
       <DependentUpon>AddressInformationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TextBoxName.cs" />
+    <Compile Include="Controls\AlphabeticTextBox.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -471,11 +473,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Resource Include="Typographic styles\Poppins-SemiBold.otf" />
-    <Resource Include="Typographic styles\Nunito-Light.ttf" />
-    <Resource Include="Typographic styles\Nunito-SemiBoldItalic.ttf" />
-    <Resource Include="Typographic styles\Nunito-Regular.ttf" />
-    <Resource Include="Typographic styles\Nunito-Bold.ttf" />
+    <Resource Include="Fonts\Poppins-SemiBold.otf" />
+    <Resource Include="Fonts\Nunito-Light.ttf" />
+    <Resource Include="Fonts\Nunito-SemiBoldItalic.ttf" />
+    <Resource Include="Fonts\Nunito-Regular.ttf" />
+    <Resource Include="Fonts\Nunito-Bold.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\User.png" />
@@ -492,8 +494,8 @@
     <Resource Include="Images\Arrow-Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Lib\Microsoft.Vbe.Interop.dll" />
-    <Content Include="Lib\OFFICE.DLL" />
+    <Content Include="Libraries\Microsoft.Vbe.Interop.dll" />
+    <Content Include="Libraries\OFFICE.DLL" />
     <Content Include="Modelsgsc.edmx.sql" />
     <Content Include="Model\Scripts\InsertAdminUser.sql" />
     <Content Include="Model\Scripts\InsertColonies.sql" />

@@ -480,6 +480,7 @@
     <Content Include="Lib\Microsoft.Vbe.Interop.dll" />
     <Content Include="Lib\OFFICE.DLL" />
     <Content Include="Modelsgsc.edmx.sql" />
+    <Content Include="Model\Scripts\InsertColonies.sql" />
     <Content Include="Model\Scripts\InsertBanks.sql" />
     <Resource Include="Images\icon-error.png" />
     <Resource Include="Images\icon-check.png" />

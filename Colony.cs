@@ -18,5 +18,6 @@ namespace SGSC
         public string Zipcode { get; set; }
         public string Name { get; set; }
         public string State { get; set; }
+        public string Municipality { get; set; }
     }
 }

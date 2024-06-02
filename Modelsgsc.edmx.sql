@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/20/2024 22:08:33
+-- Date Created: 06/01/2024 18:37:40
 -- Generated from EDMX file: C:\Users\aiwass\source\repos\MangoFizz\sgsc\Modelsgsc.edmx
 -- --------------------------------------------------
 
@@ -277,7 +277,8 @@ CREATE TABLE [dbo].[Colonies] (
     [ColonyId] int IDENTITY(1,1) NOT NULL,
     [Zipcode] nvarchar(max)  NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [State] nvarchar(max)  NOT NULL
+    [State] nvarchar(max)  NOT NULL,
+    [Municipality] nvarchar(max)  NOT NULL
 );
 GO
 

@@ -242,6 +242,7 @@
     <Property Name="Zipcode" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="State" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Municipality" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="CreditRequestCreditPolicies">
     <Key>
@@ -821,6 +822,7 @@
           <Property Name="Zipcode" Type="String" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="State" Type="String" Nullable="false" />
+          <Property Name="Municipality" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="CreditRequestCreditPolicy">
           <Key>
@@ -1031,6 +1033,7 @@
           <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Municipality" ColumnName="Municipality" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

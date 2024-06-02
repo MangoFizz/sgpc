@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetProjects.Input.Toolkit, Version=6.1.94.0, Culture=neutral, PublicKeyToken=79778c5f2eed289b, processorArchitecture=MSIL">
+      <HintPath>packages\DotNetProjects.WpfToolkit.Input.6.1.94\lib\net40\DotNetProjects.Input.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -165,6 +168,7 @@
     </Compile>
     <Compile Include="Model\Bank.cs" />
     <Compile Include="Model\BankAccount.cs" />
+    <Compile Include="Model\Colony.cs" />
     <Compile Include="Model\CreditPolicyWithStatus.cs" />
     <Compile Include="Model\CreditRequest.cs" />
     <Compile Include="Model\Customer.cs" />
@@ -243,7 +247,6 @@
     </Compile>
     <Compile Include="Utils\AddressCustomer.cs" />
     <Compile Include="Utils\Authenticator.cs" />
-    <Compile Include="Utils\CivilStatus.cs" />
     <Compile Include="Utils\CreditRequestStatus.cs" />
     <Compile Include="Utils\PaymentLayoutHelper.cs" />
     <Compile Include="Utils\TextValidator.cs" />
@@ -492,6 +495,7 @@
     <Content Include="Lib\Microsoft.Vbe.Interop.dll" />
     <Content Include="Lib\OFFICE.DLL" />
     <Content Include="Modelsgsc.edmx.sql" />
+    <Content Include="Model\Scripts\InsertAdminUser.sql" />
     <Content Include="Model\Scripts\InsertColonies.sql" />
     <Content Include="Model\Scripts\InsertBanks.sql" />
     <Resource Include="Images\icon-error.png" />

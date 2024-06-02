@@ -5,6 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:local="clr-namespace:SGSC.Pages"
         xmlns:frames="clr-namespace:SGSC.Frames"
+        xmlns:controls='clr-namespace:System.Windows.Controls;assembly=DotNetProjects.Input.Toolkit'
         mc:Ignorable="d" 
         d:DesignHeight="720" d:DesignWidth="1280">
     <Grid>
@@ -19,17 +20,24 @@
 
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="30" Content="Domicilio " HorizontalAlignment="Left" Margin="314,190,0,0" VerticalAlignment="Top" x:Name="NombreLabel_Copiar" Width="336" Height="37"/>
 
-        <TextBox x:Name="txtStreet" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="314,279,360,396"/>
-        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Calle " HorizontalAlignment="Left" Margin="314,250,0,0" VerticalAlignment="Top" Height="34" Width="92"/>
-        <TextBox x:Name="txtColony" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="315,398,360,277" RenderTransformOrigin="0.5,0.5" />
-        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Colonia " HorizontalAlignment="Left" Margin="314,368,0,0" VerticalAlignment="Top" Height="38" Width="92"/>
-        <TextBox x:Name="txtExternalNumber" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="951,279,216,396"/>
-        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="No. exterior " HorizontalAlignment="Left" Margin="951,245,0,0" VerticalAlignment="Top" Height="27" Width="119"/>
-        <TextBox x:Name="txtInternalNumber" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="1084,279,83,396" RenderTransformOrigin="0.533,0.406"/>
-        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="No. interior " HorizontalAlignment="Left" Margin="1084,245,0,0" VerticalAlignment="Top" Height="28" Width="102"/>
-        <TextBox x:Name="txtZipCode" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="948,398,185,277" RenderTransformOrigin="0.5,0.5"/>
-        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Código postal " HorizontalAlignment="Left" Margin="948,368,0,0" VerticalAlignment="Top" Height="30" RenderTransformOrigin="0.496,0.2" Width="147"/>
-        
+        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Código postal " HorizontalAlignment="Left" Margin="318,248,0,0" VerticalAlignment="Top" Height="30" RenderTransformOrigin="0.496,0.2" Width="147"/>
+        <controls:AutoCompleteBox x:Name='tbZipCode' FontSize="18" VerticalContentAlignment="Center" Margin="318,278,815,397" RenderTransformOrigin="0.5,0.5" TextChanged="tbZipCode_TextChanged" />
+
+        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Colonia " HorizontalAlignment="Left" Margin="494,248,0,0" VerticalAlignment="Top" Height="38" Width="92"/>
+        <ComboBox x:Name="cbColony" FontSize="18" VerticalContentAlignment="Center" Margin="495,278,360,397" RenderTransformOrigin="0.5,0.5" />
+
+        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Calle " HorizontalAlignment="Left" Margin="314,365,0,0" VerticalAlignment="Top" Height="34" Width="92"/>
+        <TextBox x:Name="txtStreet" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="314,394,360,281"/>
+
+        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Tipo de dirección " HorizontalAlignment="Left" Margin="959,245,0,0" VerticalAlignment="Top" Height="34" Width="179"/>
+        <ComboBox x:Name="cbAddressType" FontSize="18" VerticalContentAlignment="Center" Margin="959,274,83,401"/>
+
+        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="No. exterior " HorizontalAlignment="Left" Margin="951,360,0,0" VerticalAlignment="Top" Height="27" Width="119"/>
+        <TextBox x:Name="txtExternalNumber" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="951,394,216,281"/>
+
+        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="No. interior " HorizontalAlignment="Left" Margin="1084,360,0,0" VerticalAlignment="Top" Height="28" Width="102"/>
+        <TextBox x:Name="txtInternalNumber" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="1084,394,83,281" RenderTransformOrigin="0.533,0.406"/>
+
         <Label Content="* Campos obligatorios" Foreground="Red" FontFamily="{StaticResource FontNunito}" FontStyle="Italic"  HorizontalAlignment="Left" Margin="286,591,0,0" VerticalAlignment="Top" Width="206" FontSize="18"/>
 
         <Button Style="{StaticResource ButtonStyleDanger}" Content="Cancelar" FontSize="22" HorizontalAlignment="Left" Margin="641,614,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnCancel_Click" />

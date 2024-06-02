@@ -1,10 +1,16 @@
-﻿using SGSC.Frames;
+﻿using Microsoft.Office.Core;
+using SGSC.Frames;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace SGSC.Pages
 {
@@ -18,13 +24,26 @@ namespace SGSC.Pages
 
         public AddressInformationPage(int customerId)
         {
-            this.customerId = customerId;
             InitializeComponent();
-            UpdateAddressInformation();
 
-            StepsSidebarFrame.Content = new CustomerRegisterStepsSidebar("Address");
-            UserSessionFrame.Content = new UserSessionFrame();
+            tbZipCode.FilterMode = AutoCompleteFilterMode.Contains;
+
+			StepsSidebarFrame.Content = new CustomerRegisterStepsSidebar("Address");
+			UserSessionFrame.Content = new UserSessionFrame();
+
+			this.customerId = customerId;
+
+            PopulateAddressTypeCombobox();
+			UpdateAddressInformation();
         }
+
+        private void PopulateAddressTypeCombobox()
+        {
+			cbAddressType.Items.Add("Propietario");
+			cbAddressType.Items.Add("Hipotecado");
+			cbAddressType.Items.Add("Alquiler");
+			cbAddressType.Items.Add("Familiar");
+		}
 
         private void AddAddressInformation(object sender, RoutedEventArgs e)
         {
@@ -32,28 +51,32 @@ namespace SGSC.Pages
             {
 
                 if (string.IsNullOrWhiteSpace(txtStreet.Text) || string.IsNullOrWhiteSpace(txtExternalNumber.Text) ||
-                    string.IsNullOrWhiteSpace(txtZipCode.Text) || string.IsNullOrWhiteSpace(txtColony.Text))
+                    string.IsNullOrWhiteSpace(tbZipCode.Text) || cbColony.SelectedIndex == -1 || cbAddressType.SelectedIndex == -1)
                 {
                     MessageBox.Show("Por favor, complete todos los campos de dirección.");
                     return;
                 }
 
 
-                if (!IsValidZipCode(txtZipCode.Text))
+                if (!Colony.IsValidZipCode(tbZipCode.Text))
                 {
                     MessageBox.Show("Por favor, introduzca un código postal válido.");
                     return;
                 }
 
+                var colony = cbColony.SelectedItem as Colony;
+
                 var newCustomerAddressInfoes = new CustomerAddress
                 {
                     ExternalNumber = txtExternalNumber.Text,
                     Street = txtStreet.Text,
-                    ZipCode = txtZipCode.Text,
-                    Colony = txtColony.Text,
+                    ZipCode = colony.Zipcode.ToString(),
+					Colony = colony.Name,
                     CustomerId = customerId,
-                    State = "Veracruz"
-                };
+                    State = colony.State,
+                    Municipality = colony.Municipality,
+                    Type = cbAddressType.SelectedIndex
+				};
 
                 if(!string.IsNullOrWhiteSpace(txtInternalNumber.Text))
                 {
@@ -107,8 +130,8 @@ namespace SGSC.Pages
                         txtStreet.Text = customerData.Street;
                         txtExternalNumber.Text = customerData.ExternalNumber;
                         txtInternalNumber.Text = customerData.InternalNumber;
-                        txtZipCode.Text = customerData.ZipCode;
-                        txtColony.Text = customerData.Colony;
+                        tbZipCode.Text = customerData.ZipCode;
+                        cbColony.Text = customerData.Colony;
                         addressId = customerData.CustomerAddressId;
                     }
                 }
@@ -117,12 +140,6 @@ namespace SGSC.Pages
             {
                 MessageBox.Show("Error al intentar obtener los datos de contacto: " + ex.Message);
             }
-        }
-
-        private bool IsValidZipCode(string zipCode)
-        {
-            // Expresión regular para validar un código postal de 5 dígitos
-            return Regex.IsMatch(zipCode, @"^\d{5}$");
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -138,5 +155,33 @@ namespace SGSC.Pages
 		{
 			App.Current.MainFrame.GoBack();
 		}
-	}
+
+        private async Task<List<string>> GetZipCodes(string keyword)
+        {
+			return await Task.Run(() =>
+			{
+				var zipCodes = new List<string>();
+			    var res = Colony.GetColonies(keyword, 6);
+			    foreach (var colony in res)
+			    {
+				    zipCodes.Add(colony.Zipcode.ToString());
+			    }
+                return zipCodes;
+			});
+		}
+
+		private async void tbZipCode_TextChanged(object sender, RoutedEventArgs e)
+		{
+            var zipCodes = await GetZipCodes(tbZipCode.Text);
+			tbZipCode.ItemsSource = zipCodes;
+            tbZipCode.IsDropDownOpen = true;
+
+            if(tbZipCode.Text.Length == 5)
+            {
+				var colonies = Colony.GetColoniesByZipcode(tbZipCode.Text);
+				cbColony.ItemsSource = colonies.ToList();
+                cbColony.SelectedIndex = 0;
+			}
+		}
+    }
 }

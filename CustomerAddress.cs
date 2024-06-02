@@ -23,6 +23,7 @@ namespace SGSC
         public string Colony { get; set; }
         public string State { get; set; }
         public int Type { get; set; }
+        public string Municipality { get; set; }
     
         public virtual Customer Customer { get; set; }
     }

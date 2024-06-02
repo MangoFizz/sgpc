@@ -44,7 +44,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Fullname}" IsReadOnly="True" Width="550" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
                 <DataGridTextColumn Header="Correo electrónico" Binding="{Binding Email}" IsReadOnly="True" Width="300" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
-                <DataGridTextColumn Header="Rol" Binding="{Binding Role}" IsReadOnly="True" Width="260" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
+                <DataGridTextColumn Header="Rol" Binding="{Binding Role}" IsReadOnly="True" Width="255" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
             </DataGrid.Columns>
         </DataGrid>
 

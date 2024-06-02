@@ -161,6 +161,7 @@
     <Property Name="Colony" Type="nvarchar(max)" Nullable="false" />
     <Property Name="State" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Municipality" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="CustomerContactInfoes">
     <Key>
@@ -565,6 +566,7 @@
           <NavigationProperty Name="Customer" Relationship="sgscModel.CustomerAddressCustomer" FromRole="CustomerAddress" ToRole="Customer" />
           <Property Name="State" Type="String" Nullable="false" />
           <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Municipality" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="CustomerContactInfo">
           <Key>
@@ -948,6 +950,7 @@
           <ScalarProperty Name="Colony" ColumnName="Colony" />
           <ScalarProperty Name="State" ColumnName="State" />
           <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Municipality" ColumnName="Municipality" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/01/2024 18:37:40
+-- Date Created: 06/01/2024 21:40:13
 -- Generated from EDMX file: C:\Users\aiwass\source\repos\MangoFizz\sgsc\Modelsgsc.edmx
 -- --------------------------------------------------
 
@@ -196,7 +196,8 @@ CREATE TABLE [dbo].[CustomerAddresses] (
     [CustomerId] int  NOT NULL,
     [Colony] nvarchar(max)  NOT NULL,
     [State] nvarchar(max)  NOT NULL,
-    [Type] int  NOT NULL
+    [Type] int  NOT NULL,
+    [Municipality] nvarchar(max)  NOT NULL
 );
 GO
 

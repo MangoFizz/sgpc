@@ -138,12 +138,16 @@
     <Compile Include="Frames\CustomerRegisterStepsSidebar.xaml.cs">
       <DependentUpon>CustomerRegisterStepsSidebar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Frames\NotificationsPanelFrame.xaml.cs">
+      <DependentUpon>NotificationsPanelFrame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Frames\UserSessionFrame.xaml.cs">
       <DependentUpon>UserSessionFrame.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Messages\ToastNotification.xaml.cs">
-      <DependentUpon>ToastNotification.xaml</DependentUpon>
+    <Compile Include="Messages\SuccessNotification.xaml.cs">
+      <DependentUpon>SuccessNotification.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Messages\ToastNotification.xaml.cs" />
     <Compile Include="Modelsgsc.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -271,13 +275,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Frames\NotificationsPanelFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Frames\UserSessionFrame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Messages\ToastNotification.xaml">
+    <Page Include="Messages\SuccessNotification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messages\ToastNotification.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\ActiveCreditsPage.xaml">
       <SubType>Designer</SubType>

@@ -167,24 +167,28 @@ namespace SGSC.Pages
                     if(workCenterId != null)
                     {
                         NewWorkcenter.WorkCenterId = workCenterId.Value;
+                        dbContext.WorkCenters.AddOrUpdate(NewWorkcenter);
+                        dbContext.SaveChanges();
+                        App.Current.NotificationsPanel.ShowSuccess("Datos actualizados");
                     }
-
-                    dbContext.WorkCenters.AddOrUpdate(NewWorkcenter);
-                    dbContext.SaveChanges();
-
-                    ShowNotification("Se ha registrado con éxito la información", "Success");
+                    else
+                    {
+						NewWorkcenter = dbContext.WorkCenters.Add(NewWorkcenter);
+						dbContext.SaveChanges();
+                        workCenterId = NewWorkcenter.WorkCenterId;
+						App.Current.NotificationsPanel.ShowSuccess("Datos guardados");
+					}
 
                     foreach (var pair in textBoxLabelMap)
                     {
                         pair.Value.Visibility = Visibility.Hidden;
                     }
 
-                    App.Current.MainFrame.Content = new CustomerContactInfo(customerId);
+                    App.Current.MainFrame.Navigate(new CustomerContactInfo(customerId));
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("No se puede conectar con la base de datos. \nPor favor, inténtelo más tarde.", "Error");
-                    ShowNotification("No se puede conectar con la base de datos. \nPor favor, inténtelo más tarde.", "Error");
                 }
             }
         }
@@ -247,23 +251,6 @@ namespace SGSC.Pages
             e.Handled = !Regex.IsMatch(e.Text, "^[0-9]+$");
         }
 
-        public void ShowNotification(string Message, String NotificationType)
-        {
-            var notificationWindow = new ToastNotification(Message, NotificationType);
-            notificationWindow.WindowStartupLocation = WindowStartupLocation.Manual;
-            notificationWindow.Left = SystemParameters.WorkArea.Left; // Ajustar según sea necesario
-            notificationWindow.Top = SystemParameters.WorkArea.Bottom - notificationWindow.Height; // Ajustar según sea necesario
-
-            notificationWindow.Show();
-            Task.Delay(3000).ContinueWith(_ =>
-            {
-                notificationWindow.Dispatcher.Invoke(() =>
-                {
-                    notificationWindow.Close();
-                });
-            });
-        }
-
         private void CancelRegister(object sender, RoutedEventArgs e)
         {
             var result = System.Windows.Forms.MessageBox.Show("Está seguro que desea cancelar el registro?\nSi decide cancelarlo puede retomarlo más tarde.", "Cancelar registro", System.Windows.Forms.MessageBoxButtons.YesNo);
@@ -272,7 +259,12 @@ namespace SGSC.Pages
                 App.Current.MainFrame.Content = new HomePageCreditAdvisor();
             }
         }
-    }
+
+		private void btnBack_Click(object sender, RoutedEventArgs e)
+		{
+			App.Current.MainFrame.GoBack();
+		}
+	}
 
    
 }

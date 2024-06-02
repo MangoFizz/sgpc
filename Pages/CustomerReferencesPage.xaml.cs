@@ -122,7 +122,7 @@ namespace SGSC.Pages
 
                         db.SaveChanges();
 
-                        MessageBox.Show("Referencias guardadas correctamente", "Referencias guardadas", MessageBoxButton.OK, MessageBoxImage.Information);
+                        App.Current.NotificationsPanel.ShowSuccess("Datos guardados");
 
                         App.Current.MainFrame.Content = new RegisterCreditRequest(customerId);
                     }
@@ -146,8 +146,12 @@ namespace SGSC.Pages
                 App.Current.MainFrame.Content = new HomePageCreditAdvisor();
             }
         }
+		private void btnBack_Click(object sender, RoutedEventArgs e)
+		{
+			App.Current.MainFrame.GoBack();
+		}
 
-        private void tbName_PreviewTextInput(object sender, TextCompositionEventArgs e)
+		private void tbName_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(tbName.Text + e.Text, @"[^a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$"))
             {

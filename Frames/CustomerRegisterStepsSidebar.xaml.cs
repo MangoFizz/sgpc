@@ -38,12 +38,9 @@ namespace SGSC.Frames
             switch (active)
             {
                 case "PersonalInfo":
-                    PersonalInfoActive.Visibility = Visibility.Visible;
-                    break;
-                case "Address":
                     AddressActive.Visibility = Visibility.Visible;
                     break;
-                case "BankAccounts":
+                case "Address":
                     BankAccountsActive.Visibility = Visibility.Visible;
                     break;
                 case "WorkCenter":

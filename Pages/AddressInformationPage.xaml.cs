@@ -64,20 +64,25 @@ namespace SGSC.Pages
                     newCustomerAddressInfoes.InternalNumber = null;
                 }
 
-                if(addressId != null)
-                {
-                    newCustomerAddressInfoes.CustomerAddressId = addressId.Value;
-                }
-
                 using (sgscEntities context = new sgscEntities())
                 {
-                    context.CustomerAddresses.AddOrUpdate(newCustomerAddressInfoes);
-                    context.SaveChanges();
+                    if(addressId != null)
+                    {
+                        newCustomerAddressInfoes.CustomerAddressId = addressId.Value;
+						context.CustomerAddresses.AddOrUpdate(newCustomerAddressInfoes);
+						context.SaveChanges();
+						App.Current.NotificationsPanel.ShowSuccess("Datos actualizados");
+					}
+					else
+                    {
+						newCustomerAddressInfoes = context.CustomerAddresses.Add(newCustomerAddressInfoes);
+						context.SaveChanges();
+						addressId = newCustomerAddressInfoes.CustomerAddressId;
+						App.Current.NotificationsPanel.ShowSuccess("Datos guardados");
+					}
                 }
 
-                MessageBox.Show("Los datos de contacto se han guardado correctamente.");
-
-                App.Current.MainFrame.Content = new PageWorkCenter(customerId);
+                App.Current.MainFrame.Navigate(new PageWorkCenter(customerId));
             }
             catch (Exception ex)
             {
@@ -120,7 +125,7 @@ namespace SGSC.Pages
             return Regex.IsMatch(zipCode, @"^\d{5}$");
         }
 
-        private void CancelRegister(object sender, RoutedEventArgs e)
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             var result = System.Windows.Forms.MessageBox.Show("Está seguro que desea cancelar el registro?\nSi decide cancelarlo puede retomarlo más tarde.", "Cancelar registro", System.Windows.Forms.MessageBoxButtons.YesNo);
             if (result == System.Windows.Forms.DialogResult.Yes)
@@ -128,5 +133,10 @@ namespace SGSC.Pages
                 App.Current.MainFrame.Content = new HomePageCreditAdvisor();
             }
         }
-    }
+
+		private void btnBack_Click(object sender, RoutedEventArgs e)
+		{
+			App.Current.MainFrame.GoBack();
+		}
+	}
 }

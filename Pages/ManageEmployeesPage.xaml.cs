@@ -40,7 +40,7 @@ namespace SGSC.Pages
         public ManageEmployeesPage()
         {
             InitializeComponent();
-            creditAdvisorSidebar.Content = new Frames.AdminSidebar("searchCustomer");
+            creditAdvisorSidebar.Content = new Frames.AdminSidebar("employees");
             GetCustomers();
         }
 

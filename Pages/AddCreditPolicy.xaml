@@ -42,7 +42,7 @@
         <Frame Name="UserSessionFrame" NavigationUIVisibility="Hidden" Margin="888,10,20,624" Grid.ColumnSpan="2"/>
         <Frame Name="StepsSidebarFrame" NavigationUIVisibility="Hidden" Margin="9,68,723,98" />
 
-        <Button Style="{StaticResource ButtonStyleConfirm}" Content="Guardar" FontSize="15" HorizontalAlignment="Left" Margin="129,672,0,0" VerticalAlignment="Top" Width="130" Height="38" Grid.Column="1" Click="BtnClickSave"/>
+        <Button Name="btnSave" Style="{StaticResource ButtonStyleConfirm}" Content="Guardar" FontSize="15" HorizontalAlignment="Left" Margin="129,672,0,0" VerticalAlignment="Top" Width="130" Height="38" Grid.Column="1" Click="BtnClickSave"/>
 
         <Button Width="100" Height="50" BorderThickness="0" Background="Transparent" Margin="-4,8,898,662" Click="BtnReturn">
             <StackPanel Orientation="Horizontal">
@@ -50,7 +50,7 @@
             </StackPanel>
         </Button>
 
-        <Label Content="Nueva política de crédito" FontFamily="{StaticResource FontPoppins}" FontSize="26" HorizontalAlignment="Left" Margin="46,74,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbTitle" Content="Nueva política de crédito" FontFamily="{StaticResource FontPoppins}" FontSize="26" HorizontalAlignment="Left" Margin="46,74,0,0" VerticalAlignment="Top"/>
         <Rectangle Style="{StaticResource RoundedRectangleStyle}" Margin="46,123,47,212" Grid.ColumnSpan="2"/>
 
         <TextBox x:Name="txtWorkPolityCreditName" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="76,190,274,485"/>

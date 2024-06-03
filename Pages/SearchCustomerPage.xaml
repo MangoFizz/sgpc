@@ -12,21 +12,7 @@
 
     <Page.Resources>
         <FontFamily x:Key="FuenteNunito">/Typografic styles/Nunito-Regular.ttf#Nunito</FontFamily>
-        <Style x:Key="CustomLabelStyle" TargetType="Label">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Label">
-                        <TextBlock FontWeight="Medium" FontFamily="{StaticResource FuenteNunito}">
-                            <Run Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"/>
-                            <Run Text="*" Foreground="#F67070"/>
-                        </TextBlock>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="CenterGridHeaderStyle" TargetType="DataGridColumnHeader">
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        </Style>
+        
     </Page.Resources>
 
     <Grid>

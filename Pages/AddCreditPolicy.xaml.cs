@@ -8,15 +8,27 @@ namespace SGSC.Pages
     {
         private CreditPolicyWithStatus selectedPolicy;
 
-        public AddCreditPolicy(CreditPolicyWithStatus selectedPolicy)
+        public AddCreditPolicy(CreditPolicyWithStatus selectedPolicy, bool readOnly = false)
         {
             InitializeComponent();
+
+            if(readOnly)
+            {
+				btnSave.Visibility = Visibility.Hidden;
+                txtWorkPolityCreditName.IsReadOnly = true;
+                txtDescription.IsReadOnly = true;
+                cdDate.IsEnabled = false;
+                lbTitle.Content = "Detalles de la política de crédito";
+			}
+
             this.selectedPolicy = selectedPolicy;
 
             // Si se proporciona una política de crédito seleccionada, muestra sus datos en los campos correspondientes
             if (selectedPolicy != null)
             {
-                txtWorkPolityCreditName.Text = selectedPolicy.Name;
+				lbTitle.Content = "Modificar política de crédito";
+
+				txtWorkPolityCreditName.Text = selectedPolicy.Name;
                 txtDescription.Text = selectedPolicy.Description;
 
                 // Asigna la fecha efectiva de la política si está disponible

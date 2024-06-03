@@ -55,6 +55,23 @@
             <!-- Radio vertical de las esquinas -->
         </Style>
 
+        <Style TargetType="Rectangle" x:Key="SideBarButtonBackground">
+            <Setter Property="Fill" Value="#C2E6B0"/>
+            <Setter Property="RadiusX" Value="18"/>
+            <Setter Property="RadiusY" Value="18"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#FF9E9E9E" BlurRadius="6" ShadowDepth="0.5"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Rectangle" x:Key="SideBarButtonBackgroundHover">
+            <Setter Property="Fill" Value="#FFD0EDC1"/>
+            <Setter Property="RadiusX" Value="18"/>
+            <Setter Property="RadiusY" Value="18"/>
+        </Style>
+
         <!-- Botón verde, menú principal-->
         <Style TargetType="Button" x:Key="Menubutton">
             <Setter Property="Background" Value="Transparent"/>
@@ -292,6 +309,10 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+
+        <Style x:Key="CenterGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
         </Style>
     </Application.Resources>
 </Application>

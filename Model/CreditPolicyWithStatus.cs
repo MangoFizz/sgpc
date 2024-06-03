@@ -8,6 +8,7 @@ namespace SGSC
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime EffectiveDate { get; set; }
+        public string DateString => EffectiveDate.ToString("dd/MM/yyyy");
         public string Status { get; set; }
 
         public CreditPolicyWithStatus(int id, string name, string description, DateTime effectiveDate, string status)

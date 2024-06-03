@@ -30,7 +30,41 @@ namespace SGSC.Frames
 
 		public void SetActive(string button)
 		{
-			
+			homeButtonBackground.Visibility = Visibility.Hidden;
+			EmployeesButtonBackground.Visibility = Visibility.Hidden;
+			CreditPoliciesButtonBackground.Visibility = Visibility.Hidden;
+			CreditPromotionsButtonBackground.Visibility = Visibility.Hidden;
+			CreditConditionsButtonBackground.Visibility = Visibility.Hidden;
+
+			homeButtonBackgroundHover.Visibility = Visibility.Hidden;
+			EmployeesButtonBackgroundHover.Visibility = Visibility.Hidden;
+			CreditPoliciesButtonBackgroundHover.Visibility = Visibility.Hidden;
+			CreditPromotionsButtonBackgroundHover.Visibility = Visibility.Hidden;
+			CreditConditionsButtonBackgroundHover.Visibility = Visibility.Hidden;
+			LogoutButtonBackgroundHover.Visibility = Visibility.Hidden;
+
+			switch (button)
+			{
+				case "home":
+					homeButtonBackground.Visibility = Visibility.Visible;
+					break;
+
+				case "employees":
+					EmployeesButtonBackground.Visibility = Visibility.Visible;
+					break;
+
+				case "creditPolicies":
+					CreditPoliciesButtonBackground.Visibility = Visibility.Visible;
+					break;
+
+				case "creditPromotions":
+					CreditPromotionsButtonBackground.Visibility = Visibility.Visible;
+					break;
+
+				case "creditConditions":
+					CreditConditionsButtonBackground.Visibility = Visibility.Visible;
+					break;
+			}
 		}
 
 		private void LogoutButton_Click(object sender, RoutedEventArgs e)
@@ -57,5 +91,65 @@ namespace SGSC.Frames
         {
 			App.Current.MainFrame.Content = new CreditPromotions();
         }
-    }
+
+		private void btnHome_MouseEnter(object sender, MouseEventArgs e)
+		{
+			homeButtonBackgroundHover.Visibility = Visibility.Visible;
+		}
+
+		private void btnHome_MouseLeave(object sender, MouseEventArgs e)
+		{
+			homeButtonBackgroundHover.Visibility = Visibility.Hidden;
+		}
+
+		private void btnEmployees_MouseEnter(object sender, MouseEventArgs e)
+		{
+			EmployeesButtonBackgroundHover.Visibility = Visibility.Visible;
+		}
+
+		private void btnEmployees_MouseLeave(object sender, MouseEventArgs e)
+		{
+			EmployeesButtonBackgroundHover.Visibility = Visibility.Hidden;
+		}
+
+		private void btnCreditPolicies_MouseEnter(object sender, MouseEventArgs e)
+		{
+			CreditPoliciesButtonBackgroundHover.Visibility = Visibility.Visible;
+		}
+
+		private void btnCreditPolicies_MouseLeave(object sender, MouseEventArgs e)
+		{
+			CreditPoliciesButtonBackgroundHover.Visibility = Visibility.Hidden;
+		}
+
+		private void btnCreditPromotions_MouseEnter(object sender, MouseEventArgs e)
+		{
+			CreditPromotionsButtonBackgroundHover.Visibility = Visibility.Visible;
+		}
+
+		private void btnCreditPromotions_MouseLeave(object sender, MouseEventArgs e)
+		{
+			CreditPromotionsButtonBackgroundHover.Visibility = Visibility.Hidden;
+		}
+
+		private void btnCreditConditions_MouseEnter(object sender, MouseEventArgs e)
+		{
+			CreditConditionsButtonBackgroundHover.Visibility = Visibility.Visible;
+		}
+
+		private void btnCreditConditions_MouseLeave(object sender, MouseEventArgs e)
+		{
+			CreditConditionsButtonBackgroundHover.Visibility = Visibility.Hidden;
+		}
+
+		private void LogoutButton_MouseEnter(object sender, MouseEventArgs e)
+		{
+			LogoutButtonBackgroundHover.Visibility = Visibility.Visible;
+		}
+
+		private void LogoutButton_MouseLeave(object sender, MouseEventArgs e)
+		{
+			LogoutButtonBackgroundHover.Visibility = Visibility.Hidden;
+		}
+	}
 }

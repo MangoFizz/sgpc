@@ -494,6 +494,8 @@
     <Resource Include="Images\Arrow-Icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\icon-logout.png" />
+    <Resource Include="Images\table-background-st.png" />
     <Content Include="Libraries\Microsoft.Vbe.Interop.dll" />
     <Content Include="Libraries\OFFICE.DLL" />
     <Content Include="Modelsgsc.edmx.sql" />
@@ -507,7 +509,6 @@
     <Resource Include="Images\icon-find-customer.png" />
     <Resource Include="Images\icon-board.png" />
     <Resource Include="Images\coin-logo.png" />
-    <Resource Include="Images\icon-logout.png" />
     <Resource Include="Images\user-circle-placeholder.png" />
     <Resource Include="Images\landing-banner.png" />
     <Resource Include="Images\login-page-bkg.png" />

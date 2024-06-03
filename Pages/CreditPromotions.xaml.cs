@@ -24,7 +24,7 @@ namespace SGSC.Pages
         public CreditPromotions()
         {
             InitializeComponent();
-            adminSidebar.Content = new Frames.AdminSidebar("ManageCreditGrantingPolicies");
+            adminSidebar.Content = new Frames.AdminSidebar("creditPromotions");
             UserSessionFrame.Content = new Frames.UserSessionFrame();
             retrievePromotions();
         }

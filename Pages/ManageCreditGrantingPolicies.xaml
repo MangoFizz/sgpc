@@ -11,59 +11,31 @@
       Title="Manage_credit_granting_policies">
 
     <Grid>
-        <Border Background="White" Margin="0">
+        <Border Background="White" Margin="0"/>
 
+        <Frame Name="creditAdvisorSidebar" Margin="0,0,1172,0"/>
 
-        </Border>
+        <Frame>
+            <Frame.Content>
+                <frames:UserSessionFrame Margin="831,23,38,612"/>
+            </Frame.Content>
+        </Frame>
 
+        <Label FontFamily="{StaticResource FontPoppins}" FontWeight="Bold" FontSize="36" Content="Gestionar políticas de aprobación" HorizontalAlignment="Left" Margin="136,39,0,0" VerticalAlignment="Top"/>
 
-        <Frame Name="adminSidebar" Margin="0,0,1172,0"/>
-        <Frame Name="UserSessionFrame" NavigationUIVisibility="Hidden" Margin="888,10,20,624"/>
+        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Buscar por nombre " HorizontalAlignment="Left" Margin="136,124,0,0" VerticalAlignment="Top" Height="34" Width="176"/>
+        <TextBox Name="tbDescription" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="136,151,843,524" TextChanged="tbFilter_TextChanged"/>
 
-        <Label FontFamily="{StaticResource FontPoppins}" FontWeight="Bold" FontSize="36" Content="Gestionar politicas" HorizontalAlignment="Left" Margin="136,39,0,0" VerticalAlignment="Top"/>
+        <DataGrid Name="dgPolicies" AutoGenerateColumns="False" CanUserAddRows="False" AlternatingRowBackground="#DAEFD0" Margin="136,215,28,99" FontSize="22">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Name}" IsReadOnly="True" Width="550" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
+                <DataGridTextColumn Header="Fecha de vigencia" Binding="{Binding DateString}" IsReadOnly="True" Width="300" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
+                <DataGridTextColumn Header="Estado" Binding="{Binding Status}" IsReadOnly="True" Width="255" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
-        <Image Source="../Images/background-credit.png" HorizontalAlignment="Left" Margin="126,187,0,127"  Width="1127"/>
-        <Grid Margin="20">
-            <!-- Otros elementos de la interfaz de usuario aquí -->
-
-            <!-- Lista de políticas de crédito -->
-            <DataGrid FontFamily="{StaticResource FontNunitoSemiBold}" CanUserAddRows="False" HeadersVisibility="Column" FontSize="16" x:Name="dataGridCreditPolicies" ItemsSource="{Binding CreditPolicies}" Margin="130,222,12,134" AutoGenerateColumns="False" Background="Transparent" 
-    GridLinesVisibility="None" BorderBrush="Transparent" >
-                <DataGrid.Resources>
-                    <Style TargetType="{x:Type DataGridRow}" >
-                        <Setter Property="Margin" Value="0,0,0,10"/>
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="BorderBrush" Value="Transparent"/>
-                        <Setter Property="BorderThickness" Value="0"/>
-                    </Style>
-                    <Style TargetType="{x:Type DataGridColumnHeader}" >
-                        <Setter Property="Background" Value="Transparent"/>
-                    </Style>
-                    <Style TargetType="{x:Type DataGridCell}"  >
-                        <Setter Property="Margin" Value="0,12,0,12"/>
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="BorderBrush" Value="Transparent"/>
-                        <Setter Property="BorderThickness" Value="0"/>
-                        <Style.Triggers>
-                            <Trigger Property="DataGridCell.IsSelected" Value="True">
-                                <Setter Property="Foreground" Value="Black" />
-                                <Setter Property="Background" Value="#266AD9FF" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </DataGrid.Resources>
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Descripción" Binding="{Binding Description}" IsReadOnly="True" Width="*" FontFamily="{StaticResource FontNunitoSemiBold}" FontSize="16"/>
-                    <DataGridTextColumn Header="Fecha" Binding="{Binding EffectiveDate}" IsReadOnly="True" Width="*" FontFamily="{StaticResource FontNunitoSemiBold}" FontSize="16"/>
-                    <DataGridTextColumn Header="Estatus" Binding="{Binding Status}" IsReadOnly="True" Width="*" FontFamily="{StaticResource FontNunitoSemiBold}" FontSize="16"/>
-                </DataGrid.Columns>
-            </DataGrid>
-
-        </Grid>
-
-        <Button Style="{StaticResource ButtonStyleDanger}" Content="Agregar" FontSize="20" FontFamily="{StaticResource FontNunitoSemiBold}" HorizontalAlignment="Left" Margin="1075,602,0,0" VerticalAlignment="Top" Width="160" Height="42" Click="BtnClickAddCreditPolicie"/>
-        <Button Style="{StaticResource ButtonStyleConfirm}" Content="Modificar" FontSize="20" HorizontalAlignment="Left" Margin="889,602,0,0" VerticalAlignment="Top" Width="160" Height="42" Click="BtnUpdatePolicyCredit" />
-
-
+        <Button Name="btnRegisterEmployee" Style="{StaticResource ButtonStyleConfirm}" Content="Registrar política" FontSize="22" HorizontalAlignment="Left" Margin="694,646,0,0" VerticalAlignment="Top" Width="217" Height="40" Click="btnRegisterPolicy_Click" />
+        <Button Name="btnSelectEmployee" Style="{StaticResource ButtonStyleDanger}" Content="Modificar" FontSize="22" HorizontalAlignment="Left" Margin="924,646,0,0" VerticalAlignment="Top" Width="156" Height="40" Click="btnModifyPolicy_Click" />
+        <Button Style="{StaticResource ButtonStyleCancel}" Content="Ver detalles" FontSize="22" HorizontalAlignment="Left" Margin="1092,646,0,0" VerticalAlignment="Top" Width="156" Height="40" Click="btnViewPolicy_Click" />
     </Grid>
 </Page>

@@ -32,6 +32,10 @@ namespace SGSC.Frames
 			homeButtonBackground.Visibility = Visibility.Hidden;
 			creditRequestButtonBackground.Visibility = Visibility.Hidden;
 
+			homeButtonBackgroundHover.Visibility = Visibility.Hidden;
+			creditRequestButtonBackgroundHover.Visibility = Visibility.Hidden;
+			LogoutButtonBackgroundHover.Visibility = Visibility.Hidden;
+
 			switch(button)
 			{
 				case "home":
@@ -57,6 +61,36 @@ namespace SGSC.Frames
 		private void ActiveCreditsButton_Click(object sender, RoutedEventArgs e)
 		{
 			App.Current.MainFrame.Content = new Pages.ActiveCreditsPage();
+		}
+
+		private void CreditRequestButton_MouseEnter(object sender, MouseEventArgs e)
+		{
+			creditRequestButtonBackgroundHover.Visibility = Visibility.Visible;
+		}
+
+		private void CreditRequestButton_MouseLeave(object sender, MouseEventArgs e)
+		{
+			creditRequestButtonBackgroundHover.Visibility = Visibility.Hidden;
+		}
+
+		private void HomeButton_MouseEnter(object sender, MouseEventArgs e)
+		{
+			homeButtonBackgroundHover.Visibility = Visibility.Visible;
+		}
+
+		private void HomeButton_MouseLeave(object sender, MouseEventArgs e)
+		{
+			homeButtonBackgroundHover.Visibility = Visibility.Hidden;
+		}
+
+		private void LogoutButton_MouseEnter(object sender, MouseEventArgs e)
+		{
+			LogoutButtonBackgroundHover.Visibility = Visibility.Visible;
+		}
+
+		private void LogoutButton_MouseLeave(object sender, MouseEventArgs e)
+		{
+			LogoutButtonBackgroundHover.Visibility = Visibility.Hidden;
 		}
 	}
 }

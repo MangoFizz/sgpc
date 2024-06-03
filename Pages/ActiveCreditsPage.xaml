@@ -21,7 +21,11 @@
 
         <Frame Name="collectionExecutiveSidebar" Margin="0,0,1172,0"/>
 
-        <Frame Name="UserSessionFrame" NavigationUIVisibility="Hidden" Margin="831,28,38,607"/>
+        <Frame>
+            <Frame.Content>
+                <frames:UserSessionFrame Margin="831,23,38,612"/>
+            </Frame.Content>
+        </Frame>
 
         <DataGrid Name="dgCredits" AutoGenerateColumns="False" CanUserAddRows="False" AlternatingRowBackground="#DAEFD0" Margin="136,215,28,99" FontSize="22">
             <DataGrid.Columns>

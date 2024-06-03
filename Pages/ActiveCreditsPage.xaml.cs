@@ -43,7 +43,6 @@ namespace SGSC.Pages
 		public ActiveCreditsPage()
         {
             InitializeComponent();
-            UserSessionFrame.Content = new UserSessionFrame();
             collectionExecutiveSidebar.Content = new CollectionExecutiveSidebar("activeCredits");
             GetActiveCredits();
 		}

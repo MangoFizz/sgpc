@@ -11,19 +11,27 @@
     <Grid>
         <Image Source="../Images/coin-logo.png" Margin="10,8,12,594" RenderTransformOrigin="0.47,0.339"/>
         <Image Source="../Images/line.png" Margin="97,-2,0,2"></Image>
-        <Rectangle Name="homeButtonBackground" Style="{StaticResource RoundedRectangleHomeStyle}"  Margin="16,215,19,430"/>
-        <Button Style="{StaticResource Menubutton}" FontSize="15" HorizontalAlignment="Left" Margin="16,215,0,0" VerticalAlignment="Top" Width="72" Height="75" Click="HomeButton_Click">
+
+        <Rectangle Name="homeButtonBackgroundHover" Style="{StaticResource SideBarButtonBackgroundHover}"  Margin="16,215,19,430"/>
+        <Rectangle Name="homeButtonBackground" Style="{StaticResource SideBarButtonBackground}"  Margin="16,215,19,430"/>
+        <Button Style="{StaticResource Menubutton}" FontSize="15" HorizontalAlignment="Left" Margin="16,215,0,0" VerticalAlignment="Top" Width="72" Height="75" Click="HomeButton_Click" MouseEnter="HomeButton_MouseEnter" MouseLeave="HomeButton_MouseLeave">
             <Image Source="../Images/icon-home-checked.png" Height="70" Width="50"/>
         </Button>
-        <Rectangle Name="searchCustomerButtonBackground" Style="{StaticResource RoundedRectangleHomeStyle}"  Margin="16,295,18,350"/>
-        <Button Style="{StaticResource Menubutton}" FontSize="15" HorizontalAlignment="Left" Margin="16,295,0,0" VerticalAlignment="Top" Width="72" Height="75" Click="SearchCustomerButton_Click">
+
+        <Rectangle Name="searchCustomerButtonBackgroundHover" Style="{StaticResource SideBarButtonBackgroundHover}"  Margin="16,295,18,350"/>
+        <Rectangle Name="searchCustomerButtonBackground" Style="{StaticResource SideBarButtonBackground}"  Margin="16,295,18,350"/>
+        <Button Style="{StaticResource Menubutton}" FontSize="15" HorizontalAlignment="Left" Margin="16,295,0,0" VerticalAlignment="Top" Width="72" Height="75" Click="SearchCustomerButton_Click" MouseEnter="SearchCustomerButton_MouseEnter" MouseLeave="SearchCustomerButton_MouseLeave">
             <Image Source="../Images/icon-find-customer.png" Height="70" Width="50" RenderTransformOrigin="0.5,0.643"/>
         </Button>
-        <Rectangle Name="creditRequestButtonBackground"  Style="{StaticResource RoundedRectangleHomeStyle}"  Margin="16,375,19,270"/>
-        <Button Name="btnCreditRequests" Style="{StaticResource Menubutton}" FontSize="15" HorizontalAlignment="Left" Margin="16,375,0,0" VerticalAlignment="Top" Width="72" Height="75" Click="btnCreditRequests_Click">
+
+        <Rectangle Name="creditRequestButtonBackgroundHover"  Style="{StaticResource SideBarButtonBackgroundHover}"  Margin="16,375,19,270"/>
+        <Rectangle Name="creditRequestButtonBackground"  Style="{StaticResource SideBarButtonBackground}"  Margin="16,375,19,270"/>
+        <Button Name="btnCreditRequests" Style="{StaticResource Menubutton}" FontSize="15" HorizontalAlignment="Left" Margin="16,375,0,0" VerticalAlignment="Top" Width="72" Height="75" Click="btnCreditRequests_Click" MouseEnter="btnCreditRequests_MouseEnter" MouseLeave="btnCreditRequests_MouseLeave">
             <Image Source="../Images/icon-board.png" Height="70" Width="50"/>
         </Button>
-        <Button Name="LogoutButton" Background="White" Style="{StaticResource Menubutton}" FontSize="15" HorizontalAlignment="Left" Margin="16,630,0,0" VerticalAlignment="Top" Width="72" Height="75" Click="LogoutButton_Click">
+
+        <Rectangle Name="LogoutButtonBackgroundHover" Style="{StaticResource SideBarButtonBackgroundHover}"  Margin="16,629,19,16"/>
+        <Button Name="LogoutButton" ToolTip="Cerrar sesión" Style="{StaticResource Menubutton}" Opacity="0.43" FontSize="15" HorizontalAlignment="Left" Margin="16,630,0,0" VerticalAlignment="Top" Width="72" Height="75" Click="LogoutButton_Click" MouseEnter="LogoutButton_MouseEnter" MouseLeave="LogoutButton_MouseLeave" >
             <Image Source="../Images/icon-logout.png" Height="70" Width="50"/>
         </Button>
     </Grid>

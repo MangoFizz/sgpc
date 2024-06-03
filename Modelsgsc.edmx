@@ -127,6 +127,7 @@
     <Property Name="CustomerId" Type="int" Nullable="true" />
     <Property Name="PaymentsInterval" Type="int" Nullable="false" />
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SettlementDate" Type="datetime" Nullable="false" />
     <Property Name="TransferBankAccount_BankAccountId" Type="int" Nullable="true" />
     <Property Name="DirectDebitBankAccount_BankAccountId" Type="int" Nullable="true" />
     <Property Name="Employee_EmployeeId" Type="int" Nullable="true" />
@@ -493,6 +494,7 @@
           <Property Name="PaymentsInterval" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" Nullable="false" />
           <NavigationProperty Name="Documents" Relationship="sgscModel.DocumentCreditRequest" FromRole="CreditRequest" ToRole="Document" />
+          <Property Name="SettlementDate" Type="DateTime" Nullable="false" />
         </EntityType>
         <EntityType Name="CustomerAddress">
           <Key>
@@ -860,6 +862,7 @@
           <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
           <ScalarProperty Name="PaymentsInterval" ColumnName="PaymentsInterval" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SettlementDate" ColumnName="SettlementDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

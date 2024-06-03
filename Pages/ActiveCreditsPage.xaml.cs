@@ -55,9 +55,14 @@ namespace SGSC.Pages
             {
                 using (var context = new sgscEntities())
                 {
-                    var activeCreditsCount = context.CreditRequests.Where(request => request.FileNumber.Contains(tbPageNumberFilter.Text) &&
-                        (request.Customer.Name + " " + request.Customer.FirstSurname + " " + request.Customer.SecondSurname).Contains(tbCustomerNameFilter.Text) &&
-                        request.Status == 4).Count();
+                    var activeCreditsCount = context.CreditRequests
+						.Where(request => request.Status == (int)CreditRequest.RequestStatus.Authorized)
+                        .Where(request => request.FileNumber.Contains(tbPageNumberFilter.Text))
+						.Where(request => (request.Customer.Name + " " + request.Customer.FirstSurname + " " + request.Customer.SecondSurname).Contains(tbCustomerNameFilter.Text))
+						.Where(request => (dpDate1Filter.SelectedDate == null || dpDate2Filter.SelectedDate == null) ||
+							(request.CreationDate >= dpDate1Filter.SelectedDate && request.CreationDate <= dpDate2Filter.SelectedDate) ||
+							(request.SettlementDate >= dpDate1Filter.SelectedDate && request.SettlementDate <= dpDate2Filter.SelectedDate))
+						.Count();
 					TotalPages = (int)Math.Ceiling((double)activeCreditsCount / ItemsPerPage);
                     lbCurrentPage.Content = $"Página {CurrentPage}/{TotalPages}";
                     cbPages.Items.Clear();
@@ -80,15 +85,22 @@ namespace SGSC.Pages
 
 		}
 
-        private void GetActiveCredits()
+		private void GetActiveCredits()
         {
             try
             {
                 using (var context = new sgscEntities())
                 {
-                    var activeCredits = context.CreditRequests.Where(request => request.FileNumber.Contains(tbPageNumberFilter.Text) && 
-                        (request.Customer.Name + " " + request.Customer.FirstSurname + " " + request.Customer.SecondSurname).Contains(tbCustomerNameFilter.Text) && 
-                        request.Status == 4).OrderBy(request => request.FileNumber).Skip((CurrentPage - 1) * ItemsPerPage).Take(ItemsPerPage);
+                    var activeCredits = context.CreditRequests
+					    .Where(request => request.Status == (int)CreditRequest.RequestStatus.Authorized)
+                        .Where(request => request.FileNumber.Contains(tbPageNumberFilter.Text))
+                        .Where(request => (request.Customer.Name + " " + request.Customer.FirstSurname + " " + request.Customer.SecondSurname).Contains(tbCustomerNameFilter.Text))
+						.Where(request => (dpDate1Filter.SelectedDate == null || dpDate2Filter.SelectedDate == null) ||
+							(request.CreationDate >= dpDate1Filter.SelectedDate && request.CreationDate <= dpDate2Filter.SelectedDate) ||
+							(request.SettlementDate >= dpDate1Filter.SelectedDate && request.SettlementDate <= dpDate2Filter.SelectedDate))
+						.OrderBy(request => request.FileNumber)
+                        .Skip((CurrentPage - 1) * ItemsPerPage)
+                        .Take(ItemsPerPage);
 
 					var activeCreditsArray = activeCredits.ToList();
                     ActiveCredits = new ObservableCollection<ActiveCredit>();

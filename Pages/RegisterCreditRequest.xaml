@@ -9,40 +9,41 @@
       Title="RegisterCreditRequest">
 
     <Grid>
-        <Border Background="White" Margin="0"/>
+        <Border Background="White"/>
+
         <Frame Name="UserSessionFrame" NavigationUIVisibility="Hidden" Margin="831,43,38,592"/>
+        <Frame Name="StepsSidebarFrame" NavigationUIVisibility="Hidden" Margin="27,138,1009,28"/>
 
+        <Label FontFamily="{StaticResource FontPoppins}" FontWeight="Bold" FontSize="36" Content="Registrar solicitud de credito" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="46,48,0,0"/>
+        <Rectangle Style="{StaticResource RoundedRectangleStyle}" Margin="301,139,31,174"/>
 
-        <Button Style="{StaticResource ButtonStyleConfirm}" x:Name="btnRegister" Content="Registrar" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="54" Margin="964,617,0,0" Click="btnRegister_Click" />
-        <Label FontFamily="{StaticResource FontPoppins}" FontWeight="Bold" FontSize="36" Content="Registrar solicitud de credito" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="216,93,0,0"/>
-        <Rectangle Style="{StaticResource RoundedRectangleStyle}" Margin="208,166,124,415"/>
-        <Rectangle Style="{StaticResource RoundedRectangleStyle}" Margin="208,330,124,131"/>
-        <TextBox x:Name="tbAmount" Style="{StaticResource CustomTextBoxStyle}" Margin="272,387,862,291" VerticalContentAlignment="Center" FontSize="20" PreviewTextInput="tbAmount_PreviewTextInput" TextChanged="tbAmount_TextChanged"/>
-        <TextBox x:Name="tbPurpose" Style="{StaticResource CustomTextBoxStyle}" Margin="270,500,192,178" VerticalContentAlignment="Center" FontSize="20"/>
-        <ComboBox x:Name="cbCreditPromotions" HorizontalAlignment="Left" VerticalAlignment="Top" Width="148" Height="37" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="548,392,0,0" SelectionChanged="cbCreditPromotions_SelectionChanged">
+        <Label Content="Monto solicitado" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalAlignment="Left" Margin="365,178,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbAmount" Style="{StaticResource CustomTextBoxStyle}" Margin="365,218,769,460" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" PreviewTextInput="tbAmount_PreviewTextInput" TextChanged="tbAmount_TextChanged"/>
+        <Label Content="MXN" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalAlignment="Left" Margin="517,225,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbAmountError" Content="Error" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Width="140" Foreground="#FFCE2222" FontStyle="Italic" Margin="369,259,0,0"/>
 
-        </ComboBox>
-        <Label Content="Nombre completo" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalAlignment="Left" Margin="285,196,0,0" VerticalAlignment="Top"/>
-        <Label Content="Monto solicitado" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalAlignment="Left" Margin="272,347,0,0" VerticalAlignment="Top"/>
-        <Label Content="Promoción" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalAlignment="Left" Margin="548,347,0,0" VerticalAlignment="Top"/>
-        <Label Content="Tasa de interés" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalAlignment="Left" Margin="784,347,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label Content="Plazo" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalAlignment="Left" Margin="950,347,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="140"/>
-        <Label Content="Destino del credito:" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalAlignment="Left" Margin="270,465,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbInterestRate" Content="tasa de interes" FontFamily="{StaticResource FontNunito}" FontSize="18" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="784,391,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="134"/>
-        <Label x:Name="lbTimePeriod" Content="Plazo" FontFamily="{StaticResource FontNunito}" FontSize="18" HorizontalAlignment="Left" Margin="950,391,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="140"/>
-        <Label Content="Total:" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalAlignment="Left" Margin="257,594,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbTotalAmount" Content="0.0" FontFamily="{StaticResource FontNunito}" FontSize="18" HorizontalAlignment="Left" Margin="324,594,0,0" VerticalAlignment="Top" Width="176"/>
-        <Label x:Name="lbName" Content="Nombre de cliente" FontFamily="{StaticResource FontNunito}" FontSize="18" HorizontalAlignment="Left" Margin="285,236,0,0" VerticalAlignment="Top" Width="298"/>
-        <Label Content="MXN" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalAlignment="Left" Margin="424,394,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbPromotionError" Content="Error" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Width="148" Foreground="#FFCE2222" FontStyle="Italic" Margin="548,428,0,0"/>
-        <Label x:Name="lbPurposeError" Content="Error" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Width="812" Foreground="#FFCE2222" FontStyle="Italic" Margin="276,545,0,0"/>
-        <Label x:Name="lbAmountError" Content="Error" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Width="198" Foreground="#FFCE2222" FontStyle="Italic" Margin="276,428,0,0"/>
-        <Button x:Name="btnCancel" Style="{StaticResource ButtonStyleCancel}" Content="Cancelar" FontSize="22" HorizontalAlignment="Left" Margin="742,617,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnCancel_Click" />
-        <Label Content= "CURP" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalAlignment="Left" Margin="668,196,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbCurp" Content="CURP" FontFamily="{StaticResource FontNunito}" FontSize="18" HorizontalAlignment="Left" Margin="588,236,0,0" VerticalAlignment="Top" Width="219" HorizontalContentAlignment="Center"/>
-        <Label Content= "Edad" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalAlignment="Left" Margin="964,196,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbAge" Content="Edad" FontFamily="{StaticResource FontNunito}" FontSize="18" HorizontalAlignment="Left" Margin="925,236,0,0" VerticalAlignment="Top" Width="129" HorizontalContentAlignment="Center"/>
+        <Label Content="Promoción" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalAlignment="Left" Margin="593,178,0,0" VerticalAlignment="Top" Width="144"/>
+        <ComboBox x:Name="cbCreditPromotions" HorizontalAlignment="Left" VerticalAlignment="Top" Width="274" Height="42" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="593,218,0,0" SelectionChanged="cbCreditPromotions_SelectionChanged" />
+        <Label x:Name="lbPromotionError" Content="Error" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Width="250" Foreground="#FFCE2222" FontStyle="Italic" Margin="617,259,0,0"/>
 
+        <Label Content="Tasa de interés:" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalAlignment="Left" Margin="917,158,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+        <Label Name="lbInterestRate" Content="--%" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalAlignment="Left" Margin="1065,158,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Width="132"/>
 
+        <Label Content="Plazo:" FontFamily="{StaticResource FontNunito}" FontSize="18" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="917,194,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="134" FontWeight="Bold"/>
+        <Label x:Name="lbPeriod" Content="-- --" FontFamily="{StaticResource FontNunito}" FontSize="18" HorizontalAlignment="Left" Margin="1036,194,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Width="161"/>
+
+        <Label Content="Pagaré:" FontFamily="{StaticResource FontNunito}" FontSize="18" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="917,232,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="134" FontWeight="Bold"/>
+        <Label x:Name="lbTotal" Content="$ --.--" FontFamily="{StaticResource FontNunito}" FontSize="18" HorizontalAlignment="Left" Margin="1036,232,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Width="161"/>
+
+        <Label Content="Descuento:" FontFamily="{StaticResource FontNunito}" FontSize="18" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="917,270,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="134" FontWeight="Bold"/>
+        <Label x:Name="lbDiscount" Content="$ --.--" FontFamily="{StaticResource FontNunito}" FontSize="18" HorizontalAlignment="Left" Margin="1036,270,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Width="161"/>
+
+        <Label Content="Destino del crédito:" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalAlignment="Left" Margin="363,305,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbPurpose" Style="{StaticResource CustomTextBoxStyle}" Margin="363,342,99,233" VerticalContentAlignment="Top" FontSize="20"/>
+        <Label x:Name="lbPurposeError" Content="Error" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Width="812" Foreground="#FFCE2222" FontStyle="Italic" Margin="369,490,0,0"/>
+
+        <Button x:Name="btnShowPaymentsTable" Style="{StaticResource ButtonStyleCancel}" FontSize="22" Content="Ver pagos" HorizontalAlignment="Left" Margin="655,617,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnCancel_Click" />
+        <Button Style="{StaticResource ButtonStyleConfirm}" x:Name="btnRegister" Content="Continuar" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="54" Margin="855,617,0,0" Click="btnRegister_Click" />
+        <Button x:Name="btnCancel" Style="{StaticResource ButtonStyleDanger}" FontSize="22" Content="Cancelar" HorizontalAlignment="Left" Margin="1055,617,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnCancel_Click" />
     </Grid>
 </Page>

@@ -1,4 +1,5 @@
-﻿using SGSC.Frames;
+﻿using SGSC.Components;
+using SGSC.Frames;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,35 +29,14 @@ namespace SGSC.Pages
         {
             InitializeComponent();
 
-            UserSessionFrame.Content = new UserSessionFrame();
+			StepsSidebarFrame.Content = new CreditRequestRegisterStepsFrame("PersonalInfo");
+			UserSessionFrame.Content = new UserSessionFrame();
 
-            this.idCustomer = idCustomer;
-            retrieveCustomerData();
+			this.idCustomer = idCustomer;
             retrieveCreditPromotions();
             lbAmountError.Content = "";
             lbPromotionError.Content = "";
             lbPurposeError.Content = "";
-        }
-
-        private void retrieveCustomerData()
-        {
-            using (var context = new sgscEntities())
-            {
-                var customer = context.Customers.Find(idCustomer);
-                var customerContactInfo = context.CustomerContactInfoes.Where(c => c.CustomerId == idCustomer).FirstOrDefault();
-                if (customer != null && customerContactInfo != null)
-                {
-                    lbName.Content = customer.Name + " " + customer.FirstSurname + " " + customer.SecondSurname ;
-                    lbCurp.Content = customer.Curp;
-                    var today = DateTime.Today;
-                    var age = today.Year - customer.BirthDate.Year;
-                    if (customer.BirthDate > today.AddYears(-age)) age--;
-                    lbAge.Content = age.ToString()+" años";
-                }else
-                {
-                    MessageBox.Show("Error al recuperar la información del cliente");
-                }
-            }
         }
 
         private void retrieveCreditPromotions()
@@ -85,11 +65,11 @@ namespace SGSC.Pages
                 var selectedPromotion = (CreditPromotion)cbCreditPromotions.SelectedItem;
                 if(selectedPromotion.Interval == 1)
                 {
-                    lbTimePeriod.Content = selectedPromotion.TimePeriod+" Quincenas";
+                    // lbTimePeriod.Content = selectedPromotion.TimePeriod+" Quincenas";
                 }
                 else if(selectedPromotion.Interval == 2)
                 {
-                    lbTimePeriod.Content = selectedPromotion.TimePeriod+" Meses";
+                    // lbTimePeriod.Content = selectedPromotion.TimePeriod+" Meses";
                 }
                 lbInterestRate.Content = selectedPromotion.InterestRate.ToString() + "%";
 
@@ -107,7 +87,7 @@ namespace SGSC.Pages
         {
             if(tbAmount.Text.Length < 1)
             {
-                lbTotalAmount.Content = "0.0";
+                // lbTotalAmount.Content = "0.0";
             }
             else
             {
@@ -124,7 +104,12 @@ namespace SGSC.Pages
                 var amountIntroduced = 0.0;
                 var timePeriodInMonths = 0.0;
 
-                if (double.TryParse(tbAmount.Text, out amountIntroduced))
+                lbInterestRate.Content = selectedPromotion.InterestRate.ToString("0.00") + "%";
+
+                var interval = selectedPromotion.Interval == 1 ? "Quincenas" : "Meses";
+				lbPeriod.Content = $"{selectedPromotion.TimePeriod} {interval}";
+
+			    if (double.TryParse(tbAmount.Text, out amountIntroduced))
                 {
                     if (selectedPromotion.Interval == 1)
                     {
@@ -135,16 +120,10 @@ namespace SGSC.Pages
                         timePeriodInMonths = (double)selectedPromotion.TimePeriod;
                     }
 
-                    //aqui obtenemos el interes mensual
-                    double monthlyInterest = (double)(selectedPromotion.InterestRate / 100 / 12);
-                    //aqui multiplicamos el interes mensual por las semanas en meses
-                    var totalInterest = monthlyInterest * timePeriodInMonths;
-                    //aqui calculamos el monto total
-                    var totalAmount = amountIntroduced + (amountIntroduced * totalInterest);
-                    this.totalAmount = totalAmount;
-                    //format to only 2 decimals
-                    lbTotalAmount.Content = totalAmount.ToString("0.00");
-                }
+                    var totalAmount = amountIntroduced + (amountIntroduced * (selectedPromotion.InterestRate / 100));
+                    lbTotal.Content = "$ " + totalAmount.ToString("0.00");
+                    lbDiscount.Content = "$ " + (totalAmount / selectedPromotion.TimePeriod).ToString("0.00") + " / pago";
+				}
             }
         }
 

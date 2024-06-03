@@ -95,6 +95,9 @@
     <Compile Include="Colony.cs">
       <DependentUpon>Modelsgsc.tt</DependentUpon>
     </Compile>
+    <Compile Include="Components\CreditRequestRegisterStepsFrame.xaml.cs">
+      <DependentUpon>CreditRequestRegisterStepsFrame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\NumericTextBox.cs" />
     <Compile Include="Contact.cs">
       <DependentUpon>Modelsgsc.tt</DependentUpon>
@@ -270,6 +273,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Components\CreditAdvisorSidebar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\CreditRequestRegisterStepsFrame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

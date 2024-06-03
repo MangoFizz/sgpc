@@ -26,12 +26,16 @@ namespace SGSC.Pages
     public partial class CustomerInfoPage : Page
     {
         private int? CustomerId = null;
+        private bool IsRegisteringCreditRequest;
 
-        public CustomerInfoPage(int? customerId = null)
+
+		public CustomerInfoPage(int? customerId = null, bool isRegisteringCreditRequest = false)
         {
             InitializeComponent();
             CustomerId = customerId;
-            if (CustomerId != null)
+            IsRegisteringCreditRequest = isRegisteringCreditRequest;
+
+			if (CustomerId != null)
             {
                 getCustomerInfo(CustomerId.Value);
             }
@@ -168,7 +172,7 @@ namespace SGSC.Pages
                     CustomerId = customerToRegister.CustomerId;
                     
                     App.Current.NotificationsPanel.ShowSuccess("Datos guardados");
-                    App.Current.MainFrame.Content = new AddressInformationPage(CustomerId.Value);
+                    App.Current.MainFrame.Content = new AddressInformationPage(CustomerId.Value, IsRegisteringCreditRequest);
                 }
                 catch (Exception ex)
                 {
@@ -197,7 +201,7 @@ namespace SGSC.Pages
                     db.SaveChanges();
                     
                     App.Current.NotificationsPanel.ShowSuccess("Datos actualizados");
-                    App.Current.MainFrame.Navigate(new AddressInformationPage(CustomerId.Value));
+                    App.Current.MainFrame.Navigate(new AddressInformationPage(CustomerId.Value, IsRegisteringCreditRequest));
                 }
                 catch (Exception ex)
                 {

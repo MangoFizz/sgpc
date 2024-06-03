@@ -22,11 +22,13 @@ namespace SGSC.Pages
     {
         private int customerId;
         private int? contactInfoId = null;
-        
-        public CustomerContactInfo(int customerId)
+        private bool IsRegisteringCreditRequest;
+
+		public CustomerContactInfo(int customerId, bool isRegisteringCreditRequest = false)
         {
             InitializeComponent();
-            this.customerId = customerId;
+			IsRegisteringCreditRequest = isRegisteringCreditRequest;
+			this.customerId = customerId;
 
             StepsSidebarFrame.Content = new CustomerRegisterStepsSidebar("ContactInfo");
             UserSessionFrame.Content = new UserSessionFrame();
@@ -134,7 +136,7 @@ namespace SGSC.Pages
 					}
                 }
 
-                App.Current.MainFrame.Navigate(new CustomerReferencesPage(customerId));
+                App.Current.MainFrame.Navigate(new CustomerReferencesPage(customerId, IsRegisteringCreditRequest));
             }
             catch (Exception ex)
             {

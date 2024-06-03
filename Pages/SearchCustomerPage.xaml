@@ -24,7 +24,7 @@
             </Frame.Content>
         </Frame>
 
-        <Label FontFamily="{StaticResource FontPoppins}" FontWeight="Bold" FontSize="36" Content="Buscar cliente" HorizontalAlignment="Left" Margin="136,39,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbTitle" FontFamily="{StaticResource FontPoppins}" FontWeight="Bold" FontSize="36" Content="Buscar cliente" HorizontalAlignment="Left" Margin="136,39,0,0" VerticalAlignment="Top"/>
 
         <DataGrid Name="dgCustomers" AutoGenerateColumns="False" CanUserAddRows="False" AlternatingRowBackground="#DAEFD0" Margin="136,215,28,99" FontSize="22">
             <DataGrid.Columns>
@@ -41,7 +41,7 @@
         <ComboBox Name="cbPages" FontSize="17" Margin="354,653,843,38" SelectionChanged="cbPages_SelectionChanged"/>
 
         <Button Name="btnRegisterCustomer" Style="{StaticResource ButtonStyleCancel}" Content="Registrar nuevo cliente" FontSize="22" HorizontalAlignment="Left" Margin="779,646,0,0" VerticalAlignment="Top" Width="253" Height="40" Click="btnRegisterCustomer_Click" />
-        <Button Name="btnSelectCustomer" Style="{StaticResource ButtonStyleConfirm}" Content="Seleccionar cliente" FontSize="22" HorizontalAlignment="Left" Margin="1046,646,0,0" VerticalAlignment="Top" Width="206" Height="40" Click="btnSelectCustomer_Click" />
+        <Button Name="btnSelectCustomer" Style="{StaticResource ButtonStyleConfirm}" Content="Actualizar datos" FontSize="22" HorizontalAlignment="Left" Margin="1046,646,0,0" VerticalAlignment="Top" Width="206" Height="40" Click="btnSelectCustomer_Click" />
 
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Filtrar por nombre " HorizontalAlignment="Left" Margin="136,124,0,0" VerticalAlignment="Top" Height="34" Width="172"/>
         <TextBox Name="tbName" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="136,151,843,524" TextChanged="tbFilter_TextChanged"/>

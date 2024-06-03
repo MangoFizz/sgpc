@@ -1,0 +1,29 @@
+﻿<Page x:Class="SGSC.Components.CreditRequestRegisterStepsFrame"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SGSC.Components"
+      Background="White"
+      mc:Ignorable="d" 
+      Title="CreditRequestRegisterStepsFrame">
+
+    <Grid>
+        <Border Name="PersonalInfoActive" CornerRadius="22" BorderBrush="Transparent" Background="#FFF3F3F3" BorderThickness="0" Margin="-10,42,10,456"/>
+        <Border Name="AddressActive" CornerRadius="22" BorderBrush="Transparent" Background="#FFF3F3F3" BorderThickness="0" Margin="-10,102,10,396"/>
+        <Border Name="BankAccountsActive" CornerRadius="22" BorderBrush="Transparent" Background="#FFF3F3F3" BorderThickness="0" Margin="-10,162,10,336"/>
+        <Border Name="WorkCenterActive" CornerRadius="22" BorderBrush="Transparent" Background="#FFF3F3F3" BorderThickness="0" Margin="-10,222,10,276"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="451*"/>
+                <RowDefinition Height="39*"/>
+            </Grid.RowDefinitions>
+
+            <Button Style="{StaticResource ButtonStyle}" Tag="../Images/User.png"  Content="Detalles"  HorizontalAlignment="Center" Margin="0,110,0,0" VerticalAlignment="Top" Width="250" Height="40" FontSize="18"/>
+            <Button Style="{StaticResource ButtonStyle}" Tag="../Images/address-icon.png" Content="Cuentas bancarias" HorizontalAlignment="Center" Margin="0,170,0,0" VerticalAlignment="Top" Width="250" Height="40" FontSize="16"/>
+            <Button Style="{StaticResource ButtonStyle}" Tag="../Images/icon-job.png" Content="Documentos" HorizontalAlignment="Center" Margin="0,230,0,0" VerticalAlignment="Top" Width="250" Height="40" FontSize="16"/>
+        </Grid>
+
+    </Grid>
+</Page>

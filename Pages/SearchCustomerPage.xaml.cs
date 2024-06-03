@@ -32,16 +32,30 @@ namespace SGSC.Pages
             public string RFC { get; set; }
         }
 
-        private ObservableCollection<CustomerEntry> Customers;
+        private bool IsRegisteringCreditRequest;
+		private ObservableCollection<CustomerEntry> Customers;
         private int CurrentPage = 1;
         private int TotalPages = 1;
         private const int ItemsPerPage = 10;
         private bool UpdatingPagination = false;
 
-        public SearchCustomerPage()
+        public SearchCustomerPage(bool isRegisteringCreditRequest = false)
         {
             InitializeComponent();
-            creditAdvisorSidebar.Content = new Frames.CreditAdvisorSidebar("searchCustomer");
+
+			IsRegisteringCreditRequest = isRegisteringCreditRequest;
+
+			if (isRegisteringCreditRequest)
+            {
+                btnSelectCustomer.Content = "Seleccionar cliente";
+			}
+            else
+            {
+				btnRegisterCustomer.Visibility = Visibility.Hidden;
+                lbTitle.Content = "Actualizar datos de cliente";
+			}
+
+			creditAdvisorSidebar.Content = new Frames.CreditAdvisorSidebar("searchCustomer");
             GetCustomers();
         }
 
@@ -135,7 +149,7 @@ namespace SGSC.Pages
 
         private void btnRegisterCustomer_Click(object sender, RoutedEventArgs e)
         {
-            var customerInfoPage = new CustomerInfoPage();
+            var customerInfoPage = new CustomerInfoPage(null, true);
             if (NavigationService != null)
             {
                 NavigationService.Navigate(customerInfoPage);
@@ -147,7 +161,7 @@ namespace SGSC.Pages
             var customer = dgCustomers.SelectedItem as CustomerEntry;
             if(customer != null)
             {
-                var customerInfoPage = new CustomerInfoPage(customer.CustomerId);
+                var customerInfoPage = new CustomerInfoPage(customer.CustomerId, IsRegisteringCreditRequest);
                 if (NavigationService != null)
                 {
                     NavigationService.Navigate(customerInfoPage);

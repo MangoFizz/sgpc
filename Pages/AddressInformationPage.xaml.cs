@@ -21,12 +21,15 @@ namespace SGSC.Pages
     {
         private int customerId;
         private int? addressId = null;
+        private bool IsRegisteringCreditRequest;
+        private bool DoNotUpdateZipCode = false;
 
-        public AddressInformationPage(int customerId)
+        public AddressInformationPage(int customerId, bool isRegisteringCreditRequest = false)
         {
             InitializeComponent();
+            IsRegisteringCreditRequest = isRegisteringCreditRequest;
 
-            tbZipCode.FilterMode = AutoCompleteFilterMode.Contains;
+			tbZipCode.FilterMode = AutoCompleteFilterMode.Contains;
 
 			StepsSidebarFrame.Content = new CustomerRegisterStepsSidebar("Address");
 			UserSessionFrame.Content = new UserSessionFrame();
@@ -105,7 +108,7 @@ namespace SGSC.Pages
 					}
                 }
 
-                App.Current.MainFrame.Navigate(new PageWorkCenter(customerId));
+                App.Current.MainFrame.Navigate(new PageWorkCenter(customerId, IsRegisteringCreditRequest));
             }
             catch (Exception ex)
             {
@@ -130,19 +133,22 @@ namespace SGSC.Pages
                         txtStreet.Text = customerData.Street;
                         txtExternalNumber.Text = customerData.ExternalNumber;
                         txtInternalNumber.Text = customerData.InternalNumber;
-                        tbZipCode.Text = customerData.ZipCode;
-                        cbColony.Text = customerData.Colony;
+                        cbAddressType.SelectedIndex = customerData.Type;
                         addressId = customerData.CustomerAddressId;
-                    }
-                }
+                        DoNotUpdateZipCode = true;
+						tbZipCode.Text = customerData.ZipCode;
+						PopulateColoniesComboBox();
+                        cbColony.Text = customerData.Colony;
+					}
+				}
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al intentar obtener los datos de contacto: " + ex.Message);
             }
-        }
+		}
 
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
+		private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             var result = System.Windows.Forms.MessageBox.Show("Está seguro que desea cancelar el registro?\nSi decide cancelarlo puede retomarlo más tarde.", "Cancelar registro", System.Windows.Forms.MessageBoxButtons.YesNo);
             if (result == System.Windows.Forms.DialogResult.Yes)
@@ -170,17 +176,27 @@ namespace SGSC.Pages
 			});
 		}
 
+        private void PopulateColoniesComboBox()
+        {
+			var colonies = Colony.GetColoniesByZipcode(tbZipCode.Text);
+			cbColony.ItemsSource = colonies.ToList();
+			cbColony.SelectedIndex = 0;
+		}
+
 		private async void tbZipCode_TextChanged(object sender, RoutedEventArgs e)
 		{
+            if(DoNotUpdateZipCode)
+            {
+                DoNotUpdateZipCode = false;
+                return;
+            }
             var zipCodes = await GetZipCodes(tbZipCode.Text);
 			tbZipCode.ItemsSource = zipCodes;
             tbZipCode.IsDropDownOpen = true;
 
             if(tbZipCode.Text.Length == 5)
             {
-				var colonies = Colony.GetColoniesByZipcode(tbZipCode.Text);
-				cbColony.ItemsSource = colonies.ToList();
-                cbColony.SelectedIndex = 0;
+                PopulateColoniesComboBox();
 			}
 		}
     }

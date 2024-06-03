@@ -26,13 +26,16 @@ namespace SGSC.Pages
         private int customerId;
         private int? reference1Id;
         private int? reference2Id;
-        public CustomerReferencesPage(int customerId)
+        private bool IsRegisteringCreditRequest;
+
+		public CustomerReferencesPage(int customerId, bool isRegisteringCreditRequest = false)
         {
             InitializeComponent();
 
             this.customerId = customerId;
+			IsRegisteringCreditRequest = isRegisteringCreditRequest;
 
-            StepsSidebarFrame.Content = new CustomerRegisterStepsSidebar("References");
+			StepsSidebarFrame.Content = new CustomerRegisterStepsSidebar("References");
             UserSessionFrame.Content = new UserSessionFrame();
 
             GetReferences();
@@ -124,7 +127,14 @@ namespace SGSC.Pages
 
                         App.Current.NotificationsPanel.ShowSuccess("Datos guardados");
 
-                        App.Current.MainFrame.Content = new RegisterCreditRequest(customerId);
+						if (IsRegisteringCreditRequest)
+						{
+							App.Current.MainFrame.Content = new RegisterCreditRequest(customerId);
+						}
+						else
+						{
+							App.Current.MainFrame.Content = new HomePageCreditAdvisor();
+						}
                     }
                     catch (Exception ex)
                     {

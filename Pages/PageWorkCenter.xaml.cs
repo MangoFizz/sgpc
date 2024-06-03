@@ -15,7 +15,8 @@ namespace SGSC.Pages
 {
     public partial class PageWorkCenter : Page
     {
-        private string WorkCenterName = "";
+        private bool IsRegisteringCreditRequest;
+		private string WorkCenterName = "";
         private string Phone = "";
         private string Street = "";
         private string InnerNumber = "";
@@ -29,11 +30,12 @@ namespace SGSC.Pages
 
         Dictionary<TextBox, Label> textBoxLabelMap;
 
-        public PageWorkCenter(int customerId)
+        public PageWorkCenter(int customerId, bool isRegisteringCreditRequest = false)
         {
             InitializeComponent();
             dbContext = new sgscEntities();
-            this.customerId = customerId;
+			IsRegisteringCreditRequest = isRegisteringCreditRequest;
+			this.customerId = customerId;
 
             txtWorkCenterName.PreviewTextInput += AllowWriteLetters;
             txtColony.PreviewTextInput += AllowWriteLetters;
@@ -184,7 +186,7 @@ namespace SGSC.Pages
                         pair.Value.Visibility = Visibility.Hidden;
                     }
 
-                    App.Current.MainFrame.Navigate(new CustomerContactInfo(customerId));
+                    App.Current.MainFrame.Navigate(new CustomerContactInfo(customerId, IsRegisteringCreditRequest));
                 }
                 catch (Exception ex)
                 {

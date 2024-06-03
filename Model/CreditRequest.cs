@@ -21,6 +21,25 @@ namespace SGSC
             
         }
 
+        public enum TimeIntervals
+        {
+            Fortnightly,
+            Monthly
+        }
+
+        public static string TimeIntervalToString(TimeIntervals timeInterval)
+        {
+			switch (timeInterval)
+            {
+				case TimeIntervals.Fortnightly:
+					return "Quincenal";
+				case TimeIntervals.Monthly:
+					return "Mensual";
+				default:
+					return "Intervalo de tiempo desconocido";
+			}
+		}
+
         public static string RequestStatusToString(RequestStatus requestStatus)
         {
             switch (requestStatus)

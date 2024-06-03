@@ -10,7 +10,6 @@ namespace SGSC.Pages
 {
     public partial class ManageCreditGrantingPolicies : Page
     {
-        private int customerId;
         private ObservableCollection<CreditPolicyWithStatus> CreditPoliciesFiltered { get; set; }
         private List<CreditPolicyWithStatus> CreditPolicies { get; set; }
 

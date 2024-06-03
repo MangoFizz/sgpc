@@ -89,7 +89,7 @@ namespace SGSC.Frames
 
         private void btnCreditPromotions_Click(object sender, RoutedEventArgs e)
         {
-			App.Current.MainFrame.Content = new CreditPromotions();
+			App.Current.MainFrame.Content = new ManageCreditPromotionsPage();
         }
 
 		private void btnHome_MouseEnter(object sender, MouseEventArgs e)

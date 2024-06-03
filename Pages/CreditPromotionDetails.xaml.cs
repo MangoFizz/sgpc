@@ -95,7 +95,7 @@ namespace SGSC.Pages
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            App.Current.MainFrame.Content = new CreditPromotions();
+            App.Current.MainFrame.Content = new ManageCreditPromotionsPage();
         }
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
@@ -176,7 +176,7 @@ namespace SGSC.Pages
                 promotion.InterestRate = double.Parse(tbInterestRate.Text);
                 promotion.StartDate = dpStartDate.SelectedDate.Value;
                 promotion.EndDate = dpEndDate.SelectedDate.Value;
-                promotion.Interval = cbInterval.SelectedIndex+1;
+                promotion.Interval = cbInterval.SelectedIndex;
 
                 db.CreditPromotions.Add(promotion);
                 db.SaveChanges();
@@ -189,7 +189,7 @@ namespace SGSC.Pages
 
                 MessageBox.Show("Promoción registrada con éxito", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                App.Current.MainFrame.Content = new CreditPromotions();
+                App.Current.MainFrame.Content = new ManageCreditPromotionsPage();
             }
         }
 
@@ -205,12 +205,12 @@ namespace SGSC.Pages
                     promotion.InterestRate = double.Parse(tbInterestRate.Text);
                     promotion.StartDate = dpStartDate.SelectedDate.Value;
                     promotion.EndDate = dpEndDate.SelectedDate.Value;
-                    promotion.Interval = cbInterval.SelectedIndex+1;
+                    promotion.Interval = cbInterval.SelectedIndex;
 
                     db.SaveChanges();
 
                     MessageBox.Show("Promoción actualizada con éxito", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
-                    App.Current.MainFrame.Content = new CreditPromotions();
+                    App.Current.MainFrame.Content = new ManageCreditPromotionsPage();
                 }
             }
         }

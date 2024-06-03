@@ -205,8 +205,8 @@
     <Compile Include="Pages\CreditPromotionDetails.xaml.cs">
       <DependentUpon>CreditPromotionDetails.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\CreditPromotions.xaml.cs">
-      <DependentUpon>CreditPromotions.xaml</DependentUpon>
+    <Compile Include="Pages\ManageCreditPromotionsPage.xaml.cs">
+      <DependentUpon>ManageCreditPromotionsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\DocumentsManagerPage.xaml.cs">
       <DependentUpon>DocumentsManagerPage.xaml</DependentUpon>
@@ -336,7 +336,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\CreditPromotions.xaml">
+    <Page Include="Pages\ManageCreditPromotionsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

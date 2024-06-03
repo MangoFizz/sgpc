@@ -56,7 +56,7 @@ namespace SGSC.Pages
 						{
 							Id = prom.CreditPromotionId,
 							Name = prom.Name,
-							InterestRate = prom.InterestRate.ToString(),
+							InterestRate = $"{prom.InterestRate}%",
 							Payments = prom.TimePeriod.ToString(),
 							Interval = prom.Interval == 0 ? "Quincenal" : "Mensual",
 							Deadline = prom.EndDate.ToString(),

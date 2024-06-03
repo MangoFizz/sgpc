@@ -27,7 +27,6 @@ namespace SGSC
     
         public virtual DbSet<BankAccount> BankAccounts { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
-        public virtual DbSet<CreditCondition> CreditConditions { get; set; }
         public virtual DbSet<CreditPolicy> CreditPolicies { get; set; }
         public virtual DbSet<CreditRequest> CreditRequests { get; set; }
         public virtual DbSet<CustomerAddress> CustomerAddresses { get; set; }

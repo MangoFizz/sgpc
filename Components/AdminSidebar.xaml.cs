@@ -34,13 +34,11 @@ namespace SGSC.Frames
 			EmployeesButtonBackground.Visibility = Visibility.Hidden;
 			CreditPoliciesButtonBackground.Visibility = Visibility.Hidden;
 			CreditPromotionsButtonBackground.Visibility = Visibility.Hidden;
-			CreditConditionsButtonBackground.Visibility = Visibility.Hidden;
 
 			homeButtonBackgroundHover.Visibility = Visibility.Hidden;
 			EmployeesButtonBackgroundHover.Visibility = Visibility.Hidden;
 			CreditPoliciesButtonBackgroundHover.Visibility = Visibility.Hidden;
 			CreditPromotionsButtonBackgroundHover.Visibility = Visibility.Hidden;
-			CreditConditionsButtonBackgroundHover.Visibility = Visibility.Hidden;
 			LogoutButtonBackgroundHover.Visibility = Visibility.Hidden;
 
 			switch (button)
@@ -59,10 +57,6 @@ namespace SGSC.Frames
 
 				case "creditPromotions":
 					CreditPromotionsButtonBackground.Visibility = Visibility.Visible;
-					break;
-
-				case "creditConditions":
-					CreditConditionsButtonBackground.Visibility = Visibility.Visible;
 					break;
 			}
 		}
@@ -131,17 +125,6 @@ namespace SGSC.Frames
 		{
 			CreditPromotionsButtonBackgroundHover.Visibility = Visibility.Hidden;
 		}
-
-		private void btnCreditConditions_MouseEnter(object sender, MouseEventArgs e)
-		{
-			CreditConditionsButtonBackgroundHover.Visibility = Visibility.Visible;
-		}
-
-		private void btnCreditConditions_MouseLeave(object sender, MouseEventArgs e)
-		{
-			CreditConditionsButtonBackgroundHover.Visibility = Visibility.Hidden;
-		}
-
 		private void LogoutButton_MouseEnter(object sender, MouseEventArgs e)
 		{
 			LogoutButtonBackgroundHover.Visibility = Visibility.Visible;

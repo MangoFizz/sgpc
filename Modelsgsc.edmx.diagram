@@ -7,7 +7,6 @@
       <Diagram DiagramId="31e83c0dda694b569ab0fa1c4fff84cd" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="sgscModel.BankAccount" Width="1.5" PointX="5.125" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="sgscModel.Contact" Width="1.5" PointX="8.125" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="sgscModel.CreditCondition" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
         <EntityTypeShape EntityType="sgscModel.CreditPolicy" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sgscModel.CreditRequest" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="sgscModel.CustomerAddress" Width="1.5" PointX="5.5" PointY="8.875" IsExpanded="true" />
@@ -24,7 +23,6 @@
         <AssociationConnector Association="sgscModel.CreditRequestBankAccount" />
         <AssociationConnector Association="sgscModel.CreditRequestBankAccount1" ManuallyRouted="false" >
         </AssociationConnector>
-        <AssociationConnector Association="sgscModel.CreditRequestCreditCondition" />
         <AssociationConnector Association="sgscModel.CustomerWorkCenter" ManuallyRouted="false" >
         </AssociationConnector>
         <AssociationConnector Association="sgscModel.PaymentCreditRequest" />

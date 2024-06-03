@@ -9,43 +9,37 @@
       Title="CredirAdvisorSidebar">
 
     <Grid>
-        <Image Source="../Images/coin-logo.png" Margin="10,-10,98,612" RenderTransformOrigin="0.47,0.339"/>
+        <Image Source="../Images/coin-logo.png" Margin="10,8,12,594" RenderTransformOrigin="0.47,0.339"/>
 
-        <Image Source="../Images/line.png" Margin="97,0,1172,0"></Image>
-        <Rectangle Style="{StaticResource RoundedRectangleHomeStyle}"  Margin="18,128,90,519"/>
+        <Image Source="../Images/line.png" Margin="97,60,11,-60"></Image>
+        <Rectangle Style="{StaticResource RoundedRectangleHomeStyle}"  Margin="18,188,90,459"/>
 
-        <Rectangle Name="homeButtonBackgroundHover" Style="{StaticResource SideBarButtonBackgroundHover}"  Margin="16,125,19,520"/>
-        <Rectangle Name="homeButtonBackground" Style="{StaticResource SideBarButtonBackground}"  Margin="16,125,19,520"/>
-        <Button Name="btnHome" Style="{StaticResource Menubutton}" FontSize="15" HorizontalAlignment="Left" Margin="16,122,0,0" VerticalAlignment="Top" Width="72" Height="75" Click="btnHome_Click" MouseEnter="btnHome_MouseEnter" MouseLeave="btnHome_MouseLeave">
+        <Rectangle Name="homeButtonBackgroundHover" Style="{StaticResource SideBarButtonBackgroundHover}"  Margin="16,185,19,460"/>
+        <Rectangle Name="homeButtonBackground" Style="{StaticResource SideBarButtonBackground}"  Margin="16,185,19,460"/>
+        <Button Name="btnHome" Style="{StaticResource Menubutton}" FontSize="15" HorizontalAlignment="Left" Margin="16,182,0,0" VerticalAlignment="Top" Width="72" Height="75" Click="btnHome_Click" MouseEnter="btnHome_MouseEnter" MouseLeave="btnHome_MouseLeave">
             <Image Source="../Images/icon-home-checked.png" Height="70" Width="50"/>
         </Button>
 
-        <Rectangle Name="EmployeesButtonBackgroundHover" Style="{StaticResource SideBarButtonBackgroundHover}"  Margin="16,230,19,415"/>
-        <Rectangle Name="EmployeesButtonBackground" Style="{StaticResource SideBarButtonBackground}"  Margin="16,230,19,415"/>
-        <Button Style="{StaticResource Menubutton}" FontSize="15" HorizontalAlignment="Center" Margin="-1,230,2,0" VerticalAlignment="Top" Width="72" Height="75" Click="ManageEmployeesButton_Click" MouseEnter="btnEmployees_MouseEnter" MouseLeave="btnEmployees_MouseLeave">
+        <Rectangle Name="EmployeesButtonBackgroundHover" Style="{StaticResource SideBarButtonBackgroundHover}"  Margin="16,290,19,355"/>
+        <Rectangle Name="EmployeesButtonBackground" Style="{StaticResource SideBarButtonBackground}"  Margin="16,290,19,355"/>
+        <Button ToolTip="Gestionar empleados" Style="{StaticResource Menubutton}" FontSize="15" HorizontalAlignment="Left" Margin="16,290,0,0" VerticalAlignment="Top" Width="72" Height="75" Click="ManageEmployeesButton_Click" MouseEnter="btnEmployees_MouseEnter" MouseLeave="btnEmployees_MouseLeave">
             <Image Source="../Images/groups-icon.png" Height="70" Width="50"/>
         </Button>
 
-        <Rectangle Name="CreditPoliciesButtonBackgroundHover" Style="{StaticResource SideBarButtonBackgroundHover}"  Margin="16,310,19,335"/>
-        <Rectangle Name="CreditPoliciesButtonBackground" Style="{StaticResource SideBarButtonBackground}"  Margin="16,310,19,335"/>
-        <Button Name="btnCreditPolicies" Style="{StaticResource Menubutton}" FontSize="15" HorizontalAlignment="Left" Margin="16,312,0,0" VerticalAlignment="Top" Width="72" Height="75" Click="btnCreditPolicies_Click" MouseEnter="btnCreditPolicies_MouseEnter" MouseLeave="btnCreditPolicies_MouseLeave">
+        <Rectangle Name="CreditPoliciesButtonBackgroundHover" Style="{StaticResource SideBarButtonBackgroundHover}"  Margin="16,370,19,275"/>
+        <Rectangle Name="CreditPoliciesButtonBackground" Style="{StaticResource SideBarButtonBackground}"  Margin="16,370,19,275"/>
+        <Button Name="btnCreditPolicies" ToolTip="Gestionar políticas" Style="{StaticResource Menubutton}" FontSize="15" HorizontalAlignment="Left" Margin="16,372,0,0" VerticalAlignment="Top" Width="72" Height="75" Click="btnCreditPolicies_Click" MouseEnter="btnCreditPolicies_MouseEnter" MouseLeave="btnCreditPolicies_MouseLeave">
             <Image Source="../Images/icon-policy.png" Height="70" Width="50"/>
         </Button>
 
-        <Rectangle Name="CreditConditionsButtonBackgroundHover" Style="{StaticResource SideBarButtonBackgroundHover}"  Margin="16,390,19,255"/>
-        <Rectangle Name="CreditConditionsButtonBackground" Style="{StaticResource SideBarButtonBackground}"  Margin="16,390,19,255"/>
-        <Button Style="{StaticResource Menubutton}" FontSize="15" HorizontalAlignment="Left" Margin="16,390,0,0" VerticalAlignment="Top" Width="73" Height="75" MouseEnter="btnCreditConditions_MouseEnter" MouseLeave="btnCreditConditions_MouseLeave">
-            <Image Source="../Images/icon-locked.png" Height="70" Width="50" Margin="5,0,0,0"/>
-        </Button>
-
-        <Rectangle Name="CreditPromotionsButtonBackgroundHover" Style="{StaticResource SideBarButtonBackgroundHover}"  Margin="16,470,19,175"/>
-        <Rectangle Name="CreditPromotionsButtonBackground" Style="{StaticResource SideBarButtonBackground}"  Margin="16,470,19,175"/>
-        <Button Name="btnCreditPromotions" Style="{StaticResource Menubutton}" FontSize="15" HorizontalAlignment="Left" Margin="16,472,0,0" VerticalAlignment="Top" Width="72" Height="75" Click="btnCreditPromotions_Click" MouseEnter="btnCreditPromotions_MouseEnter" MouseLeave="btnCreditPromotions_MouseLeave">
+        <Rectangle Name="CreditPromotionsButtonBackgroundHover" Style="{StaticResource SideBarButtonBackgroundHover}"  Margin="16,450,19,195"/>
+        <Rectangle Name="CreditPromotionsButtonBackground" Style="{StaticResource SideBarButtonBackground}"  Margin="16,450,19,195"/>
+        <Button Name="btnCreditPromotions" ToolTip="Gestionar promociones" Style="{StaticResource Menubutton}" FontSize="15" HorizontalAlignment="Left" Margin="16,450,0,0" VerticalAlignment="Top" Width="72" Height="75" Click="btnCreditPromotions_Click" MouseEnter="btnCreditPromotions_MouseEnter" MouseLeave="btnCreditPromotions_MouseLeave">
             <Image Source="../Images/icon-discount.png" Height="70" Width="50"/>
         </Button>
 
         <Rectangle Name="LogoutButtonBackgroundHover" Style="{StaticResource SideBarButtonBackgroundHover}"  Margin="16,629,19,16"/>
-        <Button Name="LogoutButton" Style="{StaticResource Menubutton}" Opacity="0.43" FontSize="15" HorizontalAlignment="Left" Margin="16,630,0,0" VerticalAlignment="Top" Width="72" Height="75" Click="LogoutButton_Click" MouseEnter="LogoutButton_MouseEnter" MouseLeave="LogoutButton_MouseLeave" >
+        <Button Name="LogoutButton" ToolTip="Cerrar sesión" Style="{StaticResource Menubutton}" Opacity="0.43" FontSize="15" HorizontalAlignment="Left" Margin="16,630,0,0" VerticalAlignment="Top" Width="72" Height="75" Click="LogoutButton_Click" MouseEnter="LogoutButton_MouseEnter" MouseLeave="LogoutButton_MouseLeave" >
             <Image Source="../Images/icon-logout.png" Height="70" Width="50"/>
         </Button>
     </Grid>

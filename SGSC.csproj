@@ -99,9 +99,6 @@
     <Compile Include="Contact.cs">
       <DependentUpon>Modelsgsc.tt</DependentUpon>
     </Compile>
-    <Compile Include="CreditCondition.cs">
-      <DependentUpon>Modelsgsc.tt</DependentUpon>
-    </Compile>
     <Compile Include="CreditPolicy.cs">
       <DependentUpon>Modelsgsc.tt</DependentUpon>
     </Compile>

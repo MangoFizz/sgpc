@@ -17,7 +17,6 @@ namespace SGSC
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CreditRequest()
         {
-            this.CreditConditions = new HashSet<CreditCondition>();
             this.Payment = new HashSet<Payment>();
             this.Documents = new HashSet<Document>();
         }
@@ -38,8 +37,6 @@ namespace SGSC
         public virtual Customer Customer { get; set; }
         public virtual BankAccount TransferBankAccount { get; set; }
         public virtual BankAccount DirectDebitBankAccount { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CreditCondition> CreditConditions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Payment> Payment { get; set; }
         public virtual Employee Employee { get; set; }

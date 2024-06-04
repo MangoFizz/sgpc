@@ -42,7 +42,7 @@
         <Button Style="{StaticResource ButtonStyleConfirm}" Content="Continuar" FontSize="15" HorizontalAlignment="Left" Margin="1118,664,0,0" VerticalAlignment="Top" Width="130" Height="38" Click="BtnClicContinue"/>
 
 
-        <Button Width="100" Height="50" BorderThickness="0" Background="Transparent" Margin="0,10,1180,660"  Click="btnBack_Click">
+        <Button Name="btnBack" Width="100" Height="50" BorderThickness="0" Background="Transparent" Margin="4,10,1176,660" Click="btnBack_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="..\Images\return.png" Width="62" Height="53" />
             </StackPanel>
@@ -64,13 +64,13 @@
         <Label FontFamily="{StaticResource FontNunito}" FontSize="16" x:Name="lbTargetNumberAccountDomicialization" HorizontalAlignment="Left" Margin="430,315,0,0" VerticalAlignment="Top"/>
         <Label FontFamily="{StaticResource FontNunito}" FontSize="16" x:Name="lbClabeAccountDomicialization" HorizontalAlignment="Left" Margin="336,352,0,0" VerticalAlignment="Top"/>
 
-        <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Solicitud" Tag="../Images/User.png" Style="{StaticResource ButtonStyle}"  HorizontalAlignment="Left" Margin="26,111,0,0" VerticalAlignment="Top" Height="47" Width="241" Click="BtnClicRequest"/>
+        <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" x:Name="btnRequest" Content="Solicitud" Tag="../Images/User.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,111,0,0" VerticalAlignment="Top" Height="47" Width="241" Click="BtnClicRequest" />
         <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Datos personales" Tag="../Images/address-icon.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,170,0,0" VerticalAlignment="Top" Height="47" Width="241" Click="BtnClicPersonalInformation"/>
-        <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Centro de trabajo" Tag="../Images/card-icon.png" Style="{StaticResource ButtonStyle}"  HorizontalAlignment="Left" Margin="26,226,0,0" VerticalAlignment="Top" Height="47" Width="241" Click="BtnClicWorkCenter"/>
-        <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" x:Name="btnBankAccounts" Cursor="Hand" Content="Cuentas bancarias" Tag="../Images/icon-contact.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,0,0,0" VerticalAlignment="Center" Height="48" Width="241" />
-        <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Referencias personales" Tag="../Images/icon-job.png"  Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,279,0,0" VerticalAlignment="Top" Height="48" Width="241" Click="BtnClicPersonalReferences" />
-        <Button  FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Documentación" Tag="../Images/icon-contact.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,392,0,0" VerticalAlignment="Top" Height="48" Width="241" Click="BtnDocumentation"/>
-        <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Dictamen" Tag="../Images/icon-contact.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,450,0,0" VerticalAlignment="Top" Height="48" Width="241" Click="BtnClicAproveRequest"/>
+        <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Centro de trabajo" Tag="../Images/card-icon.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,226,0,0" VerticalAlignment="Top" Height="47" Width="241" Click="BtnClicWorkCenter"/>
+        <Button Name="btnBankAccounts" FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Cuentas bancarias" Tag="../Images/icon-contact.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,0,0,0" VerticalAlignment="Center" Height="48" Width="241"/>
+        <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Referencias personales" Tag="../Images/icon-job.png"  Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,279,0,0" VerticalAlignment="Top" Height="48" Width="241" Click="BtnClicPersonalReferences"/>
+        <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Documentación" Tag="/Images/people-icon.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,392,0,0" VerticalAlignment="Top" Height="48" Width="241" Click="BtnDocumentation"/>
+        <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Dictamen" Tag="../Images/icon-law.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,450,0,0" VerticalAlignment="Top" Height="48" Width="241" Click="BtnClicAproveRequest"/>
 
     </Grid>
 </Page>

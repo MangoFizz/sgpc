@@ -35,7 +35,8 @@ namespace SGSC.Pages
             IdCreditRequest = idCreditRequest;
             LoadDocumentNames();
             Console.WriteLine("Valor id: " + IdCreditRequest);
-        }
+			ChangeButtonColor("#F0F6EC");
+		}
 
         private void LoadDocumentNames()
         {
@@ -141,9 +142,21 @@ namespace SGSC.Pages
 
 
 
+		private void BtnClicContinue(object sender, RoutedEventArgs e)
+		{
+			var customerInfoPage = new CreditApplicationDetailsApproveCreditApplication(IdCreditRequest);
 
+			if (NavigationService != null)
+			{
+				NavigationService.Navigate(customerInfoPage);
+			}
+			else
+			{
+				ToastNotification notification = new ToastNotification("No se puede realizar la navegación en este momento. Por favor, inténtelo más tarde.", "Error");
+			}
+		}
 
-        private void btnEliminar(object sender, RoutedEventArgs e)
+		private void btnEliminar(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -280,6 +293,27 @@ namespace SGSC.Pages
             App.Current.MainFrame.Content = new HomePageCreditAnalyst();
         }
 
+		private void ChangeButtonColor(string hexColor)
+		{
+			System.Windows.Media.Color color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(hexColor);
 
-    }
+			SolidColorBrush brush = new SolidColorBrush(color);
+
+			btnDocumentation.Background = brush;
+		}
+
+		private void BtnClicAproveRequest(object sender, RoutedEventArgs e)
+		{
+			var bankAccounts = new CreditApplicationDetailsApproveCreditApplication(IdCreditRequest);
+			if (NavigationService != null)
+			{
+				NavigationService.Navigate(bankAccounts);
+			}
+			else
+			{
+				ToastNotification notification = new ToastNotification("No se puede realizar la navegación en este momento. Por favor, inténtelo más tarde.", "Error");
+
+			}
+		}
+	}
 }

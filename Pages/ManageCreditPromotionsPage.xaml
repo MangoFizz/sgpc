@@ -25,7 +25,7 @@
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Buscar por nombre " HorizontalAlignment="Left" Margin="136,124,0,0" VerticalAlignment="Top" Height="34" Width="176"/>
         <TextBox Name="tbDescription" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="136,151,843,524" TextChanged="tbFilter_TextChanged"/>
 
-        <DataGrid Name="dgPromotions" AutoGenerateColumns="False" CanUserAddRows="False" AlternatingRowBackground="#DAEFD0" Margin="136,215,28,99" FontSize="22">
+        <DataGrid Name="dgPromotions" AutoGenerateColumns="False" CanUserAddRows="False" AlternatingRowBackground="#DAEFD0" Margin="136,215,28,99" FontSize="20.1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Name}" IsReadOnly="True" Width="350" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
                 <DataGridTextColumn Header="Tasa de interés" Binding="{Binding InterestRate}" IsReadOnly="True" Width="180" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
@@ -36,9 +36,9 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Name="btnRegisterEmployee" Style="{StaticResource ButtonStyleConfirm}" Content="Registrar promoción" FontSize="22" HorizontalAlignment="Left" Margin="678,646,0,0" VerticalAlignment="Top" Width="233" Height="40" Click="btnRegisterPolicy_Click" />
-        <Button Name="btnSelectEmployee" Style="{StaticResource ButtonStyleDanger}" Content="Modificar" FontSize="22" HorizontalAlignment="Left" Margin="924,646,0,0" VerticalAlignment="Top" Width="156" Height="40" Click="btnModifyPolicy_Click" />
-        <Button Style="{StaticResource ButtonStyleCancel}" Content="Ver detalles" FontSize="22" HorizontalAlignment="Left" Margin="1092,646,0,0" VerticalAlignment="Top" Width="156" Height="40" Click="btnViewPolicy_Click" />
+        <Button Name="btnRegisterEmployee" Style="{StaticResource ButtonStyleConfirm}" Content="Registrar promoción" FontSize="20.1" HorizontalAlignment="Left" Margin="678,646,0,0" VerticalAlignment="Top" Width="233" Height="40" Click="btnRegisterPolicy_Click" />
+        <Button Name="btnSelectEmployee" Style="{StaticResource ButtonStyleDanger}" Content="Modificar" FontSize="20.1" HorizontalAlignment="Left" Margin="924,646,0,0" VerticalAlignment="Top" Width="156" Height="40" Click="btnModifyPolicy_Click" />
+        <Button Style="{StaticResource ButtonStyleCancel}" Content="Ver detalles" FontSize="20.1" HorizontalAlignment="Left" Margin="1092,646,0,0" VerticalAlignment="Top" Width="156" Height="40" Click="btnViewPolicy_Click" />
 
     </Grid>
 </Page>

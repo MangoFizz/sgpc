@@ -27,7 +27,7 @@
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Filtrar por cliente " HorizontalAlignment="Left" Margin="466,124,0,0" VerticalAlignment="Top" Height="34" Width="154"/>
         <TextBox Name="tbCustomerNameFilter" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="466,151,512,524" TextChanged="tbFilter_TextChanged"/>
 
-        <DataGrid Name="dgCredits" AutoGenerateColumns="False" CanUserAddRows="False" AlternatingRowBackground="#DAEFD0" Margin="136,215,28,99" FontSize="22">
+        <DataGrid Name="dgCredits" AutoGenerateColumns="False" CanUserAddRows="False" AlternatingRowBackground="#DAEFD0" Margin="136,215,28,99" FontSize="20.1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Folio" Binding="{Binding FileNumber}" IsReadOnly="True" Width="220" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
                 <DataGridTextColumn Header="Nombre del cliente" Binding="{Binding CustomerFullName}" IsReadOnly="True" Width="360" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
@@ -45,7 +45,7 @@
         <Label Name="lbCurrentPage" FontSize="20" Content="Página 1/1" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="172,649,0,0" VerticalAlignment="Top" Width="124"/>
         <ComboBox Name="cbPages" FontSize="17" Margin="354,653,843,38" SelectionChanged="cbPages_SelectionChanged"/>
 
-        <Button Style="{StaticResource ButtonStyleCancel}" Content="Eliminar" FontSize="22" HorizontalAlignment="Left" Margin="877,646,0,0" VerticalAlignment="Top" Width="180" Height="40" Click="btnDeleteRequest_Click" />
-        <Button Style="{StaticResource ButtonStyleConfirm}" Content="Modificar" FontSize="22" HorizontalAlignment="Left" Margin="1072,646,0,0" VerticalAlignment="Top" Width="180" Height="40" Click="btnModifyRequest_Click" />
+        <Button Style="{StaticResource ButtonStyleCancel}" Content="Eliminar" FontSize="20.1" HorizontalAlignment="Left" Margin="877,646,0,0" VerticalAlignment="Top" Width="180" Height="40" Click="btnDeleteRequest_Click" />
+        <Button Style="{StaticResource ButtonStyleConfirm}" Content="Modificar" FontSize="20.1" HorizontalAlignment="Left" Margin="1072,646,0,0" VerticalAlignment="Top" Width="180" Height="40" Click="btnModifyRequest_Click" />
     </Grid>
 </Page>

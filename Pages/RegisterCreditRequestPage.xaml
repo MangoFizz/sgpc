@@ -42,8 +42,8 @@
         <TextBox x:Name="tbPurpose" Style="{StaticResource CustomTextBoxStyle}" Margin="363,342,99,233" VerticalContentAlignment="Top" FontSize="20"/>
         <Label x:Name="lbPurposeError" Content="Error" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Width="812" Foreground="#FFCE2222" FontStyle="Italic" Margin="369,490,0,0"/>
 
-        <Button x:Name="btnShowPaymentsTable" Style="{StaticResource ButtonStyleCancel}" FontSize="22" Content="Ver pagos" HorizontalAlignment="Left" Margin="655,617,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnPaymentsPreview_Click" />
-        <Button Style="{StaticResource ButtonStyleConfirm}" x:Name="btnRegister" Content="Continuar" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="54" Margin="855,617,0,0" Click="btnRegister_Click" />
-        <Button x:Name="btnCancel" Style="{StaticResource ButtonStyleDanger}" FontSize="22" Content="Cancelar" HorizontalAlignment="Left" Margin="1055,617,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnCancel_Click" />
+        <Button x:Name="btnShowPaymentsTable" Style="{StaticResource ButtonStyleCancel}" FontSize="20.1" Content="Ver pagos" HorizontalAlignment="Left" Margin="655,617,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnPaymentsPreview_Click" />
+        <Button Style="{StaticResource ButtonStyleConfirm}" x:Name="btnRegister" Content="Continuar" FontSize="20.1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="54" Margin="855,617,0,0" Click="btnRegister_Click" />
+        <Button x:Name="btnCancel" Style="{StaticResource ButtonStyleDanger}" FontSize="20.1" Content="Cancelar" HorizontalAlignment="Left" Margin="1055,617,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnCancel_Click" />
     </Grid>
 </Page>

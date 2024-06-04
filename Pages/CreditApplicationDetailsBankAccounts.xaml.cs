@@ -46,11 +46,10 @@ namespace SGSC.Pages
             {
                 var transferenciaAccount = (from ba in db.BankAccounts
                                             join cr in db.CreditRequests on ba.BankAccountId equals cr.TransferBankAccountId
-                                            join b in db.Banks on ba.BankBankId equals b.BankId
                                             where cr.CreditRequestId == requestId
                                             select new
                                             {
-                                                BankName = b.Name,
+                                                BankName = ba.Bank.Name,
                                                 ba.InterbankCode,
                                                 ba.CardNumber
                                             }).FirstOrDefault();
@@ -68,12 +67,10 @@ namespace SGSC.Pages
                 
                 var domicializationAccount = (from ba in db.BankAccounts
                                               join cr in db.CreditRequests on ba.BankAccountId equals cr.DirectDebitBankAccountId
-                                              join b in db.Banks on ba.BankBankId
-                                              equals b.BankId
                                               where cr.CreditRequestId == requestId
                                               select new
                                               {
-                                                  BankName = b.Name,
+                                                  BankName = ba.Bank.Name,
                                                   ba.InterbankCode,
                                                   ba.CardNumber
                                               }).FirstOrDefault();
@@ -93,7 +90,7 @@ namespace SGSC.Pages
 
         private void BtnClicContinue(object sender, RoutedEventArgs e)
         {
-            var creditAprovePage = new CreditApplicationDetailsApproveCreditApplication(requestId);
+            var creditAprovePage = new CreditApplicationDocuments(requestId.Value);
 
             if (NavigationService != null)
             {

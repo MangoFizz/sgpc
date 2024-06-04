@@ -75,10 +75,10 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button x:Name="btnShowPaymentsTable" Style="{StaticResource ButtonStyleCancel}" FontSize="22" Content="Eliminar archivo" HorizontalAlignment="Left" Margin="282,617,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="BtnClicFileDelete" />
+        <Button x:Name="btnShowPaymentsTable" Style="{StaticResource ButtonStyleCancel}" FontSize="20.1" Content="Eliminar archivo" HorizontalAlignment="Left" Margin="282,617,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="BtnClicFileDelete" />
 
-        <Button Style="{StaticResource ButtonStyleCancel}" FontSize="22" Content="Regresar" HorizontalAlignment="Left" Margin="655,617,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnBack_Click" />
-        <Button Style="{StaticResource ButtonStyleConfirm}" x:Name="btnRegister" Content="Enviar a revisión" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="54" Margin="855,617,0,0" Click="BtnClicGuardar" />
-        <Button x:Name="btnCancel" Style="{StaticResource ButtonStyleDanger}" FontSize="22" Content="Cancelar" HorizontalAlignment="Left" Margin="1055,617,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnCancel_Click" />
+        <Button Style="{StaticResource ButtonStyleCancel}" FontSize="20.1" Content="Regresar" HorizontalAlignment="Left" Margin="655,617,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnBack_Click" />
+        <Button Style="{StaticResource ButtonStyleConfirm}" x:Name="btnRegister" Content="Enviar a revisión" FontSize="20.1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="54" Margin="855,617,0,0" Click="BtnClicGuardar" />
+        <Button x:Name="btnCancel" Style="{StaticResource ButtonStyleDanger}" FontSize="20.1" Content="Cancelar" HorizontalAlignment="Left" Margin="1055,617,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnCancel_Click" />
     </Grid>
 </Page>

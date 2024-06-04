@@ -58,7 +58,7 @@ namespace SGSC.Pages
                 lbSeller.Content = requestInfo.VendorName;
                 lbRequestRequestNumber.Content = requestInfo.RequestNumber;
                 lbCreationDate.Content = requestInfo.CreationDate.ToString();
-                lbAmount.Content = requestInfo.RequestedAmountNumber.ToString() + " (" + Utils.Utils.NumberALetter(requestInfo.RequestedAmountNumber) + ")";
+                lbAmount.Content = " " + requestInfo.RequestedAmountNumber.Value.ToString("0.00") + " (" + Utils.Utils.NumberALetter(requestInfo.RequestedAmountNumber) + ")";
                 lbInterestRate.Content = requestInfo.InterestRate.ToString();
                 lbDestination.Content = requestInfo.Purpose;
                 lbDeadline.Content = requestInfo.TimePeriod.ToString() + " Quincenas";
@@ -189,5 +189,5 @@ namespace SGSC.Pages
         {
 
         }
-    }
+	}
 }

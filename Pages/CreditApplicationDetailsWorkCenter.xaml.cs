@@ -33,27 +33,17 @@ namespace SGSC.Pages
         {
             using (sgscEntities db = new sgscEntities())
             {
-                var workCenterQuery = (from cr in db.CreditRequests
-                                       join wc in db.WorkCenters on cr.CustomerId equals wc.Customer.CustomerId
-                                       where cr.CreditRequestId == requestId
-                                       select new
-                                       {
-                                           WorkCenterName = wc.CenterName,
-                                           PhoneNumber = wc.PhoneNumber,
-                                           Street = wc.Street,
-                                           Colony = wc.Colony,
-                                           InnerNumber = wc.InnerNumber,
-                                           OutsideNumber = wc.OutsideNumber,
-                                           ZipCode = wc.ZipCode,
-                                           FileNumber = cr.FileNumber
-                                       }).FirstOrDefault();
-                if (workCenterQuery == null)
+                var request = db.CreditRequests.Find(requestId);
+                var workCenterQuery = db.WorkCenters.Where(wc => wc.CustomerId == request.CustomerId).FirstOrDefault();
+
+
+				if (workCenterQuery == null)
                 {
                     ToastNotification notification = new ToastNotification("No se ha encontrado la solicitud, inténtelo más tarde", "Error");
                     return;
                 }
 
-                lbCompanyName.Content = workCenterQuery.WorkCenterName;
+                lbCompanyName.Content = workCenterQuery.CenterName;
                 lbPhoneNumber.Content = workCenterQuery.PhoneNumber;
                 lbInnerNumber.Content = workCenterQuery.InnerNumber;
                 lbOutsideNumber.Content = workCenterQuery.OutsideNumber;
@@ -61,7 +51,7 @@ namespace SGSC.Pages
                 lbStreet.Content = workCenterQuery.Street;
                 lbZipCode.Content = workCenterQuery.ZipCode;
 
-                lbRequestRequestNumber.Content = workCenterQuery.FileNumber;
+                lbRequestRequestNumber.Content = request.FileNumber;
             }
         }
 
@@ -177,5 +167,5 @@ namespace SGSC.Pages
 
             }
         }
-    }
+	}
 }

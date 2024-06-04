@@ -229,8 +229,8 @@
 
         <Label Content="* Campos obligatorios" Foreground="Red" FontFamily="{StaticResource FontNunito}" FontStyle="Italic"  HorizontalAlignment="Left" Margin="188,644,0,0" VerticalAlignment="Top" Width="206" FontSize="18"/>
 
-        <Button Style="{StaticResource ButtonStyleCancel}" Content="Cancelar" FontSize="22" HorizontalAlignment="Left" Margin="844,644,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnCancel_Click" />
-        <Button Style="{StaticResource ButtonStyleConfirm}" Content="Continuar" FontSize="22" HorizontalAlignment="Left" Margin="1048,644,0,0" VerticalAlignment="Top" Width="180" Height="54" Click="btnContinue_Click" />
+        <Button Style="{StaticResource ButtonStyleCancel}" Content="Cancelar" FontSize="20.1" HorizontalAlignment="Left" Margin="844,644,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnCancel_Click" />
+        <Button Style="{StaticResource ButtonStyleConfirm}" Content="Continuar" FontSize="20.1" HorizontalAlignment="Left" Margin="1048,644,0,0" VerticalAlignment="Top" Width="180" Height="54" Click="btnContinue_Click" />
     </Grid>
 
 </Page>

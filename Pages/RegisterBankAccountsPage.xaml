@@ -31,7 +31,7 @@
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Banco " HorizontalAlignment="Left" Margin="250,288,0,0" VerticalAlignment="Top" Width="58" Height="20"/>
         <TextBox x:Name="tbTansAccBank" Style="{StaticResource CustomTextBoxStyle}" IsEnabled="False" FontSize="18" VerticalContentAlignment="Center" Margin="250,318,623,356"/>
 
-        <Button Style="{StaticResource ButtonStyleConfirm}" Content="Continuar" FontSize="22" HorizontalAlignment="Left" Margin="780,614,0,0" VerticalAlignment="Top" Width="180" Height="54" Click="SaveBankAccounts" />
-        <Button Style="{StaticResource ButtonStyleCancel}" Content="Cancelar" FontSize="22" HorizontalAlignment="Left" Margin="984,614,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="CancelRegister" />
+        <Button Style="{StaticResource ButtonStyleConfirm}" Content="Continuar" FontSize="20.1" HorizontalAlignment="Left" Margin="780,614,0,0" VerticalAlignment="Top" Width="180" Height="54" Click="SaveBankAccounts" />
+        <Button Style="{StaticResource ButtonStyleCancel}" Content="Cancelar" FontSize="20.1" HorizontalAlignment="Left" Margin="984,614,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="CancelRegister" />
     </Grid>
 </Page>

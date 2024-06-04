@@ -199,7 +199,7 @@
         <DatePicker Name="dpDate1Filter" Style="{StaticResource DatePickerIconResizingStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="796,151,263,524"/>
         <DatePicker Name="dpDate2Filter" Style="{StaticResource DatePickerIconResizingStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="1030,151,27,524"/>
 
-        <DataGrid Name="dgCredits" AutoGenerateColumns="False" CanUserAddRows="False" AlternatingRowBackground="#DAEFD0" Margin="136,215,28,99" FontSize="22">
+        <DataGrid Name="dgCredits" AutoGenerateColumns="False" CanUserAddRows="False" AlternatingRowBackground="#DAEFD0" Margin="136,215,28,99" FontSize="20.1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Folio" Binding="{Binding CreditPageNumber}" IsReadOnly="True" Width="150" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
                 <DataGridTextColumn Header="Nombre del cliente" Binding="{Binding CustomerFullName}" IsReadOnly="True" Width="360" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
@@ -215,8 +215,8 @@
         <Label Name="lbCurrentPage" FontSize="20" Content="Página 1/1" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="172,649,0,0" VerticalAlignment="Top" Width="124"/>
         <ComboBox Name="cbPages" FontSize="17" Margin="354,653,843,38" SelectionChanged="cbPages_SelectionChanged"/>
 
-        <Button Style="{StaticResource ButtonStyleCancel}" Content="Generar layout de cobros" FontSize="22" HorizontalAlignment="Left" Margin="584,646,0,0" VerticalAlignment="Top" Width="278" Height="40" />
-        <Button Style="{StaticResource ButtonStyleCancel}" Content="Registrar cobros" FontSize="22" HorizontalAlignment="Left" Margin="877,646,0,0" VerticalAlignment="Top" Width="180" Height="40" />
-        <Button Style="{StaticResource ButtonStyleConfirm}" Content="Ver eficiencias" FontSize="22" HorizontalAlignment="Left" Margin="1072,646,0,0" VerticalAlignment="Top" Width="180" Height="40" />
+        <Button Style="{StaticResource ButtonStyleCancel}" Content="Generar layout de cobros" FontSize="20.1" HorizontalAlignment="Left" Margin="584,646,0,0" VerticalAlignment="Top" Width="278" Height="40" />
+        <Button Style="{StaticResource ButtonStyleCancel}" Content="Registrar cobros" FontSize="20.1" HorizontalAlignment="Left" Margin="877,646,0,0" VerticalAlignment="Top" Width="180" Height="40" />
+        <Button Style="{StaticResource ButtonStyleConfirm}" Content="Ver eficiencias" FontSize="20.1" HorizontalAlignment="Left" Margin="1072,646,0,0" VerticalAlignment="Top" Width="180" Height="40" />
     </Grid>
 </Page>

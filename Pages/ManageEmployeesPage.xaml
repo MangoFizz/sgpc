@@ -46,7 +46,7 @@
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Filtrar por correo electrónico " HorizontalAlignment="Left" Margin="466,124,0,0" VerticalAlignment="Top" Height="34" Width="272"/>
         <TextBox Name="tbEmail" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="466,151,512,524" TextChanged="tbFilter_TextChanged"/>
 
-        <DataGrid Name="dgEmployees" AutoGenerateColumns="False" CanUserAddRows="False" AlternatingRowBackground="#DAEFD0" Margin="136,215,28,99" FontSize="22">
+        <DataGrid Name="dgEmployees" AutoGenerateColumns="False" CanUserAddRows="False" AlternatingRowBackground="#DAEFD0" Margin="136,215,28,99" FontSize="20.1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Fullname}" IsReadOnly="True" Width="550" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
                 <DataGridTextColumn Header="Correo electrónico" Binding="{Binding Email}" IsReadOnly="True" Width="300" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
@@ -59,8 +59,8 @@
         <Label Name="lbCurrentPage" FontSize="20" Content="Página 1/1" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="172,649,0,0" VerticalAlignment="Top" Width="124"/>
         <ComboBox Name="cbPages" FontSize="17" Margin="354,653,843,38" SelectionChanged="cbPages_SelectionChanged"/>
 
-        <Button Name="btnRegisterEmployee" Style="{StaticResource ButtonStyleConfirm}" Content="Registrar nuevo empleado" FontSize="22" HorizontalAlignment="Left" Margin="621,646,0,0" VerticalAlignment="Top" Width="290" Height="40" Click="btnRegisterEmployee_Click" />
-        <Button Name="btnDeleteEmployee" Style="{StaticResource ButtonStyleCritical}" Content="Eliminar" FontSize="22" HorizontalAlignment="Left" Margin="926,646,0,0" VerticalAlignment="Top" Width="156" Height="40" Click="btnDeleteEmployee_Click" />
-        <Button Name="btnSelectEmployee" Style="{StaticResource ButtonStyleDanger}" Content="Modificar" FontSize="22" HorizontalAlignment="Left" Margin="1096,646,0,0" VerticalAlignment="Top" Width="156" Height="40" Click="btnModifyEmployee_Click" />
+        <Button Name="btnRegisterEmployee" Style="{StaticResource ButtonStyleConfirm}" Content="Registrar nuevo empleado" FontSize="20.1" HorizontalAlignment="Left" Margin="621,646,0,0" VerticalAlignment="Top" Width="290" Height="40" Click="btnRegisterEmployee_Click" />
+        <Button Name="btnDeleteEmployee" Style="{StaticResource ButtonStyleCritical}" Content="Eliminar" FontSize="20.1" HorizontalAlignment="Left" Margin="926,646,0,0" VerticalAlignment="Top" Width="156" Height="40" Click="btnDeleteEmployee_Click" />
+        <Button Name="btnSelectEmployee" Style="{StaticResource ButtonStyleDanger}" Content="Modificar" FontSize="20.1" HorizontalAlignment="Left" Margin="1096,646,0,0" VerticalAlignment="Top" Width="156" Height="40" Click="btnModifyEmployee_Click" />
     </Grid>
 </Page>

@@ -44,7 +44,7 @@
         <Button Style="{StaticResource ButtonStyleConfirm}" Content="Continuar" FontSize="15" HorizontalAlignment="Left" Margin="1122,666,0,0" VerticalAlignment="Top" Width="130" Height="38" Click="BtnClicContinue"/>
 
 
-        <Button Width="100" Height="50" BorderThickness="0" Background="Transparent" Margin="-4,11,1184,659" Click="btnBack_Click">
+        <Button Name="btnBack" Width="100" Height="50" BorderThickness="0" Background="Transparent" Margin="4,10,1176,660" Click="btnBack_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="..\Images\return.png" Width="62" Height="53" />
             </StackPanel>
@@ -77,8 +77,8 @@
         <CheckBox FontFamily="{StaticResource FontNunito}" x:Name="cbxVidower" Content="Viudo(a)" FontSize="16" HorizontalAlignment="Left" Margin="773,606,0,0" VerticalAlignment="Top"/>
         <CheckBox FontFamily="{StaticResource FontNunito}" x:Name="cbxFreeUnion" Content="Unión libre" FontSize="16" HorizontalAlignment="Left" Margin="936,606,0,0" VerticalAlignment="Top"/>
         <Label Content="Teléfonos" FontSize="16" FontWeight="Bold"  HorizontalAlignment="Left" Margin="285,513,0,0" VerticalAlignment="Top"/>
-        <Label Content="Teléfono1:" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="472,529,0,0" VerticalAlignment="Top"/>
-        <Label Content="Teléfono2:" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="842,527,0,0" VerticalAlignment="Top"/>
+        <Label Content="Teléfono 1:" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="472,529,0,0" VerticalAlignment="Top"/>
+        <Label Content="Teléfono 2:" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="842,527,0,0" VerticalAlignment="Top"/>
         <Label FontFamily="{StaticResource FontNunito}" x:Name="lbName" FontSize="16" HorizontalAlignment="Left" Margin="355,179,0,0" VerticalAlignment="Top"/>
         <Label FontFamily="{StaticResource FontNunito}" x:Name="lbFirstSurname" FontSize="16" HorizontalAlignment="Left" Margin="689,177,0,0" VerticalAlignment="Top"/>
         <Label FontFamily="{StaticResource FontNunito}" x:Name="lbSecondSurname" FontSize="16" HorizontalAlignment="Left" Margin="1027,176,0,0" VerticalAlignment="Top"/>
@@ -89,18 +89,18 @@
         <Label FontFamily="{StaticResource FontNunito}" x:Name="lbInnerNumber" FontSize="16" HorizontalAlignment="Left" Margin="1115,374,0,0" VerticalAlignment="Top"/>
         <Label FontFamily="{StaticResource FontNunito}" x:Name="lbState" FontSize="16" HorizontalAlignment="Left" Margin="880,332,0,0" VerticalAlignment="Top"/>
         <Label FontFamily="{StaticResource FontNunito}" x:Name="lbColony" FontSize="16" HorizontalAlignment="Left" Margin="352,478,0,0" VerticalAlignment="Top"/>
-        <Label FontFamily="{StaticResource FontNunito}" x:Name="lbPhoneOne" FontSize="16" HorizontalAlignment="Left" Margin="556,530,0,0" VerticalAlignment="Top"/>
-        <Label FontFamily="{StaticResource FontNunito}" x:Name="lbPhoneTwo" FontSize="16" HorizontalAlignment="Left" Margin="926,527,0,0" VerticalAlignment="Top"/>
+        <Label FontFamily="{StaticResource FontNunito}" x:Name="lbPhoneOne" FontSize="16" HorizontalAlignment="Left" Margin="566,530,0,0" VerticalAlignment="Top"/>
+        <Label FontFamily="{StaticResource FontNunito}" x:Name="lbPhoneTwo" FontSize="16" HorizontalAlignment="Left" Margin="934,527,0,0" VerticalAlignment="Top"/>
         <Label FontFamily="{StaticResource FontNunito}" x:Name="lbDateOfBirth" FontSize="16" HorizontalAlignment="Left" Margin="448,225,0,0" VerticalAlignment="Top"/>
         <Label FontFamily="{StaticResource FontNunito}" x:Name="lbCp" FontSize="16" HorizontalAlignment="Left" Margin="915,475,0,0" VerticalAlignment="Top"/>
 
 
-        <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" x:Name="btnRequest"  Cursor="Hand" Content="Solicitud" Tag="../Images/User.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,111,0,0" VerticalAlignment="Top" Height="47" Width="241" Click="BtnClicRequest" />
-        <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" x:Name="BtnPersonalReferences" Cursor="Hand" Content="Datos personales" Tag="../Images/address-icon.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,170,0,0" VerticalAlignment="Top" Height="47" Width="241"/>
+        <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" x:Name="btnRequest" Content="Solicitud" Tag="../Images/User.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,111,0,0" VerticalAlignment="Top" Height="47" Width="241" Click="BtnClicRequest"/>
+        <Button Name="BtnPersonalReferences" FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Datos personales" Tag="../Images/address-icon.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,170,0,0" VerticalAlignment="Top" Height="47" Width="241"/>
         <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Centro de trabajo" Tag="../Images/card-icon.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,226,0,0" VerticalAlignment="Top" Height="47" Width="241" Click="BtnClicWorkCenter"/>
         <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Cuentas bancarias" Tag="../Images/icon-contact.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,0,0,0" VerticalAlignment="Center" Height="48" Width="241" Click="BtnClicBankAccounts"/>
         <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Referencias personales" Tag="../Images/icon-job.png"  Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,279,0,0" VerticalAlignment="Top" Height="48" Width="241" Click="BtnClicPersonalReferences"/>
-        <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Documentación" Tag="../Images/icon-contact.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,392,0,0" VerticalAlignment="Top" Height="48" Width="241" Click="BtnDocumentation"/>
+        <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Documentación" Tag="/Images/people-icon.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,392,0,0" VerticalAlignment="Top" Height="48" Width="241" Click="BtnDocumentation"/>
         <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Dictamen" Tag="../Images/icon-law.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,450,0,0" VerticalAlignment="Top" Height="48" Width="241" Click="BtnClicAproveRequest"/>
 
 

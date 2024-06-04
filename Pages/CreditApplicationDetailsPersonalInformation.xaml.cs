@@ -96,6 +96,15 @@ namespace SGSC.Pages
                 lbPhoneTwo.Content = creditRequest.PhoneTwo;
                 CheckCheckboxMaritalStatus((Customer.CivilStatuses)creditRequest.MaritalStatus);
 
+                if(creditRequest.Gender == "M")
+                {
+					cbxMan.IsChecked = true;
+				}
+				else
+                {
+                    cbxWoman.IsChecked = true;
+                }
+
                 lbRequestRequestNumber.Content = creditRequest.FileNumber;
             }
         }
@@ -264,5 +273,5 @@ namespace SGSC.Pages
         {
             App.Current.MainFrame.Content = new HomePageCreditAnalyst();
         }
-    }
+	}
 }

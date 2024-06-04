@@ -27,7 +27,7 @@
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Buscar por número de tarjeta " HorizontalAlignment="Left" Margin="390,124,0,0" VerticalAlignment="Top" Height="34" Width="270"/>
         <TextBox Name="tbCardNumber" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="390,151,589,524" TextChanged="tbFilter_TextChanged"/>
 
-        <DataGrid Name="dgBankAccounts" AutoGenerateColumns="False" CanUserAddRows="False" AlternatingRowBackground="#DAEFD0" Margin="54,215,28,99" FontSize="22">
+        <DataGrid Name="dgBankAccounts" AutoGenerateColumns="False" CanUserAddRows="False" AlternatingRowBackground="#DAEFD0" Margin="54,215,28,99" FontSize="20.1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="CLABE" Binding="{Binding InterbankCode}" IsReadOnly="True" Width="450" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
                 <DataGridTextColumn Header="Número de tarjeta" Binding="{Binding CardNumber}" IsReadOnly="True" Width="450" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
@@ -35,9 +35,9 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Name="btnRegisterEmployee" Style="{StaticResource ButtonStyleConfirm}" Content="Registrar cuenta" FontSize="22" HorizontalAlignment="Left" Margin="714,646,0,0" VerticalAlignment="Top" Width="197" Height="40" Click="btnRegisterBankAccount_Click" />
-        <Button Name="btnSelectEmployee" Style="{StaticResource ButtonStyleDanger}" Content="Seleccionar" FontSize="22" HorizontalAlignment="Left" Margin="924,646,0,0" VerticalAlignment="Top" Width="156" Height="40" Click="btnSelectBankAccount_Click" />
-        <Button Style="{StaticResource ButtonStyleCancel}" Content="Cancelar" FontSize="22" HorizontalAlignment="Left" Margin="1092,646,0,0" VerticalAlignment="Top" Width="156" Height="40" Click="btnCancel_Click" />
+        <Button Name="btnRegisterEmployee" Style="{StaticResource ButtonStyleConfirm}" Content="Registrar cuenta" FontSize="20.1" HorizontalAlignment="Left" Margin="714,646,0,0" VerticalAlignment="Top" Width="197" Height="40" Click="btnRegisterBankAccount_Click" />
+        <Button Name="btnSelectEmployee" Style="{StaticResource ButtonStyleDanger}" Content="Seleccionar" FontSize="20.1" HorizontalAlignment="Left" Margin="924,646,0,0" VerticalAlignment="Top" Width="156" Height="40" Click="btnSelectBankAccount_Click" />
+        <Button Style="{StaticResource ButtonStyleCancel}" Content="Cancelar" FontSize="20.1" HorizontalAlignment="Left" Margin="1092,646,0,0" VerticalAlignment="Top" Width="156" Height="40" Click="btnCancel_Click" />
 
     </Grid>
 </Page>

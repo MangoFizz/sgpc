@@ -32,13 +32,13 @@
 
         <Label FontFamily="{StaticResource FontPoppins}" FontWeight="Bold" FontSize="36" Content="Registrar solicitud de credito" HorizontalAlignment="Left" Margin="46,48,0,0" VerticalAlignment="Top"/>
 
-        <DataGrid Name="dgPayments" AutoGenerateColumns="False" CanUserAddRows="False" AlternatingRowBackground="#DAEFD0" Margin="306,153,46,99" FontSize="22" Grid.ColumnSpan="2">
+        <DataGrid Name="dgPayments" AutoGenerateColumns="False" CanUserAddRows="False" AlternatingRowBackground="#DAEFD0" Margin="306,153,46,99" FontSize="20.1" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="No. de pago" Binding="{Binding Number}" IsReadOnly="True" Width="*" HeaderStyle="{StaticResource CenterGridHeaderStyle}" CellStyle="{StaticResource DataGridContentCellCentering}"/>
                 <DataGridTextColumn Header="Fecha" Binding="{Binding Date}" IsReadOnly="True" Width="*" HeaderStyle="{StaticResource CenterGridHeaderStyle}" CellStyle="{StaticResource DataGridContentCellCentering}"/>
                 <DataGridTextColumn Header="Descuento" Binding="{Binding Amount}" IsReadOnly="True" Width="*" HeaderStyle="{StaticResource CenterGridHeaderStyle}" CellStyle="{StaticResource DataGridContentCellCentering}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Style="{StaticResource ButtonStyleCancel}" Content="Regresar" FontSize="22" HorizontalAlignment="Left" Margin="189,646,0,0" VerticalAlignment="Top" Width="156" Height="40" Click="btnBack_Click" Grid.Column="1" />
+        <Button Style="{StaticResource ButtonStyleCancel}" Content="Regresar" FontSize="20.1" HorizontalAlignment="Left" Margin="189,646,0,0" VerticalAlignment="Top" Width="156" Height="40" Click="btnBack_Click" Grid.Column="1" />
     </Grid>
 </Page>

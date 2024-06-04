@@ -19,6 +19,7 @@ namespace SGSC.Pages
         public CreditApplicationDetailsApproveCreditApplication(int? requestId)
         {
             InitializeComponent();
+            ChangeButtonColor("#F0F6EC");
             this.requestId = requestId;
             try
             {
@@ -32,7 +33,16 @@ namespace SGSC.Pages
             }
         }
 
-        public void GetObservation()
+		private void ChangeButtonColor(string hexColor)
+		{
+			System.Windows.Media.Color color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(hexColor);
+
+			SolidColorBrush brush = new SolidColorBrush(color);
+
+			btnAproveRequest.Background = brush;
+		}
+
+		public void GetObservation()
         {
             try
             {
@@ -254,15 +264,15 @@ namespace SGSC.Pages
                     {
                         if (rbtAutorize.IsChecked == true)
                         {
-                            solicitud.Status = 0; // "Autorizado"
+                            solicitud.Status = (int)CreditRequest.RequestStatus.Authorized;
                         }
                         else if (rbtCorrect.IsChecked == true)
                         {
-                            solicitud.Status = 1; // "Corregir"
+                            solicitud.Status = (int)CreditRequest.RequestStatus.WaitingForCorrection;
                         }
                         else if (rbtReject.IsChecked == true)
                         {
-                            solicitud.Status = 2; // "Rechazado"
+                            solicitud.Status = (int)CreditRequest.RequestStatus.Rejected;
                         }
 
                         db.SaveChanges();
@@ -314,6 +324,7 @@ namespace SGSC.Pages
                     SaveDescription();
                     SaveCreditRequestStatus();
                     MessageBox.Show("Se ha actualizado el estado de la solicitud.");
+                    App.Current.MainFrame.Content = new HomePageCreditAnalyst();
                 }
             }
             catch (Exception ex)
@@ -448,5 +459,28 @@ namespace SGSC.Pages
 
             }
         }
-    }
+
+		private void BtnClicAproveRequest(object sender, RoutedEventArgs e)
+		{
+			var bankAccounts = new CreditApplicationDetailsApproveCreditApplication(requestId);
+			if (NavigationService != null)
+			{
+				NavigationService.Navigate(bankAccounts);
+			}
+			else
+			{
+				ToastNotification notification = new ToastNotification("No se puede realizar la navegación en este momento. Por favor, inténtelo más tarde.", "Error");
+
+			}
+		}
+
+		private void btnCancel_Click(object sender, RoutedEventArgs e)
+		{
+			var result = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea cancelar el dictamen de la solicitud?", "Cancelar registro", System.Windows.Forms.MessageBoxButtons.YesNo);
+			if (result == System.Windows.Forms.DialogResult.Yes)
+			{
+				App.Current.MainFrame.Content = new HomePageCreditAnalyst();
+			}
+		}
+	}
 }

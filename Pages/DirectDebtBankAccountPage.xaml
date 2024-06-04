@@ -30,10 +30,10 @@
         <TextBox x:Name="tbTansAccBank" Style="{StaticResource CustomTextBoxStyle}" IsReadOnly="True" FontSize="18" VerticalContentAlignment="Center" Margin="320,404,553,270"/>
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Banco " HorizontalAlignment="Left" Margin="320,374,0,0" VerticalAlignment="Top" Width="58" Height="20"/>
 
-        <Button Style="{StaticResource ButtonStyleConfirm}" Content="Buscar cuenta" FontSize="22" HorizontalAlignment="Left" Margin="1026,412,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnSearchAccount_Click" />
+        <Button Style="{StaticResource ButtonStyleConfirm}" Content="Buscar cuenta" FontSize="20.1" HorizontalAlignment="Left" Margin="1026,412,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnSearchAccount_Click" />
 
-        <Button x:Name="btnShowPaymentsTable" Style="{StaticResource ButtonStyleCancel}" FontSize="22" Content="Regresar" HorizontalAlignment="Left" Margin="655,617,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnBack_Click" />
-        <Button Style="{StaticResource ButtonStyleConfirm}" x:Name="btnRegister" Content="Continuar" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="54" Margin="855,617,0,0" Click="btnContinue_Click" />
-        <Button x:Name="btnCancel" Style="{StaticResource ButtonStyleDanger}" FontSize="22" Content="Cancelar" HorizontalAlignment="Left" Margin="1055,617,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnCancel_Click" />
+        <Button x:Name="btnShowPaymentsTable" Style="{StaticResource ButtonStyleCancel}" FontSize="20.1" Content="Regresar" HorizontalAlignment="Left" Margin="655,617,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnBack_Click" />
+        <Button Style="{StaticResource ButtonStyleConfirm}" x:Name="btnRegister" Content="Continuar" FontSize="20.1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="54" Margin="855,617,0,0" Click="btnContinue_Click" />
+        <Button x:Name="btnCancel" Style="{StaticResource ButtonStyleDanger}" FontSize="20.1" Content="Cancelar" HorizontalAlignment="Left" Margin="1055,617,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnCancel_Click" />
     </Grid>
 </Page>

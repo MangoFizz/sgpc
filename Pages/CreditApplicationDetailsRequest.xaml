@@ -36,7 +36,7 @@
         <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Centro de trabajo" Tag="../Images/card-icon.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,226,0,0" VerticalAlignment="Top" Height="47" Width="241" Click="BtnClicWorkCenter"/>
         <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Cuentas bancarias" Tag="../Images/icon-contact.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,0,0,0" VerticalAlignment="Center" Height="48" Width="241" Click="BtnClicBankAccounts"/>
         <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Referencias personales" Tag="../Images/icon-job.png"  Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,279,0,0" VerticalAlignment="Top" Height="48" Width="241" Click="BtnClicPersonalReferences"/>
-        <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Documentación" Tag="../Images/icon-contact.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,392,0,0" VerticalAlignment="Top" Height="48" Width="241" Click="BtnDocumentation"/>
+        <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Documentación" Tag="/Images/people-icon.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,392,0,0" VerticalAlignment="Top" Height="48" Width="241" Click="BtnDocumentation"/>
         <Button FontFamily="{StaticResource FontNunitoBold}" FontSize="17" Cursor="Hand" Content="Dictamen" Tag="../Images/icon-law.png" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="26,450,0,0" VerticalAlignment="Top" Height="48" Width="241" Click="BtnClicAproveRequest"/>
 
 
@@ -62,12 +62,12 @@
         <Label Content="Destino de crédito:" FontSize="16" FontWeight="Bold"  FontFamily="{StaticResource FontNunito}" HorizontalAlignment="Left" Margin="285,315,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbSeller" FontSize="17" FontFamily="{StaticResource FontNunito}" HorizontalAlignment="Left" Margin="377,170,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbCreationDate" FontSize="17" FontFamily="{StaticResource FontNunito}" HorizontalAlignment="Left" Margin="990,169,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbAmount" FontSize="17"  FontFamily="{StaticResource FontNunito}" HorizontalAlignment="Left" Margin="557,212,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbInterestRate" FontSize="17" FontFamily="{StaticResource FontNunito}" HorizontalAlignment="Left" Margin="1168,273,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbAmount" FontSize="17"  FontFamily="{StaticResource FontNunito}" HorizontalAlignment="Left" Margin="575,212,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbInterestRate" FontSize="17" FontFamily="{StaticResource FontNunito}" HorizontalAlignment="Left" Margin="1172,273,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbDestination" FontSize="17" FontFamily="{StaticResource FontNunito}" HorizontalAlignment="Left" Margin="432,315,0,0" VerticalAlignment="Top"/>
         <Label Content="Folio:" FontFamily="{StaticResource FontNunitoBold}" FontSize="25" HorizontalAlignment="Left" Margin="278,112,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbRequestRequestNumber" Foreground="Red" FontFamily="{StaticResource FontNunito}" FontSize="25" HorizontalAlignment="Left" Margin="346,114,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbDeadline" FontFamily="{StaticResource FontNunito}" FontSize="17" HorizontalAlignment="Left" Margin="410,267,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbDeadline" FontFamily="{StaticResource FontNunito}" FontSize="17" HorizontalAlignment="Left" Margin="413,267,0,0" VerticalAlignment="Top"/>
 
 
 

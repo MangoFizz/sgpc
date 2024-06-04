@@ -50,7 +50,7 @@ namespace SGSC.Pages
 
             try
             {
-                WorkCenter workCenter = dbContext.WorkCenters.FirstOrDefault(c => c.CustomerId == customerId);
+                WorkCenters workCenter = dbContext.WorkCenters.FirstOrDefault(c => c.CustomerId == customerId);
                 if(workCenter != null)
                 {
                     ShowInformationWorkCenter(workCenter);
@@ -78,7 +78,7 @@ namespace SGSC.Pages
             }
         }
 
-        public void ShowInformationWorkCenter(SGSC.WorkCenter userWorkCenter)
+        public void ShowInformationWorkCenter(SGSC.WorkCenters userWorkCenter)
         {
             if (userWorkCenter != null)
             {
@@ -149,7 +149,7 @@ namespace SGSC.Pages
                     ZipCode = txtZipCode.Text;
                     int IntZipCode = int.Parse(ZipCode);
 
-                    WorkCenter NewWorkcenter = new WorkCenter
+                    WorkCenters NewWorkcenter = new WorkCenters
                     {
                         CenterName = WorkCenterName,
                         PhoneNumber = Phone,

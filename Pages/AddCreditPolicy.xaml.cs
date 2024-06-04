@@ -61,7 +61,7 @@ namespace SGSC.Pages
             if (selectedPolicy == null)
             {
                 // Crear una nueva política de crédito
-                CreditPolicy policy = new CreditPolicy
+                CreditPolicies policy = new CreditPolicies
                 {
                     Name = name,
                     Description = description,
@@ -90,7 +90,7 @@ namespace SGSC.Pages
             NavigationService.Content = new ManageCreditGrantingPolicies();
         }
 
-        private void SaveCreditPolicy(CreditPolicy policy)
+        private void SaveCreditPolicy(CreditPolicies policy)
         {
             try
             {

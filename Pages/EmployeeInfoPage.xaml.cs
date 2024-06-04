@@ -121,10 +121,10 @@ namespace SGSC.Pages
             
             using (sgscEntities db = new sgscEntities())
             {
-                Employee employee;
+                Employees employee;
                 if (EmployeeId == null)
                 {
-                    employee = new Employee();
+                    employee = new Employees();
                     db.Employees.Add(employee);
                 }
                 else

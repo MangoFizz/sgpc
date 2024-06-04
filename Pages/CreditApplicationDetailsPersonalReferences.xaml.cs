@@ -1,20 +1,11 @@
-﻿using SGSC.Frames;
+﻿using Org.BouncyCastle.Asn1.Ocsp;
+using SGSC.Frames;
 using SGSC.Messages;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SGSC.Pages
 {
@@ -178,6 +169,20 @@ namespace SGSC.Pages
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             App.Current.MainFrame.Content = new HomePageCreditAnalyst();
+        }
+
+        private void BtnDocumentation(object sender, RoutedEventArgs e)
+        {
+            var documentation = new CreditApplicationDocuments(RequestId);
+            if (NavigationService != null)
+            {
+                NavigationService.Navigate(documentation);
+            }
+            else
+            {
+                ToastNotification notification = new ToastNotification("No se puede realizar la navegación en este momento. Por favor, inténtelo más tarde.", "Error");
+
+            }
         }
     }
 }

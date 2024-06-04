@@ -324,7 +324,7 @@ namespace SGSC.Pages
                     SaveDescription();
                     SaveCreditRequestStatus();
                     MessageBox.Show("Se ha actualizado el estado de la solicitud.");
-                    App.Current.MainFrame.Content = new HomePageCreditAnalyst();
+                    App.Current.MainFrame.Content = new ViewPendingCreditRequests();
                 }
             }
             catch (Exception ex)

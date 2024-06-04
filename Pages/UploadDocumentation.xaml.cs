@@ -457,7 +457,7 @@ namespace SGSC.Pages
 							context.SaveChanges();
 							System.Windows.MessageBox.Show("Solicitud enviada a revisión correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
 
-							App.Current.MainFrame.Content = new ViewCreditRequests();
+							App.Current.MainFrame.Content = new ViewCapturedCreditRequests();
 						}
 					}
 					catch (Exception ex)

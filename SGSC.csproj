@@ -101,6 +101,9 @@
     <Compile Include="Colony.cs">
       <DependentUpon>Modelsgsc.tt</DependentUpon>
     </Compile>
+    <Compile Include="Components\CreditAnalystSidebar.xaml.cs">
+      <DependentUpon>CreditAnalystSidebar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\CreditRequestRegisterStepsFrame.xaml.cs">
       <DependentUpon>CreditRequestRegisterStepsFrame.xaml</DependentUpon>
     </Compile>
@@ -265,8 +268,11 @@
     <Compile Include="Pages\UploadDocumentation.xaml.cs">
       <DependentUpon>UploadDocumentation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ViewCreditRequests.xaml.cs">
-      <DependentUpon>ViewCreditRequests.xaml</DependentUpon>
+    <Compile Include="Pages\ViewPendingCreditRequests.xaml.cs">
+      <DependentUpon>ViewPendingCreditRequests.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ViewCapturedCreditRequests.xaml.cs">
+      <DependentUpon>ViewCapturedCreditRequests.xaml</DependentUpon>
     </Compile>
     <Compile Include="Payment.cs">
       <DependentUpon>Modelsgsc.tt</DependentUpon>
@@ -295,6 +301,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Components\AdminSidebar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Components\CreditAnalystSidebar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -475,7 +485,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\ViewCreditRequests.xaml">
+    <Page Include="Pages\ViewPendingCreditRequests.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\ViewCapturedCreditRequests.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

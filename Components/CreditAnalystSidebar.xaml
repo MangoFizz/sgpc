@@ -1,0 +1,32 @@
+﻿<Page x:Class="SGSC.Frames.CreditAnalystSidebar"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="108"
+      Background="White"
+      Title="CredirAdvisorSidebar">
+
+    <Grid>
+        <Image Source="../Images/coin-logo.png" Margin="10,8,12,594" RenderTransformOrigin="0.47,0.339"/>
+        <Image Source="../Images/line.png" Margin="97,-2,0,2"></Image>
+
+        <Rectangle Name="homeButtonBackgroundHover" Style="{StaticResource SideBarButtonBackgroundHover}"  Margin="16,215,19,430"/>
+        <Rectangle Name="homeButtonBackground" Style="{StaticResource SideBarButtonBackground}"  Margin="16,215,19,430"/>
+        <Button Style="{StaticResource Menubutton}" FontSize="15" HorizontalAlignment="Left" Margin="16,215,0,0" VerticalAlignment="Top" Width="72" Height="75" Click="HomeButton_Click" MouseEnter="HomeButton_MouseEnter" MouseLeave="HomeButton_MouseLeave">
+            <Image Source="../Images/icon-home-checked.png" Height="70" Width="50"/>
+        </Button>
+
+        <Rectangle Name="creditRequestButtonBackgroundHover" Style="{StaticResource SideBarButtonBackgroundHover}"  Margin="16,295,18,350"/>
+        <Rectangle Name="creditRequestButtonBackground" Style="{StaticResource SideBarButtonBackground}"  Margin="16,295,18,350"/>
+        <Button Name="btnCreditRequests" Style="{StaticResource Menubutton}" FontSize="15" HorizontalAlignment="Left" Margin="16,295,0,0" VerticalAlignment="Top" Width="72" Height="75" Click="btnCreditRequests_Click" MouseEnter="btnCreditRequests_MouseEnter" MouseLeave="btnCreditRequests_MouseLeave">
+            <Image Source="../Images/icon-find-customer.png" Height="70" Width="50" RenderTransformOrigin="0.5,0.643"/>
+        </Button>
+
+        <Rectangle Name="LogoutButtonBackgroundHover" Style="{StaticResource SideBarButtonBackgroundHover}"  Margin="16,629,19,16"/>
+        <Button Name="LogoutButton" ToolTip="Cerrar sesión" Style="{StaticResource Menubutton}" Opacity="0.43" FontSize="15" HorizontalAlignment="Left" Margin="16,630,0,0" VerticalAlignment="Top" Width="72" Height="75" Click="LogoutButton_Click" MouseEnter="LogoutButton_MouseEnter" MouseLeave="LogoutButton_MouseLeave" >
+            <Image Source="../Images/icon-logout.png" Height="70" Width="50"/>
+        </Button>
+    </Grid>
+</Page>

@@ -25,7 +25,7 @@ namespace SGSC.Pages
     /// <summary>
     /// Interaction logic for ViewCreditRequests.xaml
     /// </summary>
-    public partial class ViewCreditRequests : Page
+    public partial class ViewPendingCreditRequests : Page
     {
 		private class PendingRequestsTableEntry
 		{
@@ -47,10 +47,10 @@ namespace SGSC.Pages
 		private const int ItemsPerPage = 10;
 		private bool UpdatingPagination = false;
 
-		public ViewCreditRequests()
+		public ViewPendingCreditRequests()
 		{
 			InitializeComponent();
-			creditAdvisorSidebar.Content = new CreditAdvisorSidebar("creditRequest");
+			creditAdvisorSidebar.Content = new CreditAnalystSidebar("creditRequest");
 			GetPendingRequests();
 		}
 
@@ -63,8 +63,7 @@ namespace SGSC.Pages
 				using (var context = new sgscEntities())
 				{
 					var activeCreditsCount = context.CreditRequests
-						.Where(request => request.Status == (int)CreditRequest.RequestStatus.Captured || 
-							request.Status == (int)CreditRequest.RequestStatus.WaitingForCorrection)
+						.Where(request => request.Status == (int)CreditRequest.RequestStatus.Pending)
 						.Where(request => request.FileNumber.Contains(tbPageNumberFilter.Text))
 						.Where(request => (request.Customer.Name + " " + request.Customer.FirstSurname + " " + request.Customer.SecondSurname).Contains(tbCustomerNameFilter.Text))
 						.Count();
@@ -97,8 +96,7 @@ namespace SGSC.Pages
 				using (var context = new sgscEntities())
 				{
 					var activeCredits = context.CreditRequests
-						.Where(request => request.Status == (int)CreditRequest.RequestStatus.Captured ||
-							request.Status == (int)CreditRequest.RequestStatus.WaitingForCorrection)
+						.Where(request => request.Status == (int)CreditRequest.RequestStatus.Pending)
 						.Where(request => request.FileNumber.Contains(tbPageNumberFilter.Text))
 						.Where(request => (request.Customer.Name + " " + request.Customer.FirstSurname + " " + request.Customer.SecondSurname).Contains(tbCustomerNameFilter.Text))
 						.OrderBy(request => request.FileNumber)
@@ -165,42 +163,12 @@ namespace SGSC.Pages
 			GetPendingRequests();
 		}
 
-		private void btnDeleteRequest_Click(object sender, RoutedEventArgs e)
+		private void btnViewDetails_Click(object sender, RoutedEventArgs e)
 		{
 			var request = dgCredits.SelectedItem as PendingRequestsTableEntry;
 			if (request != null)
 			{
-				var result = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea eliminar la solicitud seleccionada?\n\n¡ESTA ACCIÓN ES IRREVERSIBLE!", "Eliminar empleado", System.Windows.Forms.MessageBoxButtons.YesNo);
-				if (result == System.Windows.Forms.DialogResult.Yes)
-				{
-					try
-					{
-						using (var context = new sgscEntities())
-						{
-							var requestToDelete = context.CreditRequests.Find(request.Id);
-							context.CreditRequests.Remove(requestToDelete);
-							context.SaveChanges();
-							GetPendingRequests();
-						}
-					}
-					catch (Exception ex)
-					{
-						MessageBox.Show("Error al intentar eliminar la solicitud seleccionada: " + ex.Message);
-					}
-				}
-			}
-			else
-			{
-				MessageBox.Show("Por favor, seleccione una solicitud de la tabla.");
-			}
-		}
-
-		private void btnModifyRequest_Click(object sender, RoutedEventArgs e)
-		{
-			var request = dgCredits.SelectedItem as PendingRequestsTableEntry;
-			if (request != null)
-			{
-				App.Current.MainFrame.Navigate(new RegisterCreditRequestPage(request.CustomerId, request.Id));
+				App.Current.MainFrame.Navigate(new CreditApplicationDetailsRequest(request.Id));
 			}
 			else
 			{

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using SGSC.Frames;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
@@ -9,7 +10,8 @@ namespace SGSC.Pages
         public HomePageCreditAnalyst()
         {
             InitializeComponent();
-        }
+			creditAdvisorSidebar.Content = new CreditAnalystSidebar("home");
+		}
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

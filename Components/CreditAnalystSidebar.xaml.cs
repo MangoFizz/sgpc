@@ -19,9 +19,9 @@ namespace SGSC.Frames
 	/// <summary>
 	/// Interaction logic for CredirAdvisorSidebar.xaml
 	/// </summary>
-	public partial class CreditAdvisorSidebar : Page
+	public partial class CreditAnalystSidebar : Page
 	{
-		public CreditAdvisorSidebar(string activeButton)
+		public CreditAnalystSidebar(string activeButton)
 		{
 			InitializeComponent();
 			SetActive(activeButton);
@@ -30,11 +30,9 @@ namespace SGSC.Frames
 		public void SetActive(string button)
 		{
 			homeButtonBackground.Visibility = Visibility.Hidden;
-			searchCustomerButtonBackground.Visibility = Visibility.Hidden;
 			creditRequestButtonBackground.Visibility = Visibility.Hidden;
 
 			homeButtonBackgroundHover.Visibility = Visibility.Hidden;
-			searchCustomerButtonBackgroundHover.Visibility = Visibility.Hidden;
 			creditRequestButtonBackgroundHover.Visibility = Visibility.Hidden;
 			LogoutButtonBackgroundHover.Visibility = Visibility.Hidden;
 
@@ -42,10 +40,6 @@ namespace SGSC.Frames
 			{
 				case "home":
 					homeButtonBackground.Visibility = Visibility.Visible;
-					break;
-
-				case "searchCustomer":
-					searchCustomerButtonBackground.Visibility = Visibility.Visible;
 					break;
 
 				case "creditRequest":
@@ -61,17 +55,12 @@ namespace SGSC.Frames
 
 		private void HomeButton_Click(object sender, RoutedEventArgs e)
 		{
-			App.Current.MainFrame.Content = new Pages.HomePageCreditAdvisor();
-		}
-
-		private void SearchCustomerButton_Click(object sender, RoutedEventArgs e)
-		{
-			App.Current.MainFrame.Content = new Pages.SearchCustomerPage();
+			App.Current.MainFrame.Content = new Pages.HomePageCreditAnalyst();
 		}
 
         private void btnCreditRequests_Click(object sender, RoutedEventArgs e)
         {
-            App.Current.MainFrame.Content = new Pages.ViewCapturedCreditRequests();
+            App.Current.MainFrame.Content = new Pages.ViewPendingCreditRequests();
         }
 
 		private void HomeButton_MouseEnter(object sender, MouseEventArgs e)
@@ -82,16 +71,6 @@ namespace SGSC.Frames
 		private void HomeButton_MouseLeave(object sender, MouseEventArgs e)
 		{
 			homeButtonBackgroundHover.Visibility = Visibility.Hidden;
-		}
-
-		private void SearchCustomerButton_MouseEnter(object sender, MouseEventArgs e)
-		{
-			searchCustomerButtonBackgroundHover.Visibility = Visibility.Visible;
-		}
-
-		private void SearchCustomerButton_MouseLeave(object sender, MouseEventArgs e)
-		{
-			searchCustomerButtonBackgroundHover.Visibility = Visibility.Hidden;
 		}
 
 		private void btnCreditRequests_MouseEnter(object sender, MouseEventArgs e)

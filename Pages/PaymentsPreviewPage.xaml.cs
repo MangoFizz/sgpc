@@ -31,14 +31,14 @@ namespace SGSC.Pages
 
 		private ObservableCollection<PaymentsTableEntry> Payments;
 
-		public PaymentsPreviewPage(int amount, double interestRate, int payments, CreditRequest.TimeIntervals interval)
+		public PaymentsPreviewPage(double amount, double interestRate, int payments, CreditRequest.TimeIntervals interval)
 		{
 			InitializeComponent();
 			StepsSidebarFrame.Content = new CreditRequestRegisterStepsFrame("PersonalInfo");
 			GeneratePaymentsTable(amount, interestRate, payments, interval);
 		}
 
-		private void GeneratePaymentsTable(int amount, double interestRate, int payments, CreditRequest.TimeIntervals interval)
+		private void GeneratePaymentsTable(double amount, double interestRate, int payments, CreditRequest.TimeIntervals interval)
 		{
 			var totalAmount = amount + (amount * (interestRate / 100));
 			var paymentAmount = totalAmount / payments;

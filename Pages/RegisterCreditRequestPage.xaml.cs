@@ -57,7 +57,7 @@ namespace SGSC.Pages
 				if (creditRequest != null)
                 {
 					tbPurpose.Text = creditRequest.Purpose;
-					tbAmount.Text = creditRequest.Amount.ToString();
+					tbAmount.Text = creditRequest.Amount.Value.ToString("0.00");
 				}
 			}
         }
@@ -259,7 +259,7 @@ namespace SGSC.Pages
             {
                 var promotion = cbCreditPromotions.SelectedItem as CreditPromotion;
                 var interval = (CreditRequest.TimeIntervals)promotion.Interval;
-                var amount = int.Parse(tbAmount.Text);
+                var amount = double.Parse(tbAmount.Text);
 				App.Current.MainFrame.Navigate(new PaymentsPreviewPage(amount, promotion.InterestRate, promotion.TimePeriod, interval));
 			}
 		}

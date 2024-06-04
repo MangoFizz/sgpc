@@ -75,7 +75,7 @@ namespace SGSC.Pages
 		private void btnReporte(object sender, RoutedEventArgs e)
 		{
             var mainFrame = App.Current.MainFrame;
-            var doc = new Pages.CreditApplicationDocuments(1);
+            var doc = new Pages.UploadDocumentation(1);
             mainFrame.Content = doc;
 
         }

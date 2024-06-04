@@ -72,7 +72,7 @@
                 <DataGridTextColumn Header="Nombre" Binding="{Binding FileName}" IsReadOnly="True" Width="*" FontFamily="{StaticResource FontNunitoSemiBold}" FontSize="16"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Style="{StaticResource ButtonStyleConfirm}" Content="Descargar carátula" FontSize="15" HorizontalAlignment="Left" Margin="624,282,0,0" VerticalAlignment="Top" Width="196" Height="36" Click="BtnClicDescargarCaratula"/>
+        <Button Style="{StaticResource ButtonStyleConfirm}" Content="Descargar carátula" FontSize="15" HorizontalAlignment="Left" Margin="624,282,0,0" VerticalAlignment="Top" Width="196" Height="36" Click="BtnClicDownloadDomicialization"/>
 
 
     </Grid>

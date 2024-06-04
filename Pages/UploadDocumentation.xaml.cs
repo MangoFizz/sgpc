@@ -61,6 +61,14 @@ namespace SGSC.Pages
         private string RelationshipReferenceTwo;
         private string PhoneReferenceTwo;
 
+        private string NameBankAccountTransfer;
+        private string InterbankCodeAccountTransfer;
+        private string NumberAccountTransfer;
+
+        private string NameDomicialization;
+        private string InterbankCodeDomicialization;
+        private string NumberAccountDomicialization;
+
         public UploadDocumentation(int idCreditRequest)
         {
             this.IdCreditRequest = idCreditRequest;
@@ -69,6 +77,60 @@ namespace SGSC.Pages
             GetPersonalInformation();
             GetWorkCenterInformation();
             ObtainPersonalReferences();
+            GetBankAccounts();
+        }
+
+        
+
+        private void GetBankAccounts()
+        {
+            using (sgscEntities db = new sgscEntities())
+            {
+                var transferenciaAccount = (from ba in db.BankAccounts
+                                            join cr in db.CreditRequests on ba.BankAccountId equals cr.TransferBankAccount_BankAccountId
+                                            join b in db.Banks on ba.BankBankId equals b.BankId
+                                            where cr.CreditRequestId == IdCreditRequest
+                                            select new
+                                            {
+                                                BankName = b.Name,
+                                                ba.InterbankCode,
+                                                ba.CardNumber
+                                            }).FirstOrDefault();
+
+                if (transferenciaAccount == null)
+                {
+                    ToastNotification notification = new ToastNotification("No se encontró la solicitud especificada o no hay cuenta de transferencia asociada.", "Error");
+                }
+                else
+                {
+                    NameBankAccountTransfer = transferenciaAccount.BankName;
+                    InterbankCodeAccountTransfer = transferenciaAccount.InterbankCode;
+                    NumberAccountTransfer = transferenciaAccount.CardNumber;
+                }
+
+                var domicializationAccount = (from ba in db.BankAccounts
+                                              join cr in db.CreditRequests on ba.BankAccountId equals cr.DirectDebitBankAccount_BankAccountId
+                                              join b in db.Banks on ba.BankBankId
+                                              equals b.BankId
+                                              where cr.CreditRequestId == IdCreditRequest
+                                              select new
+                                              {
+                                                  BankName = b.Name,
+                                                  ba.InterbankCode,
+                                                  ba.CardNumber
+                                              }).FirstOrDefault();
+
+                if (domicializationAccount == null)
+                {
+                    ToastNotification notification = new ToastNotification("No se encontró la solicitud especificada o no hay cuenta de domiciliación asociada.", "Error");
+                }
+                else
+                {
+                    NameDomicialization = domicializationAccount.BankName;
+                    InterbankCodeDomicialization = domicializationAccount.InterbankCode;
+                    NumberAccountDomicialization = domicializationAccount.CardNumber;
+                }
+            }
         }
 
         private void GetRequestInfo()
@@ -728,5 +790,52 @@ namespace SGSC.Pages
                 System.Windows.MessageBox.Show("Por favor, selecciona una fila para eliminar.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void BtnClicDownloadDomicialization(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "PDF file|*.pdf",
+                Title = "Guardar PDF",
+                FileName = "Solicitud_de_apertura_de_crédito.pdf"
+            };
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                GeneratePdfDomicialization(saveFileDialog.FileName); // Pasa la ruta seleccionada por el usuario
+            }
+        }
+
+        public void GeneratePdfDomicialization(string outputPath)
+        {
+            Document doc = new Document(PageSize.A4);
+            PdfWriter.GetInstance(doc, new FileStream(outputPath, FileMode.Create));
+
+            doc.Open();
+
+            PdfPTable table = new PdfPTable(3);
+            table.WidthPercentage = 100;
+
+            table.AddCell("Nombre del banco:");
+            table.AddCell("Clabe:");
+            table.AddCell("Número de tarjeta:");
+
+            table.AddCell(NameBankAccountTransfer);
+            table.AddCell(InterbankCodeAccountTransfer);
+            table.AddCell(NumberAccountTransfer);
+
+            table.AddCell("Nombre del banco:");
+            table.AddCell("Clabe:");
+            table.AddCell("Número de tarjeta:");
+
+            table.AddCell(NameDomicialization);
+            table.AddCell(InterbankCodeDomicialization);
+            table.AddCell(NumberAccountDomicialization);
+
+            doc.Add(table);
+
+            doc.Close();
+        }
+
     }
 }

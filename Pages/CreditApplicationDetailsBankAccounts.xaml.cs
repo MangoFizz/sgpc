@@ -44,9 +44,8 @@ namespace SGSC.Pages
         {
             using (sgscEntities db = new sgscEntities())
             {
-                // Obtener cuenta de transferencia
-                /*var transferenciaAccount = (from ba in db.BankAccounts
-                                            join cr in db.CreditRequests on ba.BankAccountId equals cr.TransferBankAccount.BankAccountId
+                var transferenciaAccount = (from ba in db.BankAccounts
+                                            join cr in db.CreditRequests on ba.BankAccountId equals cr.TransferBankAccount_BankAccountId
                                             join b in db.Banks on ba.BankBankId equals b.BankId
                                             where cr.CreditRequestId == requestId
                                             select new
@@ -54,9 +53,9 @@ namespace SGSC.Pages
                                                 BankName = b.Name,
                                                 ba.InterbankCode,
                                                 ba.CardNumber
-                                            }).FirstOrDefault();*/
+                                            }).FirstOrDefault();
 
-                /*if (transferenciaAccount == null)
+                if (transferenciaAccount == null)
                 {
                     ToastNotification notification = new ToastNotification("No se encontró la solicitud especificada o no hay cuenta de transferencia asociada.", "Error");
                 }
@@ -68,7 +67,7 @@ namespace SGSC.Pages
                 }
                 
                 var domicializationAccount = (from ba in db.BankAccounts
-                                              join cr in db.CreditRequests on ba.BankAccountId equals cr.DirectDebitBankAccounts.BankAccountId
+                                              join cr in db.CreditRequests on ba.BankAccountId equals cr.DirectDebitBankAccount_BankAccountId
                                               join b in db.Banks on ba.BankBankId
                                               equals b.BankId
                                               where cr.CreditRequestId == requestId
@@ -88,7 +87,7 @@ namespace SGSC.Pages
                     lbNameBankAccountDomicialization.Content = domicializationAccount.BankName;
                     lbClabeAccountDomicialization.Content = domicializationAccount.InterbankCode;
                     lbTargetNumberAccountDomicialization.Content = domicializationAccount.CardNumber;
-                } */
+                } 
             }
         }
 

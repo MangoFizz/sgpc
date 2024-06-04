@@ -26,6 +26,7 @@ namespace SGSC.Pages
     {
         private class ActiveCredit
         {
+            public int Id { get; set; }
             public string CreditPageNumber { get; set; }
             public string CustomerFullName { get; set; }
             public string CreditPeriod { get; set; }
@@ -108,12 +109,13 @@ namespace SGSC.Pages
                     {
                         ActiveCredits.Add(new ActiveCredit
                         {
+                            Id = item.CreditRequestId,
                             CreditPageNumber = item.FileNumber,
                             CustomerFullName = item.Customer.FullName,
                             CreditPeriod = item.TimePeriod.Value.ToString(),
                             CreditAmount = $"$ {item.Amount}",
-                            CreditPendingDebt = "$ 0",
-                            CreditEfficiency = "0%"
+                            CreditPendingDebt = $"$ {item.Amount}",
+							CreditEfficiency = "0%"
                         });
                     }
                     dgCredits.ItemsSource = ActiveCredits;
@@ -171,6 +173,24 @@ namespace SGSC.Pages
 		private void btnGeneratePaymentLayout_Click(object sender, RoutedEventArgs e)
 		{
             App.Current.MainFrame.Navigate(new ChooseActiveCreditsPage());
+		}
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void btnEfficienciesLayout_Click(object sender, RoutedEventArgs e)
+		{
+            var credit = dgCredits.SelectedItem as ActiveCredit;
+            if (credit != null)
+            {
+				App.Current.MainFrame.Navigate(new CollectionEfficienciesPage(credit.Id));
+			}
+			else
+            {
+				MessageBox.Show("Por favor, seleccione un crédito de la tabla.");
+			}
 		}
 	}
 }

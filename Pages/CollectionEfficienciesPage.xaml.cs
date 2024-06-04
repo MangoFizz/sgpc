@@ -171,8 +171,8 @@ namespace SGSC.Pages
                     FileNumber = paymentNumber.ToString(), // Asignar número de pago
                     PaymentDate = existingPayment.PaymentDate,
                     Amount = existingPayment.Amount,
-                    AmountCharged = existingPayment.AmountCharged,
-                    Efficiency = existingPayment.Efficiency,
+                    AmountCharged = existingPayment.AmountCharged == -1 ? null : existingPayment.AmountCharged,
+					Efficiency = existingPayment.Efficiency,
                     IsTotalRow = false
                 };
 

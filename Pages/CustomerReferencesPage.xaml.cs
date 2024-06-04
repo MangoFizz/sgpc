@@ -97,7 +97,7 @@ namespace SGSC.Pages
                 {
                     try
                     {
-                        Contacts contact1 = new Contacts();
+                        Contact contact1 = new Contact();
                         contact1.Name = tbName.Text;
                         contact1.FirstSurname = tbFirstSurname.Text;
                         contact1.SecondSurname = tbSecondSurname.Text;
@@ -110,7 +110,7 @@ namespace SGSC.Pages
                         }
                         db.Contacts.AddOrUpdate(contact1);
 
-                        Contacts contact2 = new Contacts();
+						Contact contact2 = new Contact();
                         contact2.Name = tbName1.Text;
                         contact2.FirstSurname = tbFirstSurname2.Text;
                         contact2.SecondSurname = tbSecondSurname2.Text;

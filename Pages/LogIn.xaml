@@ -30,7 +30,6 @@
                 <TextBlock Name="tblPasswordError" HorizontalAlignment="Center" Margin="0,260,0,0" VerticalAlignment="Top" TextAlignment="Right" Width="345" Height="22" Foreground="#FFCE0000" FontStyle="Italic"><Run Language="es-mx" Text="Esto es un mensaje de error."/></TextBlock>
                 <Label Content="¿Olvidaste tu contraseña? Recupérala aquí" HorizontalAlignment="Center" Margin="0,300,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#FF0031A7" MouseLeftButtonUp="Label_MouseLeftButtonUp" FontFamily="FontNunitoBold"/>
                 <Button x:Name="btnLogIn" Style="{StaticResource ButtonStyleDanger}" Content="Iniciar sesión" HorizontalAlignment="Center" VerticalAlignment="Top" Height="34" Width="144" Margin="0,348,0,0" FontSize="18" Click="btnLogIn_Click"/>
-                <Button x:Name="btnLogIn_Copiar" Style="{StaticResource ButtonStyleDanger}" Content="Iniciar sesión" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Width="144" Margin="-240,271,0,0" FontSize="18" Click="btnReporte"/>
             </Grid>
         </Border>
 

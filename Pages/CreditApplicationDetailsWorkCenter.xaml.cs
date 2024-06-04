@@ -34,7 +34,7 @@ namespace SGSC.Pages
             using (sgscEntities db = new sgscEntities())
             {
                 var workCenterQuery = (from cr in db.CreditRequests
-                                       join wc in db.WorkCenters on cr.CustomerId equals wc.Customers.CustomerId
+                                       join wc in db.WorkCenters on cr.CustomerId equals wc.Customer.CustomerId
                                        where cr.CreditRequestId == requestId
                                        select new
                                        {

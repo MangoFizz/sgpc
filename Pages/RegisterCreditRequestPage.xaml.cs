@@ -57,7 +57,7 @@ namespace SGSC.Pages
 				if (creditRequest != null)
                 {
 					tbPurpose.Text = creditRequest.Purpose;
-					tbAmount.Text = creditRequest.Amount.Value.ToString("0.00");
+					tbAmount.Text = creditRequest.Amount.Value.ToString("0");
 				}
 			}
         }
@@ -180,7 +180,7 @@ namespace SGSC.Pages
                 var creditRequest = new CreditRequest();
                 var filenumber = "CR" + DateTime.Now.ToString("yyyyMMddHHmmss");
                 creditRequest.FileNumber = filenumber;
-                creditRequest.Amount = this.totalAmount;
+                creditRequest.Amount = int.Parse(tbAmount.Text);
                 creditRequest.Status = (int)CreditRequest.RequestStatus.Captured;
                 creditRequest.TimePeriod = selectedPromotion.TimePeriod;
                 creditRequest.Purpose = tbPurpose.Text;
@@ -215,7 +215,7 @@ namespace SGSC.Pages
 				if (creditRequest != null)
                 {
 					var selectedPromotion = (CreditPromotion)cbCreditPromotions.SelectedItem;
-					creditRequest.Amount = this.totalAmount;
+					creditRequest.Amount = int.Parse(tbAmount.Text);
 					creditRequest.TimePeriod = selectedPromotion.TimePeriod;
 					creditRequest.Purpose = tbPurpose.Text;
 					creditRequest.InterestRate = selectedPromotion.InterestRate;

@@ -311,27 +311,17 @@ namespace SGSC.Pages
 		{
 			using (sgscEntities db = new sgscEntities())
 			{
-				var workCenterQuery = (from cr in db.CreditRequests
-									   join wc in db.WorkCenters on cr.CustomerId equals wc.Customer.CustomerId
-									   where cr.CreditRequestId == IdCreditRequest
-									   select new
-									   {
-										   WorkCenterName = wc.CenterName,
-										   PhoneNumber = wc.PhoneNumber,
-										   Street = wc.Street,
-										   Colony = wc.Colony,
-										   InnerNumber = wc.InnerNumber,
-										   OutsideNumber = wc.OutsideNumber,
-										   ZipCode = wc.ZipCode,
-										   FileNumber = cr.FileNumber
-									   }).FirstOrDefault();
+				var request = db.CreditRequests.Find(IdCreditRequest);
+				var workCenterQuery = db.WorkCenters.Where(wc => wc.CustomerId == request.CustomerId).FirstOrDefault();
+
+
 				if (workCenterQuery == null)
 				{
 					ToastNotification notification = new ToastNotification("No se ha encontrado la solicitud, inténtelo más tarde", "Error");
 					return;
 				}
 
-				WorkCenterName = workCenterQuery.WorkCenterName;
+				WorkCenterName = workCenterQuery.CenterName;
 				PhoneNumberWorkCenter = workCenterQuery.PhoneNumber;
 				InnerNumberWorkCenter = workCenterQuery.InnerNumber.ToString();
 				OutsideNumberWorkCenter = workCenterQuery.OutsideNumber.ToString();
@@ -474,7 +464,7 @@ namespace SGSC.Pages
 			{
 				Filter = "PDF file|*.pdf",
 				Title = "Guardar PDF",
-				FileName = "Solicitud_de_apertura_de_crédito.pdf"
+				FileName = "solicitud.pdf"
 			};
 
 			if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -485,124 +475,116 @@ namespace SGSC.Pages
 
 		public void GeneratePdfRequest(string outputPath)
 		{
+			var font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10);
+
 			var doc = new ReportDocument(PageSize.A4);
-			PdfWriter.GetInstance(doc, new FileStream(@outputPath, FileMode.Create));
+			PdfWriter.GetInstance(doc, new FileStream(outputPath, FileMode.Create));
 
 			doc.Open();
+
+			Paragraph title = new Paragraph("Solicitud de apertura de crédito", new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 18, iTextSharp.text.Font.BOLD));
+			title.Alignment = Element.ALIGN_CENTER;
+			doc.Add(title);
+
+			doc.Add(new Paragraph("\n"));
 
 			PdfPTable table = new PdfPTable(3);
 			table.WidthPercentage = 100;
 
-			table.AddCell("ID Solicitud");
-			table.AddCell("Nombre del Vendedor");
-			table.AddCell("Número de Solicitud");
+			BaseColor sectionColor = new BaseColor(96, 138, 211);
 
-			table.AddCell(IdCreditRequest.ToString());
-			table.AddCell(VendorName);
-			table.AddCell(RequestNumber);
+			void AddSectionHeader(string sectionTitle)
+			{
+				PdfPCell sectionCell = new PdfPCell(new Phrase(sectionTitle, new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD)));
+				sectionCell.Colspan = 3;
+				sectionCell.BackgroundColor = sectionColor;
+				sectionCell.HorizontalAlignment = Element.ALIGN_CENTER;
+				table.AddCell(sectionCell);
+			}
 
-			table.AddCell("Fecha de Creación");
-			table.AddCell("Cantidad Solicitada");
-			table.AddCell("Tasa de Interés");
+			void AddDataRow(params string[] cellValues)
+			{
+				foreach (var cellValue in cellValues)
+				{
+					PdfPCell cell;
+					if (cellValue.Contains("Propósito") || cellValue.Contains("Período de Tiempo") || cellValue.Contains("Nombre") ||
+						cellValue.Contains("Fecha de Creación") || cellValue.Contains("Cantidad Solicitada") || cellValue.Contains("Tasa de Interés") ||
+						cellValue.Contains("Primer Apellido") || cellValue.Contains("Segundo Apellido") || cellValue.Contains("Fecha de Nacimiento") ||
+						cellValue.Contains("Género") || cellValue.Contains("CURP") || cellValue.Contains("Email") ||
+						cellValue.Contains("Calle") || cellValue.Contains("Número Exterior") || cellValue.Contains("Número Interior") ||
+						cellValue.Contains("Estado") || cellValue.Contains("Colonia") || cellValue.Contains("Código Postal") ||
+						cellValue.Contains("Tipo de Dirección") || cellValue.Contains("Teléfono 1") || cellValue.Contains("Teléfono 2") ||
+						cellValue.Contains("Nombre del Centro Laboral") || cellValue.Contains("Teléfono del Centro Laboral") ||
+						cellValue.Contains("Número Interior del Centro Laboral") || cellValue.Contains("Número Exterior del Centro Laboral") ||
+						cellValue.Contains("Colonia del Centro Laboral") || cellValue.Contains("Calle del Centro Laboral") ||
+						cellValue.Contains("Código Postal del Centro Laboral") || cellValue.Contains("Nombre Referencia 1") ||
+						cellValue.Contains("Parentesco Referencia 1") || cellValue.Contains("Teléfono Referencia 1") ||
+						cellValue.Contains("Nombre Referencia 2") || cellValue.Contains("Parentesco Referencia 2") || cellValue.Contains("Teléfono Referencia 2"))
+					{
+						cell = new PdfPCell(new Phrase(cellValue, new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10, iTextSharp.text.Font.BOLD)));
+					}
+					else
+					{
+						cell = new PdfPCell(new Phrase(cellValue, new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10)));
+					}
+					table.AddCell(cell);
+				}
+			}
 
-			table.AddCell(CreationDate);
-			table.AddCell(RequestedAmountNumber);
-			table.AddCell(InterestRate);
+			AddSectionHeader("Solicitud");
+			AddDataRow("ID Solicitud", "Nombre del Vendedor", "Número de Solicitud");
+			AddDataRow(IdCreditRequest.ToString(), VendorName, RequestNumber);
+			AddDataRow("Fecha de Creación", "Cantidad Solicitada", "Tasa de Interés");
+			AddDataRow(CreationDate, RequestedAmountNumber, InterestRate);
 
-			table.AddCell("Propósito");
-			table.AddCell("Período de Tiempo");
-			table.AddCell("Nombre");
+			AddSectionHeader("Datos Personales");
+			AddDataRow("Propósito", "Período de Tiempo", "Nombre");
+			AddDataRow(Purpose, TimePeriod, Name);
+			AddDataRow("Primer Apellido", "Segundo Apellido", "Fecha de Nacimiento");
+			AddDataRow(FirstSurname, SecondSurname, DateOfBirthay);
+			AddDataRow("Género", "CURP", "Email");
+			AddDataRow(Gender, Curp, Email);
 
-			table.AddCell(Purpose);
-			table.AddCell(TimePeriod);
-			table.AddCell(Name);
+			AddSectionHeader("Domicilio");
+			AddDataRow("Calle", "Número Exterior", "Número Interior");
+			if(InternalNumber == null)
+			{
+				InternalNumber = "";
+			}
+			AddDataRow(Street, ExternalNumber, InternalNumber);
+			AddDataRow("Estado", "Colonia", "Código Postal");
+			AddDataRow(State, Colony, ZipCode);
+			AddDataRow("Tipo de Dirección", "Teléfono 1", "Teléfono 2");
+			AddDataRow(AddressType, PhoneOne, PhoneTwo);
 
-			table.AddCell("Primer Apellido");
-			table.AddCell("Segundo Apellido");
-			table.AddCell("Fecha de Nacimiento");
+			AddSectionHeader("Información Laboral");
+			AddDataRow("Nombre del Centro Laboral", "Teléfono del Centro Laboral", "");
+			AddDataRow(WorkCenterName, PhoneNumberWorkCenter, "");
+			AddDataRow("Número Interior del Centro Laboral", "Número Exterior del Centro Laboral", "Colonia del Centro Laboral");
+			AddDataRow(InnerNumberWorkCenter, OutsideNumberWorkCenter, ColonyWorkCenter);
+			AddDataRow("Calle del Centro Laboral", "Código Postal del Centro Laboral", "");
+			AddDataRow(StreetWorkCenter, ZipCodeWorkCenter, "");
 
-			table.AddCell(FirstSurname);
-			table.AddCell(SecondSurname);
-			table.AddCell(DateOfBirthay);
-
-			table.AddCell("Género");
-			table.AddCell("CURP");
-			table.AddCell("Email");
-
-			table.AddCell(Gender);
-			table.AddCell(Curp);
-			table.AddCell(Email);
-
-			table.AddCell("Calle");
-			table.AddCell("Número Exterior");
-			table.AddCell("Número Interior");
-
-			table.AddCell(Street);
-			table.AddCell(ExternalNumber);
-			table.AddCell(InternalNumber);
-
-			table.AddCell("Estado");
-			table.AddCell("Colonia");
-			table.AddCell("Código Postal");
-
-			table.AddCell(State);
-			table.AddCell(Colony);
-			table.AddCell(ZipCode);
-
-			table.AddCell("Tipo de Dirección");
-			table.AddCell("Teléfono 1");
-			table.AddCell("Teléfono 2");
-
-			table.AddCell(AddressType);
-			table.AddCell(PhoneOne);
-			table.AddCell(PhoneTwo);
-
-			table.AddCell("Estado Civil");
-			table.AddCell("Nombre del Centro Laboral");
-			table.AddCell("Teléfono del Centro Laboral");
-
-			table.AddCell(MaritalStatus);
-			table.AddCell(WorkCenterName);
-			table.AddCell(PhoneNumberWorkCenter);
-
-			table.AddCell("Número Interior del Centro Laboral");
-			table.AddCell("Número Exterior del Centro Laboral");
-			table.AddCell("Colonia del Centro Laboral");
-
-			table.AddCell(InnerNumberWorkCenter);
-			table.AddCell(OutsideNumberWorkCenter);
-			table.AddCell(ColonyWorkCenter);
-
-			table.AddCell("Calle del Centro Laboral");
-			table.AddCell("Código Postal del Centro Laboral");
-			table.AddCell("");
-
-			table.AddCell(StreetWorkCenter);
-			table.AddCell(ZipCodeWorkCenter);
-			table.AddCell("");
-
-			table.AddCell("Nombre Referencia 1");
-			table.AddCell("Parentesco Referencia 1");
-			table.AddCell("Teléfono Referencia 1");
-
-			table.AddCell(NameReferenceOne);
-			table.AddCell(RelationshipReferenceOne);
-			table.AddCell(PhoneReferenceOne);
-
-			table.AddCell("Nombre Referencia 2");
-			table.AddCell("Parentesco Referencia 2");
-			table.AddCell("Teléfono Referencia 2");
-
-			table.AddCell(NameReferenceTwo);
-			table.AddCell(RelationshipReferenceTwo);
-			table.AddCell(PhoneReferenceTwo);
+			AddSectionHeader("Referencias Personales");
+			AddDataRow("Nombre Referencia 1", "Parentesco Referencia 1", "Teléfono Referencia 1");
+			AddDataRow(NameReferenceOne, RelationshipReferenceOne, PhoneReferenceOne);
+			AddDataRow("Nombre Referencia 2", "Parentesco Referencia 2", "Teléfono Referencia 2");
+			AddDataRow(NameReferenceTwo, RelationshipReferenceTwo, PhoneReferenceTwo);
 
 			doc.Add(table);
 
+			doc.Add(new Paragraph("\n"));
+			doc.Add(new Paragraph("Yo, " + VendorName + " , en mi capacidad como asesor financiero autorizado por SGSC, certifico que he revisado y verificado la información proporcionada en esta solicitud de crédito en nombre de mi cliente," + Name + " " + FirstSurname + " " + SecondSurname +
+				" Declaro que, según mi leal saber y entender, la información proporcionada es precisa y completa en todos los aspectos relevantes.", font));
+
+			doc.Add(new Paragraph("\n"));
+			doc.Add(new Paragraph(""));
+			doc.Add(new Paragraph("Firma Asesor de Crédito"));
+			doc.Add(new Paragraph("\n"));
+			doc.Add(new Paragraph(""));
+			doc.Add(new Paragraph("Firma Solicitante"));
 			doc.Close();
 		}
-
-
 
 		private void BtnClicDescargarCaratula(object sender, RoutedEventArgs e)
 		{
@@ -819,7 +801,7 @@ namespace SGSC.Pages
 			{
 				Filter = "PDF file|*.pdf",
 				Title = "Guardar PDF",
-				FileName = "Solicitud_de_apertura_de_crédito.pdf"
+				FileName = "domiciliacion.pdf"
 			};
 
 			if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -830,33 +812,66 @@ namespace SGSC.Pages
 
 		public void GeneratePdfDomicialization(string outputPath)
 		{
+			var font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10);
 			var doc = new ReportDocument(PageSize.A4);
-			PdfWriter.GetInstance(doc, new FileStream(@outputPath, FileMode.Create));
+			PdfWriter.GetInstance(doc, new FileStream(outputPath, FileMode.Create));
 
 			doc.Open();
+			BaseColor sectionColor = new BaseColor(96, 138, 211);
 
-			PdfPTable table = new PdfPTable(3);
-			table.WidthPercentage = 100;
+			Paragraph title = new Paragraph("Autorización para domiciliación de pagos", new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 14, iTextSharp.text.Font.BOLD));
+			title.Alignment = Element.ALIGN_CENTER;
+			doc.Add(title);
 
-			table.AddCell("Nombre del banco:");
-			table.AddCell("Clabe:");
-			table.AddCell("Número de tarjeta:");
+			doc.Add(new Paragraph("Fecha:" + CreationDate, font));
 
-			table.AddCell(NameBankAccountTransfer);
-			table.AddCell(InterbankCodeAccountTransfer);
-			table.AddCell(NumberAccountTransfer);
+			doc.Add(new Paragraph("Solicito y autorizo que con base en la información que se indica en esta comunicación se realicen cargos periódicos en mi cuenta conforme a lo siguiente:", font));
+			doc.Add(new Paragraph("\n"));
+			doc.Add(new Paragraph("1. Nombre del proveedor del crédito que pretende pagarse:", font));
+			doc.Add(new Paragraph("2. Crédito a pagar: Contrato de Apertura de crédito", font));
+			doc.Add(new Paragraph("3. Periocidad del pago (Facturación): " + TimePeriod, font));
+			doc.Add(new Paragraph("4. Nombre del banco que lleva la cuenta de depósito a la vista o de ahorro en la que se realizará el cargo", font));
+			doc.Add(new Paragraph("5. Cualquiera de los datos de identificación son los siguientes:", font));
 
-			table.AddCell("Nombre del banco:");
-			table.AddCell("Clabe:");
-			table.AddCell("Número de tarjeta:");
+			doc.Add(new Paragraph("Cuenta de transferencia", new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD)));
+			PdfPTable transferTable = new PdfPTable(3);
+			transferTable.WidthPercentage = 100;
+			transferTable.AddCell(GetCellWithColor("Nombre del banco", sectionColor, font));
+			transferTable.AddCell(GetCellWithColor("Clabe", sectionColor, font));
+			transferTable.AddCell(GetCellWithColor("Número de tarjeta", sectionColor, font));
+			transferTable.AddCell(NameBankAccountTransfer);
+			transferTable.AddCell(InterbankCodeAccountTransfer);
+			transferTable.AddCell(NumberAccountTransfer);
+			doc.Add(transferTable);
 
-			table.AddCell(NameDomicialization);
-			table.AddCell(InterbankCodeDomicialization);
-			table.AddCell(NumberAccountDomicialization);
+			doc.Add(new Paragraph("\n"));
 
-			doc.Add(table);
+			doc.Add(new Paragraph("Cuenta de domicialización", new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD)));
+			PdfPTable domicializationTable = new PdfPTable(3);
+			domicializationTable.WidthPercentage = 100;
+			domicializationTable.AddCell(GetCellWithColor("Nombre del banco", sectionColor, font));
+			domicializationTable.AddCell(GetCellWithColor("Clabe", sectionColor, font));
+			domicializationTable.AddCell(GetCellWithColor("Número de tarjeta", sectionColor, font));
+			domicializationTable.AddCell(NameDomicialization);
+			domicializationTable.AddCell(InterbankCodeDomicialization);
+			domicializationTable.AddCell(NumberAccountDomicialization);
+			doc.Add(domicializationTable);
+
+			doc.Add(new Paragraph("\n"));
+			doc.Add(new Paragraph("Estoy enterado de que en cualquier momento podré solicitar la cancelación de la presente domiciliación sin costo a mi cargo.", font));
+			doc.Add(new Paragraph("\nAtentamente", font));
+			doc.Add(new Paragraph("", font));
+			doc.Add(new Paragraph("Nombre del titular de la cuenta", font));
+			doc.Add(new Paragraph("\n__", font));
+			doc.Add(new Paragraph("Firma del titular de la cuenta", font));
 
 			doc.Close();
+		}
+		private PdfPCell GetCellWithColor(string content, BaseColor color, iTextSharp.text.Font font)
+		{
+			PdfPCell cell = new PdfPCell(new Phrase(content, font));
+			cell.BackgroundColor = color;
+			return cell;
 		}
 
 		private void btnCancel_Click(object sender, RoutedEventArgs e)

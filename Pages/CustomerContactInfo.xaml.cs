@@ -67,7 +67,7 @@ namespace SGSC.Pages
             }
         }
 
-        private void btnSaveContactInfo_Click(object sender, RoutedEventArgs e)
+        private void btnContinue_Click(object sender, RoutedEventArgs e)
         {
             bool valid = true;
 

@@ -48,7 +48,7 @@ namespace SGSC.Pages
 			cbAddressType.Items.Add("Familiar");
 		}
 
-        private void AddAddressInformation(object sender, RoutedEventArgs e)
+        private void btnContinue_Click(object sender, RoutedEventArgs e)
         {
             try
             {

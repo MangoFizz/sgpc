@@ -148,7 +148,7 @@ namespace SGSC.Pages
             }
         }
 
-        private void CancelRegister(object sender, RoutedEventArgs e)
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             var result = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea cancelar el registro?\nSi decide cancelarlo puede retomarlo más tarde.", "Cancelar registro", System.Windows.Forms.MessageBoxButtons.YesNo);
             if (result == System.Windows.Forms.DialogResult.Yes)

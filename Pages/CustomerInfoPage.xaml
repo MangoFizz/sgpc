@@ -233,9 +233,9 @@
 
         <Label Content="* Campos obligatorios" Foreground="Red" FontFamily="{StaticResource FontNunito}" FontStyle="Italic"  HorizontalAlignment="Left" Margin="286,631,0,0" VerticalAlignment="Top" Width="206" FontSize="18"/>
 
-        <Button Style="{StaticResource ButtonStyleCancel}" Content="Regresar" FontSize="22" HorizontalAlignment="Left" Margin="844,644,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnBack_Click" />
-        <Button Style="{StaticResource ButtonStyleDanger}" Content="Cancelar" FontSize="22" HorizontalAlignment="Left" Margin="641,644,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnCancel_Click" />
-        <Button Style="{StaticResource ButtonStyleConfirm}" Content="Continuar" FontSize="22" HorizontalAlignment="Left" Margin="1048,644,0,0" VerticalAlignment="Top" Width="180" Height="54" Click="btnContinue_Click" />
+        <Button Style="{StaticResource ButtonStyleDanger}" Content="Cancelar" FontSize="22" HorizontalAlignment="Left" Margin="1048,644,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnCancel_Click" />
+        <Button Style="{StaticResource ButtonStyleCancel}" Content="Regresar" FontSize="22" HorizontalAlignment="Left" Margin="641,644,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnBack_Click" />
+        <Button Style="{StaticResource ButtonStyleConfirm}" Content="Continuar" FontSize="22" HorizontalAlignment="Left" Margin="844,644,0,0" VerticalAlignment="Top" Width="180" Height="54" Click="btnContinue_Click" />
     </Grid>
 
 </Page>

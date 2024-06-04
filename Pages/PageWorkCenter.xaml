@@ -58,9 +58,9 @@
 
         <TextBox x:Name="txtZipCode" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="948,473,185,202" RenderTransformOrigin="0.5,0.5"/>
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Código postal" HorizontalAlignment="Left" Margin="948,443,0,0" VerticalAlignment="Top" Height="30" RenderTransformOrigin="0.496,0.2" Width="147"/>
-        <Button Style="{StaticResource ButtonStyleDanger}" Content="Cancelar" FontSize="22" HorizontalAlignment="Left" Margin="641,614,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="CancelRegister" />
-        <Button Style="{StaticResource ButtonStyleCancel}" Content="Regresar" FontSize="22" HorizontalAlignment="Left" Margin="844,614,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnBack_Click" />
-        <Button Style="{StaticResource ButtonStyleConfirm}" Content="Continuar" FontSize="22" HorizontalAlignment="Left" Margin="1048,614,0,0" VerticalAlignment="Top" Width="180" Height="54" Click="BtnClicContinue" />
+        <Button Style="{StaticResource ButtonStyleDanger}" Content="Cancelar" FontSize="22" HorizontalAlignment="Left" Margin="1048,644,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnCancel_Click" />
+        <Button Style="{StaticResource ButtonStyleCancel}" Content="Regresar" FontSize="22" HorizontalAlignment="Left" Margin="641,644,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnBack_Click" />
+        <Button Style="{StaticResource ButtonStyleConfirm}" Content="Continuar" FontSize="22" HorizontalAlignment="Left" Margin="844,644,0,0" VerticalAlignment="Top" Width="180" Height="54" Click="btnContinue_Click" />
 
         <Label FontFamily="{StaticResource FontNunitoSemiBold}" FontSize="30" Foreground="#343434" Content="Domicilio" HorizontalAlignment="Left" Margin="308,265,0,0" VerticalAlignment="Top" Height="55" Width="161"/>
         <Label Content="* Campos obligatorios" Foreground="Red" FontFamily="{StaticResource FontNunito}" FontStyle="Italic"  HorizontalAlignment="Left" Margin="286,591,0,0" VerticalAlignment="Top" Width="206" FontSize="18"/>

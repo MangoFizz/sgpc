@@ -33,9 +33,9 @@
         <Frame Name="StepsSidebarFrame" NavigationUIVisibility="Hidden" Margin="27,138,1009,28"/>
         <Viewbox Stretch="Fill">
             <Grid Height="490" Width="950">
-                <Button x:Name="btnBack" Style="{StaticResource ButtonStyleDanger}" Content="Cancelar" FontSize="15" HorizontalAlignment="Left" Margin="469,426,0,0" VerticalAlignment="Top" Height="39" Width="130" Click="CancelRegister"/>
-                <Button x:Name="btnCancel" Style="{StaticResource ButtonStyleCancel}" Content="Regresar" FontSize="15" HorizontalAlignment="Left" Margin="613,426,0,0" VerticalAlignment="Top" Height="39" Width="130" Click="btnBack_Click"/>
-                <Button x:Name="btnContinue" Style="{StaticResource ButtonStyleConfirm}" Content="Continuar" FontSize="15" HorizontalAlignment="Left" Margin="756,426,0,0" VerticalAlignment="Top" Width="130" Height="38" Click="btnContinue_Click"/>
+                <Button Style="{StaticResource ButtonStyleDanger}" Content="Cancelar" FontSize="22" HorizontalAlignment="Left" Margin="1048,644,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnCancel_Click" />
+                <Button Style="{StaticResource ButtonStyleCancel}" Content="Regresar" FontSize="22" HorizontalAlignment="Left" Margin="641,644,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnBack_Click" />
+                <Button Style="{StaticResource ButtonStyleConfirm}" Content="Continuar" FontSize="22" HorizontalAlignment="Left" Margin="844,644,0,0" VerticalAlignment="Top" Width="180" Height="54" Click="btnContinue_Click" />
                 <Rectangle Style="{StaticResource RoundedRectangleStyle}" Margin="270,109,29,243"/>
                 <TextBox x:Name="tbName" Style="{StaticResource CustomTextBoxStyle}" Margin="300,141,378,317" PreviewTextInput="tbName_PreviewTextInput" TextChanged="tbName_TextChanged"/>
                 <Label Style="{StaticResource CustomLabelStyle}" FontSize="15" Content="Nombre (s)" HorizontalAlignment="Left" Margin="300,120,0,0" VerticalAlignment="Top" x:Name="NombreLabel_Copiar1" Width="237" Height="21"/>

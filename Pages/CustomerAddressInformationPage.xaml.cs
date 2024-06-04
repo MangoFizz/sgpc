@@ -17,14 +17,14 @@ namespace SGSC.Pages
     /// <summary>
     /// Lógica de interacción para AddressInformation.xaml
     /// </summary>
-    public partial class AddressInformationPage : Page
+    public partial class CustomerAddressInformationPage : Page
     {
         private int customerId;
         private int? addressId = null;
         private bool IsRegisteringCreditRequest;
         private bool DoNotUpdateZipCode = false;
 
-        public AddressInformationPage(int customerId, bool isRegisteringCreditRequest = false)
+        public CustomerAddressInformationPage(int customerId, bool isRegisteringCreditRequest = false)
         {
             InitializeComponent();
             IsRegisteringCreditRequest = isRegisteringCreditRequest;
@@ -108,7 +108,7 @@ namespace SGSC.Pages
 					}
                 }
 
-                App.Current.MainFrame.Navigate(new PageWorkCenter(customerId, IsRegisteringCreditRequest));
+                App.Current.MainFrame.Navigate(new CustomerWorkCenterPage(customerId, IsRegisteringCreditRequest));
             }
             catch (Exception ex)
             {

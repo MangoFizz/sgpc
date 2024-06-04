@@ -172,7 +172,7 @@ namespace SGSC.Pages
                     CustomerId = customerToRegister.CustomerId;
                     
                     App.Current.NotificationsPanel.ShowSuccess("Datos guardados");
-                    App.Current.MainFrame.Content = new AddressInformationPage(CustomerId.Value, IsRegisteringCreditRequest);
+                    App.Current.MainFrame.Content = new CustomerAddressInformationPage(CustomerId.Value, IsRegisteringCreditRequest);
                 }
                 catch (Exception ex)
                 {
@@ -201,7 +201,7 @@ namespace SGSC.Pages
                     db.SaveChanges();
                     
                     App.Current.NotificationsPanel.ShowSuccess("Datos actualizados");
-                    App.Current.MainFrame.Navigate(new AddressInformationPage(CustomerId.Value, IsRegisteringCreditRequest));
+                    App.Current.MainFrame.Navigate(new CustomerAddressInformationPage(CustomerId.Value, IsRegisteringCreditRequest));
                 }
                 catch (Exception ex)
                 {

@@ -1,9 +1,10 @@
-﻿<Page x:Class="SGSC.Pages.PageWorkCenter"
+﻿<Page x:Class="SGSC.Pages.CustomerWorkCenterPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SGSC.Pages"
+      xmlns:controls='clr-namespace:System.Windows.Controls;assembly=DotNetProjects.Input.Toolkit'
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1280"
       Title="PageWorkCenter">
@@ -47,8 +48,6 @@
 
         <TextBox x:Name="txtStreet" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="314,354,360,321"/>
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Calle" HorizontalAlignment="Left" Margin="314,325,0,0" VerticalAlignment="Top" Height="34" Width="92"/>
-        <TextBox x:Name="txtColony" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="315,473,360,202" RenderTransformOrigin="0.5,0.5" />
-        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Colonia" HorizontalAlignment="Left" Margin="314,443,0,0" VerticalAlignment="Top" Height="38" Width="92"/>
 
         <TextBox x:Name="txtOutsideNumber" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="951,354,216,321"/>
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="No. exterior" HorizontalAlignment="Left" Margin="951,320,0,0" VerticalAlignment="Top" Height="27" Width="117"/>
@@ -56,8 +55,12 @@
         <TextBox x:Name="txtInnerNumber" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="1084,354,83,321" RenderTransformOrigin="0.533,0.406"/>
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="No. interior" HorizontalAlignment="Left" Margin="1084,320,0,0" VerticalAlignment="Top" Height="28" Width="103"/>
 
-        <TextBox x:Name="txtZipCode" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="948,473,185,202" RenderTransformOrigin="0.5,0.5"/>
-        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Código postal" HorizontalAlignment="Left" Margin="948,443,0,0" VerticalAlignment="Top" Height="30" RenderTransformOrigin="0.496,0.2" Width="147"/>
+        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Código postal " HorizontalAlignment="Left" Margin="315,443,0,0" VerticalAlignment="Top" Height="30" RenderTransformOrigin="0.496,0.2" Width="147"/>
+        <controls:AutoCompleteBox x:Name='tbZipCode' FontSize="18" VerticalContentAlignment="Center" Margin="315,473,818,202" RenderTransformOrigin="0.5,0.5" TextChanged="tbZipCode_TextChanged" />
+
+        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Colonia " HorizontalAlignment="Left" Margin="494,443,0,0" VerticalAlignment="Top" Height="38" Width="92"/>
+        <ComboBox x:Name="cbColony" FontSize="18" VerticalContentAlignment="Center" Margin="495,473,360,202" RenderTransformOrigin="0.5,0.5" />
+
         <Button Style="{StaticResource ButtonStyleDanger}" Content="Cancelar" FontSize="22" HorizontalAlignment="Left" Margin="1048,644,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnCancel_Click" />
         <Button Style="{StaticResource ButtonStyleCancel}" Content="Regresar" FontSize="22" HorizontalAlignment="Left" Margin="641,644,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnBack_Click" />
         <Button Style="{StaticResource ButtonStyleConfirm}" Content="Continuar" FontSize="22" HorizontalAlignment="Left" Margin="844,644,0,0" VerticalAlignment="Top" Width="180" Height="54" Click="btnContinue_Click" />
@@ -68,7 +71,7 @@
         <Label x:Name="lbIsEmptyPhone" Content="Campo vacío" HorizontalContentAlignment="right" Foreground="Red" FontFamily="{StaticResource ResourceKey=FontNunito}" HorizontalAlignment="Left" Margin="1085,253,0,0" VerticalAlignment="Top" Height="39" Width="116"/>
         <Label x:Name="lbIsEmptyStreet" Content="Campo vacío" HorizontalContentAlignment="right" Foreground="Red" FontFamily="{StaticResource ResourceKey=FontNunito}" HorizontalAlignment="Left" Margin="804,399,0,0" VerticalAlignment="Top" Height="39" Width="116"/>
         <Label x:Name="lbIsEmptyOutsideNumber" Content="Campo vacío" HorizontalContentAlignment="right" Foreground="Red" FontFamily="{StaticResource ResourceKey=FontNunito}" HorizontalAlignment="Left" Margin="948,399,0,0" VerticalAlignment="Top" Height="39" Width="116"/>
-        <Label x:Name="lbIsEmptyZipCode" Content="Campo vacío" HorizontalContentAlignment="right" Foreground="Red" FontFamily="{StaticResource ResourceKey=FontNunito}" HorizontalAlignment="Left" Margin="979,518,0,0" VerticalAlignment="Top" Height="39" Width="116"/>
+        <Label x:Name="lbIsEmptyZipCode" Content="Campo vacío" HorizontalContentAlignment="right" Foreground="Red" FontFamily="{StaticResource ResourceKey=FontNunito}" HorizontalAlignment="Left" Margin="315,518,0,0" VerticalAlignment="Top" Height="39" Width="147"/>
         <Label x:Name="lbIsEmptyColony" Content="Campo vacío" HorizontalContentAlignment="right" Foreground="Red" FontFamily="{StaticResource ResourceKey=FontNunito}" HorizontalAlignment="Left" Margin="804,518,0,0" VerticalAlignment="Top" Height="39" Width="116"/>
         <StackPanel/>
 

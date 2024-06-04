@@ -13,7 +13,7 @@ using System.Windows.Media;
 
 namespace SGSC.Pages
 {
-    public partial class PageWorkCenter : Page
+    public partial class CustomerWorkCenterPage : Page
     {
         private bool IsRegisteringCreditRequest;
 		private string WorkCenterName = "";
@@ -25,12 +25,13 @@ namespace SGSC.Pages
         private string ZipCode = "";
         private int customerId;
         private int? workCenterId = null;
+		private bool DoNotUpdateZipCode = false;
 
-        private sgscEntities dbContext;
+		private sgscEntities dbContext;
 
         Dictionary<TextBox, Label> textBoxLabelMap;
 
-        public PageWorkCenter(int customerId, bool isRegisteringCreditRequest = false)
+        public CustomerWorkCenterPage(int customerId, bool isRegisteringCreditRequest = false)
         {
             InitializeComponent();
             dbContext = new sgscEntities();
@@ -38,12 +39,11 @@ namespace SGSC.Pages
 			this.customerId = customerId;
 
             txtWorkCenterName.PreviewTextInput += AllowWriteLetters;
-            txtColony.PreviewTextInput += AllowWriteLetters;
 
             txtPhone.PreviewTextInput += AllowPhoneNumber;
             txtInnerNumber.PreviewTextInput += AllowWriteNumbers;
             txtOutsideNumber.PreviewTextInput += AllowWriteNumbers;
-            txtZipCode.PreviewTextInput += AllowZipCode;
+            tbZipCode.PreviewTextInput += AllowZipCode;
 
             StepsSidebarFrame.Content = new CustomerRegisterStepsSidebar("WorkCenter");
             UserSessionFrame.Content = new UserSessionFrame();
@@ -67,16 +67,17 @@ namespace SGSC.Pages
                 {txtWorkCenterName, lbIsEmptyCenterName},
                 {txtPhone, lbIsEmptyPhone},
                 {txtStreet, lbIsEmptyStreet},
-                {txtColony, lbIsEmptyColony},
-                {txtOutsideNumber, lbIsEmptyOutsideNumber},
-                {txtZipCode, lbIsEmptyZipCode}
+                {txtOutsideNumber, lbIsEmptyOutsideNumber}
             };
 
             foreach (var pair in textBoxLabelMap)
             {
                 pair.Value.Visibility = Visibility.Hidden;
             }
-        }
+
+			lbIsEmptyColony.Visibility = Visibility.Hidden;
+			lbIsEmptyZipCode.Visibility = Visibility.Hidden;
+		}
 
         public void ShowInformationWorkCenter(SGSC.WorkCenter userWorkCenter)
         {
@@ -86,11 +87,14 @@ namespace SGSC.Pages
                 txtPhone.Text = userWorkCenter.PhoneNumber;
                 txtStreet.Text = userWorkCenter.Street;
                 txtStreet.Text = userWorkCenter.Street;
-                txtColony.Text = userWorkCenter.Colony;
-                txtZipCode.Text = userWorkCenter.ZipCode.ToString();
                 txtInnerNumber.Text = userWorkCenter.InnerNumber.ToString();
                 txtOutsideNumber.Text = userWorkCenter.OutsideNumber.ToString();
-            }
+
+				DoNotUpdateZipCode = true;
+				tbZipCode.Text = userWorkCenter.ZipCode.ToString();
+				PopulateColoniesComboBox();
+				cbColony.Text = userWorkCenter.Colony;
+			}
         }
 
         public bool ValidateFields()
@@ -100,21 +104,34 @@ namespace SGSC.Pages
             if (string.IsNullOrWhiteSpace(txtWorkCenterName.Text) 
                 || string.IsNullOrWhiteSpace(txtPhone.Text) 
                 || string.IsNullOrWhiteSpace(txtStreet.Text)
-                || string.IsNullOrWhiteSpace(txtColony.Text) 
+                || cbColony.SelectedIndex == -1 
                 || string.IsNullOrWhiteSpace(txtOutsideNumber.Text) 
-                || string.IsNullOrWhiteSpace(txtZipCode.Text))
+                || string.IsNullOrWhiteSpace(tbZipCode.Text))
             {
                 IsValidate = false;
-                
 
                 foreach (var pair in textBoxLabelMap)
                 {
                     CheckAndSetLabelVisibility(pair.Value, pair.Key);
                 }
+
+                if(cbColony.SelectedIndex == -1)
+                {
+					lbIsEmptyColony.Content  = "Seleccione una colonia";
+					lbIsEmptyColony.Visibility = Visibility.Visible;
+				}
+
+                if(string.IsNullOrEmpty(tbZipCode.Text))
+                {
+                    lbIsEmptyZipCode.Content = "Ingrese un código postal";
+                    lbIsEmptyZipCode.Visibility = Visibility.Visible;
+                }
             } else
             {
                 IsValidate = true;
-            }
+				lbIsEmptyColony.Visibility = Visibility.Hidden;
+				lbIsEmptyZipCode.Visibility = Visibility.Hidden;
+			}
             return IsValidate;
         }
 
@@ -132,7 +149,6 @@ namespace SGSC.Pages
             }
         }
 
-
         private void btnContinue_Click(object sender, RoutedEventArgs e)
         {
             if (ValidateFields())
@@ -145,8 +161,8 @@ namespace SGSC.Pages
                     InnerNumber = txtInnerNumber.Text;
                     OutsideNumber = txtOutsideNumber.Text;
                     int IntOutsideNumber = int.Parse(OutsideNumber);
-                    Colony = txtColony.Text;
-                    ZipCode = txtZipCode.Text;
+                    Colony = cbColony.Text;
+                    ZipCode = tbZipCode.Text;
                     int IntZipCode = int.Parse(ZipCode);
 
 					WorkCenter NewWorkcenter = new WorkCenter
@@ -265,6 +281,44 @@ namespace SGSC.Pages
 		private void btnBack_Click(object sender, RoutedEventArgs e)
 		{
 			App.Current.MainFrame.GoBack();
+		}
+
+		private async Task<List<string>> GetZipCodes(string keyword)
+		{
+			return await Task.Run(() =>
+			{
+				var zipCodes = new List<string>();
+				var res = SGSC.Colony.GetColonies(keyword, 6);
+				foreach (var colony in res)
+				{
+					zipCodes.Add(colony.Zipcode.ToString());
+				}
+				return zipCodes;
+			});
+		}
+
+		private void PopulateColoniesComboBox()
+		{
+			var colonies = SGSC.Colony.GetColoniesByZipcode(tbZipCode.Text);
+			cbColony.ItemsSource = colonies.ToList();
+			cbColony.SelectedIndex = 0;
+		}
+
+		private async void tbZipCode_TextChanged(object sender, RoutedEventArgs e)
+		{
+			if (DoNotUpdateZipCode)
+			{
+				DoNotUpdateZipCode = false;
+				return;
+			}
+			var zipCodes = await GetZipCodes(tbZipCode.Text);
+			tbZipCode.ItemsSource = zipCodes;
+			tbZipCode.IsDropDownOpen = true;
+
+			if (tbZipCode.Text.Length == 5)
+			{
+				PopulateColoniesComboBox();
+			}
 		}
 	}
 

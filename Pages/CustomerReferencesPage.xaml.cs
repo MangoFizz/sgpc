@@ -127,6 +127,8 @@ namespace SGSC.Pages
 
                         App.Current.NotificationsPanel.ShowSuccess("Datos guardados");
 
+                        MessageBox.Show("La información del cliente ha sido actualizada.", "Datos guardados", MessageBoxButton.OK, MessageBoxImage.Information);
+
 						if (IsRegisteringCreditRequest)
 						{
 							App.Current.MainFrame.Content = new RegisterCreditRequestPage(customerId);

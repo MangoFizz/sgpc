@@ -422,7 +422,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\PageWorkCenter.xaml">
+    <Page Include="Pages\CustomerWorkCenterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -444,18 +444,18 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pages\PageWorkCenter.xaml.cs">
-      <DependentUpon>PageWorkCenter.xaml</DependentUpon>
+    <Compile Include="Pages\CustomerWorkCenterPage.xaml.cs">
+      <DependentUpon>CustomerWorkCenterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AddressInformationPage.xaml.cs">
-      <DependentUpon>AddressInformationPage.xaml</DependentUpon>
+    <Compile Include="Pages\CustomerAddressInformationPage.xaml.cs">
+      <DependentUpon>CustomerAddressInformationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\AlphabeticTextBox.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\AddressInformationPage.xaml">
+    <Page Include="Pages\CustomerAddressInformationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

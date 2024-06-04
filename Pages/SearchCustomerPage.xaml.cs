@@ -90,7 +90,7 @@ namespace SGSC.Pages
                         Customers.Add(new CustomerEntry
                         {
                             CustomerId = item.CustomerId,
-                            Fullname = item.FullName,
+                            //Fullname = item.FullName,
                             Genre = item.Genre == "M" ? "Masculino" : "Femenino",
                             Birthdate = item.BirthDate.ToString("dd/MM/yyyy"),
                             RFC = item.Rfc

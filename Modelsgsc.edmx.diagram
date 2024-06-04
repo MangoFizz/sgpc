@@ -4,45 +4,38 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="31e83c0dda694b569ab0fa1c4fff84cd" Name="Diagram1" ZoomLevel="79">
-        <EntityTypeShape EntityType="sgscModel.BankAccount" Width="1.5" PointX="5.125" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="sgscModel.Contact" Width="1.5" PointX="8.125" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="sgscModel.CreditCondition" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="sgscModel.CreditPolicy" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="sgscModel.CreditRequest" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="sgscModel.CustomerAddress" Width="1.5" PointX="5.5" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="sgscModel.CustomerContactInfo" Width="1.5" PointX="7.875" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="sgscModel.Customer" Width="1.5" PointX="5.5" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="sgscModel.Employee" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="sgscModel.Payment" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="sgscModel.WorkCenter" Width="1.5" PointX="7.875" PointY="8" IsExpanded="true" />
+      <Diagram DiagramId="229bd547952641f695e7c5f02a28be19" Name="Diagram1">
+        <EntityTypeShape EntityType="sgscModel.BankAccounts" Width="1.5" PointX="8.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgscModel.Banks" Width="1.5" PointX="6" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgscModel.Colonies" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgscModel.Contacts" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgscModel.CreditConditions" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgscModel.CreditPolicies" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgscModel.CreditPromotions" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgscModel.CreditRequestCreditPolicies" Width="1.5" PointX="7.5" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgscModel.CreditRequests" Width="1.5" PointX="10.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgscModel.CustomerAddresses" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgscModel.CustomerContactInfoes" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgscModel.Customers" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgscModel.Documents" Width="1.5" PointX="12.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgscModel.Employees" Width="1.5" PointX="8.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgscModel.Payments" Width="1.5" PointX="12.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgscModel.WorkCenters" Width="1.5" PointX="5.25" PointY="15.25" IsExpanded="true" />
         <AssociationConnector Association="sgscModel.FK_BankAccountCustomer" ManuallyRouted="false" />
-        <AssociationConnector Association="sgscModel.FK_CustomerContact" ManuallyRouted="false" >
-        </AssociationConnector>
+        <AssociationConnector Association="sgscModel.FK_BankBankAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="sgscModel.FK_CreditRequestBankAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="sgscModel.FK_CreditRequestBankAccount1" ManuallyRouted="false" />
+        <AssociationConnector Association="sgscModel.FK_ContactCreditRequestCreditPolicy" ManuallyRouted="false" />
+        <AssociationConnector Association="sgscModel.FK_CustomerContact" ManuallyRouted="false" />
+        <AssociationConnector Association="sgscModel.FK_CustomerContactInfoCreditRequestCreditPolicy" ManuallyRouted="false" />
         <AssociationConnector Association="sgscModel.FK_CreditRequestCustomer" ManuallyRouted="false" />
-        <AssociationConnector Association="sgscModel.CustomerId" ManuallyRouted="false" />
-        <AssociationConnector Association="sgscModel.CreditRequestBankAccount" />
-        <AssociationConnector Association="sgscModel.CreditRequestBankAccount1" ManuallyRouted="false" >
-        </AssociationConnector>
-        <AssociationConnector Association="sgscModel.CreditRequestCreditCondition" />
-        <AssociationConnector Association="sgscModel.CustomerWorkCenter" ManuallyRouted="false" >
-        </AssociationConnector>
-        <AssociationConnector Association="sgscModel.PaymentCreditRequest" />
-        <AssociationConnector Association="sgscModel.EmployeeCreditRequest" />
-        <AssociationConnector Association="sgscModel.CustomerAddressCustomer" />
-        <EntityTypeShape EntityType="sgscModel.Bank" Width="1.5" PointX="3" PointY="0.5" />
-        <AssociationConnector Association="sgscModel.BankBankAccount" />
-        <EntityTypeShape EntityType="sgscModel.Colony" Width="1.5" PointX="0.75" PointY="0.5" />
-        <EntityTypeShape EntityType="sgscModel.CreditRequestCreditPolicy" Width="1.5" PointX="10.5" PointY="4.375" />
-        <AssociationConnector Association="sgscModel.CustomerContactInfoCreditRequestCreditPolicy" ManuallyRouted="true" >
-          <ConnectorPoint PointX="7.96875" PointY="3.3648893229166661" />
-          <ConnectorPoint PointX="7.96875" PointY="4.53125" />
-          <ConnectorPoint PointX="10.5" PointY="4.53125" />
-        </AssociationConnector>
-        <AssociationConnector Association="sgscModel.ContactCreditRequestCreditPolicy" />
-        <EntityTypeShape EntityType="sgscModel.CreditPromotion" Width="1.5" PointX="10.5" PointY="1" />
-        <EntityTypeShape EntityType="sgscModel.Document" Width="1.5" PointX="3" PointY="2.625" />
-        <AssociationConnector Association="sgscModel.DocumentCreditRequest" />
+        <AssociationConnector Association="sgscModel.FK_DocumentCreditRequest" ManuallyRouted="false" />
+        <AssociationConnector Association="sgscModel.FK_EmployeeCreditRequest" ManuallyRouted="false" />
+        <AssociationConnector Association="sgscModel.FK_PaymentCreditRequest" ManuallyRouted="false" />
+        <AssociationConnector Association="sgscModel.FK_CustomerAddressCustomer" ManuallyRouted="false" />
+        <AssociationConnector Association="sgscModel.FK_CustomerId" ManuallyRouted="false" />
+        <AssociationConnector Association="sgscModel.FK_CustomerWorkCenter" ManuallyRouted="false" />
+        <AssociationConnector Association="sgscModel.CreditRequestCreditCondition" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

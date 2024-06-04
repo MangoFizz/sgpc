@@ -95,7 +95,7 @@ namespace SGSC.Pages
             }
         }
 
-        public List<CreditPolicy> GetAllCreditPolicies()
+        public List<CreditPolicies> GetAllCreditPolicies()
         {
             try
             {
@@ -107,7 +107,7 @@ namespace SGSC.Pages
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al obtener políticas de crédito: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return new List<CreditPolicy>();
+                return new List<CreditPolicies>();
             }
         }
 
@@ -138,13 +138,13 @@ namespace SGSC.Pages
                 CreditPoliciesPanel.Children.Clear();
 
                 // Obtén todas las políticas de crédito
-                List<CreditPolicy> allPolicies = GetAllCreditPolicies();
+                List<CreditPolicies> allPolicies = GetAllCreditPolicies();
 
                 // Obtén los IDs de las políticas de crédito para la solicitud
                 List<int> creditPolicyIdsForRequest = GetCreditPolicyIdsForRequest();
 
                 // Agrega dinámicamente los CheckBox al StackPanel
-                foreach (CreditPolicy policy in allPolicies)
+                foreach (CreditPolicies policy in allPolicies)
                 {
                     CheckBox cb = new CheckBox
                     {
@@ -210,7 +210,7 @@ namespace SGSC.Pages
                     {
                         if (!creditPolicyIds.Contains(previousPolicyId))
                         {
-                            CreditRequestCreditPolicy associationToRemove = db.CreditRequestCreditPolicies.FirstOrDefault(x => x.CreditRequestId == requestId && x.CreditPolicyId == previousPolicyId);
+                            CreditRequestCreditPolicies associationToRemove = db.CreditRequestCreditPolicies.FirstOrDefault(x => x.CreditRequestId == requestId && x.CreditPolicyId == previousPolicyId);
 
                             if (associationToRemove != null)
                             {
@@ -223,7 +223,7 @@ namespace SGSC.Pages
                     {
                         if (!previousSelectedPolicyIds.Contains(policyId))
                         {
-                            CreditRequestCreditPolicy newAssociation = new CreditRequestCreditPolicy
+                            CreditRequestCreditPolicies newAssociation = new CreditRequestCreditPolicies
                             {
                                 CreditRequestId = (int)requestId,
                                 CreditPolicyId = policyId
@@ -433,6 +433,20 @@ namespace SGSC.Pages
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             App.Current.MainFrame.Content = new HomePageCreditAnalyst();
+        }
+
+        private void BtnDocumentation(object sender, RoutedEventArgs e)
+        {
+            var documentation = new CreditApplicationDocuments(requestId.Value);
+            if (NavigationService != null)
+            {
+                NavigationService.Navigate(documentation);
+            }
+            else
+            {
+                ToastNotification notification = new ToastNotification("No se puede realizar la navegación en este momento. Por favor, inténtelo más tarde.", "Error");
+
+            }
         }
     }
 }

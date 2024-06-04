@@ -16,50 +16,47 @@ using System.Windows.Shapes;
 
 namespace SGSC.Pages
 {
-	/// <summary>
-	/// Interaction logic for LogIn.xaml
-	/// </summary>
 	public partial class LogIn : Page
 	{
 		public LogIn()
 		{
 			InitializeComponent();
-            tblEmailError.Text = "";
-            tblPasswordError.Text = "";
-        }
+			tblEmailError.Text = "";
+			tblPasswordError.Text = "";
+		}
 
 		private void btnLogIn_Click(object sender, RoutedEventArgs e)
 		{
-            tblEmailError.Text = "";
-            tblPasswordError.Text = "";
+			tblEmailError.Text = "";
+			tblPasswordError.Text = "";
 
 			bool valid = true;
 
-            if(tbEmail.Text.Equals(""))
-            {
-                tblEmailError.Text = "Por favor ingresa tu correo electrónico.";
-				valid = false;
-            }
-
-			if(pbPassword.Password.Equals(""))
+			if (tbEmail.Text.Equals(""))
 			{
-                tblPasswordError.Text = "Por favor ingresa tu contraseña.";
+				tblEmailError.Text = "Por favor ingresa tu correo electrónico.";
 				valid = false;
-            }
+			}
 
-			if(!valid)
+			if (pbPassword.Password.Equals(""))
 			{
-                return;
-            }
+				tblPasswordError.Text = "Por favor ingresa tu contraseña.";
+				valid = false;
+			}
+
+			if (!valid)
+			{
+				return;
+			}
 
 			var email = tbEmail.Text;
 			var password = pbPassword.Password;
 
 			var res = Utils.Authenticator.AuthUser(email, password, true);
-			switch(res)
+			switch (res)
 			{
 				case Utils.Authenticator.AuthResult.Success:
-                    break;
+					break;
 
 				case Utils.Authenticator.AuthResult.InvalidCredentials:
 					MessageBox.Show("Credenciales inválidas.");
@@ -72,8 +69,16 @@ namespace SGSC.Pages
 				default:
 					MessageBox.Show("Error desconocido." + res);
 					break;
-            }
+			}
 		}
+
+		private void btnReporte(object sender, RoutedEventArgs e)
+		{
+            var mainFrame = App.Current.MainFrame;
+            var doc = new Pages.CreditApplicationDocuments(1);
+            mainFrame.Content = doc;
+
+        }
 
         private void Label_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {

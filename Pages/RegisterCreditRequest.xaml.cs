@@ -1,25 +1,13 @@
 ﻿using SGSC.Frames;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SGSC.Pages
 {
-    /// <summary>
-    /// Lógica de interacción para RegisterCreditRequest.xaml
-    /// </summary>
     public partial class RegisterCreditRequest : Page
     {
         private int idCustomer = -1;
@@ -82,8 +70,8 @@ namespace SGSC.Pages
         {
             if (cbCreditPromotions.SelectedIndex != -1)
             {
-                var selectedPromotion = (CreditPromotion)cbCreditPromotions.SelectedItem;
-                if(selectedPromotion.Interval == 1)
+                var selectedPromotion = (CreditPromotions)cbCreditPromotions.SelectedItem;
+                /*if(selectedPromotion.Interval == 1)
                 {
                     lbTimePeriod.Content = selectedPromotion.TimePeriod+" Quincenas";
                 }
@@ -93,8 +81,7 @@ namespace SGSC.Pages
                 }
                 lbInterestRate.Content = selectedPromotion.InterestRate.ToString() + "%";
 
-                //aqui que calcule el monto
-                calculateTotalAmount();
+                calculateTotalAmount();*/
             }
         }
 
@@ -120,13 +107,13 @@ namespace SGSC.Pages
         {
             if (cbCreditPromotions.SelectedIndex != -1)
             {
-                var selectedPromotion = (CreditPromotion)cbCreditPromotions.SelectedItem;
+                var selectedPromotion = (CreditPromotions)cbCreditPromotions.SelectedItem;
                 var amountIntroduced = 0.0;
                 var timePeriodInMonths = 0.0;
 
                 if (double.TryParse(tbAmount.Text, out amountIntroduced))
                 {
-                    if (selectedPromotion.Interval == 1)
+                    /*if (selectedPromotion.Interval == 1)
                     {
                         timePeriodInMonths = (double)(selectedPromotion.TimePeriod / 2);
                     }
@@ -134,14 +121,14 @@ namespace SGSC.Pages
                     {
                         timePeriodInMonths = (double)selectedPromotion.TimePeriod;
                     }
-
+                    */
                     //aqui obtenemos el interes mensual
-                    double monthlyInterest = (double)(selectedPromotion.InterestRate / 100 / 12);
+                    //double monthlyInterest = (double)(selectedPromotion.InterestRate / 100 / 12);
                     //aqui multiplicamos el interes mensual por las semanas en meses
-                    var totalInterest = monthlyInterest * timePeriodInMonths;
+                    //var totalInterest = monthlyInterest * timePeriodInMonths;
                     //aqui calculamos el monto total
-                    var totalAmount = amountIntroduced + (amountIntroduced * totalInterest);
-                    this.totalAmount = totalAmount;
+                    //var totalAmount = amountIntroduced + (amountIntroduced * totalInterest);
+                    //this.totalAmount = totalAmount;
                     //format to only 2 decimals
                     lbTotalAmount.Content = totalAmount.ToString("0.00");
                 }
@@ -179,21 +166,21 @@ namespace SGSC.Pages
 
         private void registerCreditRequest()
         {
-            var selectedPromotion = (CreditPromotion)cbCreditPromotions.SelectedItem;
+            var selectedPromotion = (CreditPromotions)cbCreditPromotions.SelectedItem;
             using (var context = new sgscEntities())
             {
-                var creditRequest = new CreditRequest();
+                var creditRequest = new CreditRequests();
                 var filenumber = "CR" + DateTime.Now.ToString("yyyyMMddHHmmss");
                 creditRequest.FileNumber = filenumber;
                 creditRequest.Amount = this.totalAmount;
                 creditRequest.Status = 0;
-                creditRequest.TimePeriod = selectedPromotion.TimePeriod;
+                //creditRequest.TimePeriod = selectedPromotion.TimePeriod;
                 creditRequest.Purpose = tbPurpose.Text;
-                creditRequest.InterestRate = selectedPromotion.InterestRate;
+                //creditRequest.InterestRate = selectedPromotion.InterestRate;
                 creditRequest.CreationDate = DateTime.Now;
                 creditRequest.EmployeeId = Utils.UserSession.Instance.Id;
                 creditRequest.CustomerId = idCustomer;
-                creditRequest.PaymentsInterval = selectedPromotion.Interval;
+                //creditRequest.PaymentsInterval = selectedPromotion.Interval;
                 creditRequest.Description = "";
 
                 context.CreditRequests.Add(creditRequest);

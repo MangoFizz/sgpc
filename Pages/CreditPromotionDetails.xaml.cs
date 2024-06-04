@@ -170,7 +170,7 @@ namespace SGSC.Pages
         {
             using (sgscEntities db = new sgscEntities())
             {
-                CreditPromotion promotion = new CreditPromotion();
+               /* CreditPromotions promotion = new CreditPromotions();
                 promotion.Name = tbName.Text;
                 promotion.TimePeriod = int.Parse(tbTimePeriod.Text);
                 promotion.InterestRate = double.Parse(tbInterestRate.Text);
@@ -189,7 +189,7 @@ namespace SGSC.Pages
 
                 MessageBox.Show("Promoción registrada con éxito", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                App.Current.MainFrame.Content = new CreditPromotions();
+                App.Current.MainFrame.Content = new CreditPromotions();*/
             }
         }
 

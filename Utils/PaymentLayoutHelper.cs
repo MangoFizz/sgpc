@@ -105,8 +105,8 @@ namespace SGSC.Utils
                         FileNumber = payment.FileNumber,
                         Amount = (double)payment.Amount,
                         PaymentDate = payment.PaymentDate.Value.ToString("dd/MM/yyyy"),
-                        CardNumber = payment.CreditRequests.DirectDebitBankAccount.CardNumber,
-                        BankName = payment.CreditRequests.DirectDebitBankAccount.Bank.Name
+                        //CardNumber = payment.CreditRequests.DirectDebitBankAccount.CardNumber,
+                        //BankName = payment.CreditRequests.DirectDebitBankAccount.Banks.Name
                     });
                 }
 

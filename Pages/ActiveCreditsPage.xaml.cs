@@ -57,7 +57,7 @@ namespace SGSC.Pages
                 using (var context = new sgscEntities())
                 {
                     var activeCreditsCount = context.CreditRequests.Where(request => request.FileNumber.Contains(tbPageNumberFilter.Text) &&
-                        (request.Customer.Name + " " + request.Customer.FirstSurname + " " + request.Customer.SecondSurname).Contains(tbCustomerNameFilter.Text) &&
+                        (request.Customers.Name + " " + request.Customers.FirstSurname + " " + request.Customers.SecondSurname).Contains(tbCustomerNameFilter.Text) &&
                         request.Status == 4).Count();
 					TotalPages = (int)Math.Ceiling((double)activeCreditsCount / ItemsPerPage);
                     lbCurrentPage.Content = $"Página {CurrentPage}/{TotalPages}";
@@ -88,7 +88,7 @@ namespace SGSC.Pages
                 using (var context = new sgscEntities())
                 {
                     var activeCredits = context.CreditRequests.Where(request => request.FileNumber.Contains(tbPageNumberFilter.Text) && 
-                        (request.Customer.Name + " " + request.Customer.FirstSurname + " " + request.Customer.SecondSurname).Contains(tbCustomerNameFilter.Text) && 
+                        (request.Customers.Name + " " + request.Customers.FirstSurname + " " + request.Customers.SecondSurname).Contains(tbCustomerNameFilter.Text) && 
                         request.Status == 4).OrderBy(request => request.FileNumber).Skip((CurrentPage - 1) * ItemsPerPage).Take(ItemsPerPage);
 
 					var activeCreditsArray = activeCredits.ToList();
@@ -98,7 +98,7 @@ namespace SGSC.Pages
                         ActiveCredits.Add(new ActiveCredit
                         {
                             CreditPageNumber = item.FileNumber,
-                            ClientFullName = item.Customer.FullName,
+                            //ClientFullName = item.Customer.FullName,
                             CreditPeriod = item.TimePeriod.Value.ToString(),
                             CreditAmount = $"$ {item.Amount}",
                             CreditPendingDebt = "$ 0",

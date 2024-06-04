@@ -8,7 +8,7 @@ namespace SGSC
 {
 	public partial class Bank
 	{
-		public static Bank BankFromInterbankCodePrefix(string interbankCodePrefix)
+		public static Banks BankFromInterbankCodePrefix(string interbankCodePrefix)
 		{
 			using (sgscEntities db = new sgscEntities())
 			{

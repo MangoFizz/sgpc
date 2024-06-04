@@ -34,7 +34,7 @@ namespace SGSC.Pages
             using (sgscEntities db = new sgscEntities())
             {
                 var workCenterQuery = (from cr in db.CreditRequests
-                                       join wc in db.WorkCenters on cr.CustomerId equals wc.Customer.CustomerId
+                                       join wc in db.WorkCenters on cr.CustomerId equals wc.Customers.CustomerId
                                        where cr.CreditRequestId == requestId
                                        select new
                                        {
@@ -64,8 +64,6 @@ namespace SGSC.Pages
                 lbRequestRequestNumber.Content = workCenterQuery.FileNumber;
             }
         }
-
-
 
         private void btnClicContinue(object sender, RoutedEventArgs e)
         {
@@ -164,6 +162,20 @@ namespace SGSC.Pages
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             App.Current.MainFrame.Content = new HomePageCreditAnalyst();
+        }
+
+        private void BtnDocumentation(object sender, RoutedEventArgs e)
+        {
+            var documentation = new CreditApplicationDocuments(requestId.Value);
+            if (NavigationService != null)
+            {
+                NavigationService.Navigate(documentation);
+            }
+            else
+            {
+                ToastNotification notification = new ToastNotification("No se puede realizar la navegación en este momento. Por favor, inténtelo más tarde.", "Error");
+
+            }
         }
     }
 }

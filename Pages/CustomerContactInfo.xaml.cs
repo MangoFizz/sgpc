@@ -108,7 +108,7 @@ namespace SGSC.Pages
 
             try
             {
-                var contactInfo = new SGSC.CustomerContactInfo
+                var contactInfo = new SGSC.CustomerContactInfoes
                 {
                     PhoneNumber1 = tbPhoneNumber1.Text,
                     PhoneNumber2 = tbPhoneNumber2.Text,

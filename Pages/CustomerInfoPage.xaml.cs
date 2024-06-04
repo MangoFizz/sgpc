@@ -152,7 +152,7 @@ namespace SGSC.Pages
             {
                 try
                 {
-                    Customer customerToRegister = new Customer();
+                    Customers customerToRegister = new Customers();
                     customerToRegister.Curp = tbCURP.Text.ToUpper();
                     customerToRegister.Name = tbName.Text;
                     customerToRegister.FirstSurname = tbFirstSurname.Text;
@@ -186,7 +186,7 @@ namespace SGSC.Pages
             {
                 try
                 {
-                    Customer customerToUpdate = db.Customers.Find(CustomerId);
+                    Customers customerToUpdate = db.Customers.Find(CustomerId);
                     customerToUpdate.Curp = tbCURP.Text.ToUpper();
                     customerToUpdate.Name = tbName.Text;
                     customerToUpdate.FirstSurname = tbFirstSurname.Text;
@@ -221,7 +221,7 @@ namespace SGSC.Pages
         {
             using (sgscEntities db = new sgscEntities())
             {
-                Customer customer = db.Customers.Find(idCustomer);
+                Customers customer = db.Customers.Find(idCustomer);
                 if (customer == null)
                 {
                     MessageBox.Show("No se encontró la solicitud solicitada, por favor, inténtelo más tarde");

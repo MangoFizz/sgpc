@@ -57,25 +57,25 @@ namespace SGSC.Pages
             {
                 using (sgscEntities db = new sgscEntities())
                 {
-                    BankAccount transferAccount = db.BankAccounts.Where(ba => ba.CustomerId == customerId && ba.AccountType == (int)BankAccount.AccountTypes.TransferAccount).FirstOrDefault();
+                    /*BankAccounts transferAccount = db.BankAccounts.Where(ba => ba.CustomerId == customerId && ba.AccountType == (int)BankAccounts.AccountTypes.TransferAccount).FirstOrDefault();
                     if(transferAccount != null)
                     {
                         tbTansAccCardNumber.Text = transferAccount.CardNumber;
-                        tbTansAccBank.Text = transferAccount.Bank.Name;
+                        tbTansAccBank.Text = transferAccount.Banks.Name;
                         tbTansAccInterbankCode.Text = transferAccount.InterbankCode;
                         tansferAccountId = transferAccount.BankAccountId;
-                        transferAccountBankId = transferAccount.Bank.BankId;
+                        transferAccountBankId = transferAccount.Banks.BankId;
 					}
 
-                    BankAccount directDebitAccount = db.BankAccounts.Where(ba => ba.CustomerId == customerId && ba.AccountType == (int)BankAccount.AccountTypes.DirectDebitAccount).FirstOrDefault();
+                    BankAccounts directDebitAccount = db.BankAccounts.Where(ba => ba.CustomerId == customerId && ba.AccountType == (int)BankAccounts.AccountTypes.DirectDebitAccount).FirstOrDefault();
                     if (directDebitAccount != null)
                     {
                         tbDomAccBankCardNumber.Text = directDebitAccount.CardNumber;
-                        tbDomAccBank.Text = directDebitAccount.Bank.Name;
+                        tbDomAccBank.Text = directDebitAccount.Banks.Name;
                         tbDomAccBankInterbankCode.Text = directDebitAccount.InterbankCode;
                         directDebitAccountId = directDebitAccount.BankAccountId;
-						directDebitAccountBankId = directDebitAccount.Bank.BankId;
-					}
+						directDebitAccountBankId = directDebitAccount.Banks.BankId;
+					}*/
                 }
             }
             catch (Exception ex)
@@ -163,7 +163,7 @@ namespace SGSC.Pages
             {
                 using (sgscEntities context = new sgscEntities())
                 {
-                    var transferAccount = new BankAccount
+                    var transferAccount = new BankAccounts
                     {
                         CardNumber = tbTansAccCardNumber.Text,
                         BankBankId = transferAccountBankId,
@@ -178,7 +178,7 @@ namespace SGSC.Pages
                         transferAccount.BankAccountId = tansferAccountId.Value;
                     }
 
-                    var directDebitAccount = new BankAccount
+                    var directDebitAccount = new BankAccounts
                     {
                         CardNumber = tbDomAccBankCardNumber.Text,
                         BankBankId = directDebitAccountBankId,
@@ -194,8 +194,8 @@ namespace SGSC.Pages
                     }
 
                     var creditRequest = context.CreditRequests.Where(cr => cr.CreditRequestId == creditRequestId).FirstOrDefault();
-                    creditRequest.TransferBankAccount = transferAccount;
-                    creditRequest.DirectDebitBankAccount = directDebitAccount;
+                    //creditRequest.TransferBankAccount = transferAccount;
+                    //creditRequest.DirectDebitBankAccount = directDebitAccount;
 
                     context.BankAccounts.AddOrUpdate(transferAccount);
                     context.BankAccounts.AddOrUpdate(directDebitAccount);
@@ -245,11 +245,11 @@ namespace SGSC.Pages
             var code = tbTansAccInterbankCode.Text;
             if(code.Length >= 3)
             {
-                var bank = Bank.BankFromInterbankCodePrefix(code.Substring(0, 3));
+                /*var bank = Banks.BankFromInterbankCodePrefix(code.Substring(0, 3));
 				if (bank != null)
 				{
-					tbTansAccBank.Text = bank.Name;
-					transferAccountBankId = bank.BankId;
+					tbTansAccBank.Text = banks.Name;
+					transferAccountBankId = banks.BankId;
 				}
 				else
 				{
@@ -264,7 +264,7 @@ namespace SGSC.Pages
 				else
 				{
 					lbTansAccInterbankCodeError.Content = "";
-				}
+				}*/
 			}
             else
             {
@@ -278,10 +278,10 @@ namespace SGSC.Pages
 			var code = tbDomAccBankInterbankCode.Text;
 			if (code.Length >= 3)
 			{
-				var bank = Bank.BankFromInterbankCodePrefix(code.Substring(0, 3));
+				/*var bank = Banks.BankFromInterbankCodePrefix(code.Substring(0, 3));
 				if (bank != null)
 				{
-					tbDomAccBank.Text = bank.Name;
+					tbDomAccBank.Text = banks.Name;
 					directDebitAccountBankId = bank.BankId;
 				}
 				else
@@ -297,7 +297,7 @@ namespace SGSC.Pages
 				else
 				{
 					lbDomAccBankInterbankCodeError.Content = "";
-				}
+				}*/
 			}
 			else
 			{

@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static SGSC.Customer;
 
 namespace SGSC
 {
     public partial class Customer
     {
+        // Define properties
+        public string Name { get; set; }
+        public string FirstSurname { get; set; }
+        public string SecondSurname { get; set; }
+
         public enum CivilStatuses : Int32
         {
             Single = 0,
@@ -18,7 +22,8 @@ namespace SGSC
             Concubinage
         }
 
-        public string FullName 
+        // Property to get full name
+        public string FullName
         {
             get
             {
@@ -26,6 +31,7 @@ namespace SGSC
             }
         }
 
+        // Method to get civil status as a string
         public static string GetCivilStatusString(CivilStatuses status)
         {
             switch (status)

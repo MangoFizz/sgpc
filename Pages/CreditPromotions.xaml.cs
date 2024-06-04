@@ -40,11 +40,11 @@ namespace SGSC.Pages
 
         private void btnSeeDetails_Click(object sender, RoutedEventArgs e)
         {
-            CreditPromotion selectedPromotion = (CreditPromotion)dgPromotions.SelectedItem;
+            CreditPromotions selectedPromotion = (CreditPromotions)dgPromotions.SelectedItem;
             if (selectedPromotion != null)
             {
-                CreditPromotionDetails promotionDetails = new CreditPromotionDetails(selectedPromotion.CreditPromotionId);
-                this.NavigationService.Navigate(promotionDetails);
+                //CreditPromotionDetails promotionDetails = new CreditPromotionDetails(selectedPromotion.CreditPromotionId);
+                //this.NavigationService.Navigate(promotionDetails);
             }
             else
             {
@@ -118,7 +118,7 @@ namespace SGSC.Pages
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            var promotion = (CreditPromotion)dgPromotions.SelectedItem;
+            var promotion = (CreditPromotions)dgPromotions.SelectedItem;
             if (promotion != null)
             {
                 MessageBoxResult result = MessageBox.Show("¿Está seguro que desea eliminar la promoción?", "Eliminar promoción", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -126,8 +126,8 @@ namespace SGSC.Pages
                 {
                     using (sgscEntities db = new sgscEntities())
                     {
-                        db.CreditPromotions.Attach(promotion);
-                        db.CreditPromotions.Remove(promotion);
+                        //db.CreditPromotions.Attach(promotion);
+                        //db.CreditPromotions.Remove(promotion);
                         db.SaveChanges();
                         retrievePromotions();
                     }

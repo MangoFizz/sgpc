@@ -45,7 +45,7 @@ namespace SGSC.Pages
                     return;
                 }
 
-                var newCustomerAddressInfoes = new CustomerAddress
+                var newCustomerAddressInfoes = new CustomerAddresses
                 {
                     ExternalNumber = txtExternalNumber.Text,
                     Street = txtStreet.Text,

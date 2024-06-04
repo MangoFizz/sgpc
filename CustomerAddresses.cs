@@ -12,24 +12,25 @@ namespace SGSC
     using System;
     using System.Collections.Generic;
     
-    public partial class Contacts
+    public partial class CustomerAddresses
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Contacts()
+        public CustomerAddresses()
         {
-            this.CreditRequestCreditPolicies = new HashSet<CreditRequestCreditPolicies>();
+            this.Customers = new HashSet<Customers>();
         }
     
-        public int ContactId { get; set; }
-        public string Name { get; set; }
-        public string FirstSurname { get; set; }
-        public string SecondSurname { get; set; }
-        public string PhoneNumber { get; set; }
+        public int CustomerAddressId { get; set; }
+        public string Street { get; set; }
+        public string ZipCode { get; set; }
+        public string ExternalNumber { get; set; }
+        public string InternalNumber { get; set; }
         public int CustomerId { get; set; }
-        public string Relationship { get; set; }
+        public string Colony { get; set; }
+        public string State { get; set; }
+        public int Type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CreditRequestCreditPolicies> CreditRequestCreditPolicies { get; set; }
-        public virtual Customers Customers { get; set; }
+        public virtual ICollection<Customers> Customers { get; set; }
     }
 }

@@ -30,10 +30,10 @@ namespace SGSC
         public Nullable<int> BankBankId { get; set; }
     
         public virtual Customers Customers { get; set; }
+        public virtual Banks Banks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CreditRequests> CreditRequests { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CreditRequest> CreditRequestAsDirectDebitAccount { get; set; }
-        public virtual Bank Bank { get; set; }
+        public virtual ICollection<CreditRequests> CreditRequests1 { get; set; }
     }
 }

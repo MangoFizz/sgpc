@@ -607,119 +607,62 @@ namespace SGSC.Pages
 		/// </summary>
 		public void GeneratePdfCover(string outputPath)
 		{
+			var font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10);
+			var boldFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10, iTextSharp.text.Font.BOLD);
+			var sectionColor = new BaseColor(96, 138, 211);
+
 			var doc = new ReportDocument(PageSize.A4);
-			PdfWriter.GetInstance(doc, new FileStream(@outputPath, FileMode.Create));
+			PdfWriter.GetInstance(doc, new FileStream(outputPath, FileMode.Create));
 
 			doc.Open();
+
+			Paragraph coverTitle = new Paragraph("Carátula de contrato de apertura de crédito", new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 14, iTextSharp.text.Font.BOLD));
+			coverTitle.Alignment = Element.ALIGN_CENTER;
+			doc.Add(coverTitle);
+			doc.Add(new Paragraph("\n"));
+			doc.Add(new Paragraph("\n"));
 
 			PdfPTable table = new PdfPTable(3);
 			table.WidthPercentage = 100;
 
-			table.AddCell("ID Solicitud");
-			table.AddCell("Nombre del Vendedor");
-			table.AddCell("Número de Solicitud");
-
-			table.AddCell(IdCreditRequest.ToString());
-			table.AddCell(VendorName);
-			table.AddCell(RequestNumber);
-
-			table.AddCell("Fecha de Creación");
-			table.AddCell("Cantidad Solicitada");
-			table.AddCell("Tasa de Interés");
+			table.AddCell(GetCellWithColor("Fecha de Creación", BaseColor.LIGHT_GRAY, boldFont));
+			table.AddCell(GetCellWithColor("Cantidad Solicitada", BaseColor.LIGHT_GRAY, boldFont));
+			table.AddCell(GetCellWithColor("Tasa de Interés", BaseColor.LIGHT_GRAY, boldFont));
 
 			table.AddCell(CreationDate);
 			table.AddCell(RequestedAmountNumber);
 			table.AddCell(InterestRate);
 
-			table.AddCell("Propósito");
-			table.AddCell("Período de Tiempo");
-			table.AddCell("Nombre");
+			table.AddCell(GetCellWithColor("Total a pagar", BaseColor.LIGHT_GRAY, boldFont));
+			table.AddCell(GetCellWithColor("Período de Tiempo", BaseColor.LIGHT_GRAY, boldFont));
+			table.AddCell("");
 
-			table.AddCell(Purpose);
+			table.AddCell(finalAmount.ToString());
 			table.AddCell(TimePeriod);
-			table.AddCell(Name);
-
-			table.AddCell("Primer Apellido");
-			table.AddCell("Segundo Apellido");
-			table.AddCell("Fecha de Nacimiento");
-
-			table.AddCell(FirstSurname);
-			table.AddCell(SecondSurname);
-			table.AddCell(DateOfBirthay);
-
-			table.AddCell("Género");
-			table.AddCell("CURP");
-			table.AddCell("Email");
-
-			table.AddCell(Gender);
-			table.AddCell(Curp);
-			table.AddCell(Email);
-
-			table.AddCell("Calle");
-			table.AddCell("Número Exterior");
-			table.AddCell("Número Interior");
-
-			table.AddCell(Street);
-			table.AddCell(ExternalNumber);
-			table.AddCell(InternalNumber);
-
-			table.AddCell("Estado");
-			table.AddCell("Colonia");
-			table.AddCell("Código Postal");
-
-			table.AddCell(State);
-			table.AddCell(Colony);
-			table.AddCell(ZipCode);
-
-			table.AddCell("Tipo de Dirección");
-			table.AddCell("Teléfono 1");
-			table.AddCell("Teléfono 2");
-
-			table.AddCell(AddressType);
-			table.AddCell(PhoneOne);
-			table.AddCell(PhoneTwo);
-
-			table.AddCell("Estado Civil");
-			table.AddCell("Nombre del Centro Laboral");
-			table.AddCell("Teléfono del Centro Laboral");
-
-			table.AddCell(MaritalStatus);
-			table.AddCell(WorkCenterName);
-			table.AddCell(PhoneNumberWorkCenter);
-
-			table.AddCell("Número Interior del Centro Laboral");
-			table.AddCell("Número Exterior del Centro Laboral");
-			table.AddCell("Colonia del Centro Laboral");
-
-			table.AddCell(InnerNumberWorkCenter);
-			table.AddCell(OutsideNumberWorkCenter);
-			table.AddCell(ColonyWorkCenter);
-
-			table.AddCell("Calle del Centro Laboral");
-			table.AddCell("Código Postal del Centro Laboral");
 			table.AddCell("");
-
-			table.AddCell(StreetWorkCenter);
-			table.AddCell(ZipCodeWorkCenter);
-			table.AddCell("");
-
-			table.AddCell("Nombre Referencia 1");
-			table.AddCell("Parentesco Referencia 1");
-			table.AddCell("Teléfono Referencia 1");
-
-			table.AddCell(NameReferenceOne);
-			table.AddCell(RelationshipReferenceOne);
-			table.AddCell(PhoneReferenceOne);
-
-			table.AddCell("Nombre Referencia 2");
-			table.AddCell("Parentesco Referencia 2");
-			table.AddCell("Teléfono Referencia 2");
-
-			table.AddCell(NameReferenceTwo);
-			table.AddCell(RelationshipReferenceTwo);
-			table.AddCell(PhoneReferenceTwo);
 
 			doc.Add(table);
+			doc.Add(new Paragraph("\nAdvertencias", boldFont));
+			doc.Add(new Paragraph("Contratar créditos por arriba de tu capacidad de pago puede afectar tu historial crediticio", font));
+			doc.Add(new Paragraph("Incumplir tus obligaciones te puede generar comisiones", font));
+			doc.Add(new Paragraph("Políticas de crédito:", boldFont));
+			doc.Add(new Paragraph("- Ser mayor de 18 años", font));
+			doc.Add(new Paragraph("- Ser mexicano", font));
+			doc.Add(new Paragraph("- Contar con un buen historial crediticio", font));
+			doc.Add(new Paragraph("Aclaraciones y reclamos", boldFont));
+			doc.Add(new Paragraph("Unidad especializada de atención a usuarios: www.condusef.gob.mx", font));
+
+			doc.Add(new Paragraph("\n"));
+			doc.Add(new Paragraph("\n"));
+
+
+			doc.Add(new Paragraph("\n"));
+			doc.Add(new Paragraph("Estoy enterado de que en cualquier momento podré solicitar la cancelación de la presente domiciliación sin costo a mi cargo.", font));
+			doc.Add(new Paragraph("\nAtentamente", font));
+			doc.Add(new Paragraph("", font));
+			doc.Add(new Paragraph("Nombre del titular de la cuenta", font));
+			doc.Add(new Paragraph("\n__", font));
+			doc.Add(new Paragraph("Firma del titular de la cuenta", font));
 
 			doc.Close();
 		}

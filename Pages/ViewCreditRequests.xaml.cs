@@ -63,8 +63,7 @@ namespace SGSC.Pages
 				using (var context = new sgscEntities())
 				{
 					var activeCreditsCount = context.CreditRequests
-						.Where(request => request.Status == (int)CreditRequest.RequestStatus.Pending || 
-							request.Status == (int)CreditRequest.RequestStatus.Captured || 
+						.Where(request => request.Status == (int)CreditRequest.RequestStatus.Captured || 
 							request.Status == (int)CreditRequest.RequestStatus.WaitingForCorrection)
 						.Where(request => request.FileNumber.Contains(tbPageNumberFilter.Text))
 						.Where(request => (request.Customer.Name + " " + request.Customer.FirstSurname + " " + request.Customer.SecondSurname).Contains(tbCustomerNameFilter.Text))
@@ -98,8 +97,7 @@ namespace SGSC.Pages
 				using (var context = new sgscEntities())
 				{
 					var activeCredits = context.CreditRequests
-						.Where(request => request.Status == (int)CreditRequest.RequestStatus.Pending ||
-							request.Status == (int)CreditRequest.RequestStatus.Captured ||
+						.Where(request => request.Status == (int)CreditRequest.RequestStatus.Captured ||
 							request.Status == (int)CreditRequest.RequestStatus.WaitingForCorrection)
 						.Where(request => request.FileNumber.Contains(tbPageNumberFilter.Text))
 						.Where(request => (request.Customer.Name + " " + request.Customer.FirstSurname + " " + request.Customer.SecondSurname).Contains(tbCustomerNameFilter.Text))

@@ -92,6 +92,7 @@ namespace SGSC.Pages
 					context.CreditRequests.AddOrUpdate(creditRequest);
 					context.SaveChanges();
 					App.Current.NotificationsPanel.ShowSuccess("Cuenta asignada");
+					App.Current.MainFrame.Navigate(new UploadDocumentation(CreditRequestId));
 				}
 			}
 		}

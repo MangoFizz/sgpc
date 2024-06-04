@@ -45,7 +45,7 @@ namespace SGSC.Pages
                 {
                     dataGridCreditPolicies.ItemsSource = null; // Establece el origen de datos como nulo
                     var documentNames = db.Documents
-                        .Where(d => d.CreditRequestId == IdCreditRequest && d.CreditRequest_CreditRequestId == IdCreditRequest)
+                        .Where(d => d.CreditRequestId == IdCreditRequest)
                         .Select(d => d.FileName)
                         .ToList();
 

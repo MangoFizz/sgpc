@@ -45,7 +45,7 @@ namespace SGSC.Pages
             using (sgscEntities db = new sgscEntities())
             {
                 var transferenciaAccount = (from ba in db.BankAccounts
-                                            join cr in db.CreditRequests on ba.BankAccountId equals cr.TransferBankAccount_BankAccountId
+                                            join cr in db.CreditRequests on ba.BankAccountId equals cr.TransferBankAccountId
                                             join b in db.Banks on ba.BankBankId equals b.BankId
                                             where cr.CreditRequestId == requestId
                                             select new
@@ -67,7 +67,7 @@ namespace SGSC.Pages
                 }
                 
                 var domicializationAccount = (from ba in db.BankAccounts
-                                              join cr in db.CreditRequests on ba.BankAccountId equals cr.DirectDebitBankAccount_BankAccountId
+                                              join cr in db.CreditRequests on ba.BankAccountId equals cr.DirectDebitBankAccountId
                                               join b in db.Banks on ba.BankBankId
                                               equals b.BankId
                                               where cr.CreditRequestId == requestId

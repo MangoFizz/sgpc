@@ -95,7 +95,7 @@ namespace SGSC.Pages
             }
         }
 
-        public List<CreditPolicies> GetAllCreditPolicies()
+        public List<CreditPolicy> GetAllCreditPolicies()
         {
             try
             {
@@ -107,7 +107,7 @@ namespace SGSC.Pages
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al obtener políticas de crédito: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return new List<CreditPolicies>();
+                return new List<CreditPolicy>();
             }
         }
 
@@ -138,13 +138,13 @@ namespace SGSC.Pages
                 CreditPoliciesPanel.Children.Clear();
 
                 // Obtén todas las políticas de crédito
-                List<CreditPolicies> allPolicies = GetAllCreditPolicies();
+                List<CreditPolicy> allPolicies = GetAllCreditPolicies();
 
                 // Obtén los IDs de las políticas de crédito para la solicitud
                 List<int> creditPolicyIdsForRequest = GetCreditPolicyIdsForRequest();
 
                 // Agrega dinámicamente los CheckBox al StackPanel
-                foreach (CreditPolicies policy in allPolicies)
+                foreach (CreditPolicy policy in allPolicies)
                 {
                     CheckBox cb = new CheckBox
                     {
@@ -210,7 +210,7 @@ namespace SGSC.Pages
                     {
                         if (!creditPolicyIds.Contains(previousPolicyId))
                         {
-                            CreditRequestCreditPolicies associationToRemove = db.CreditRequestCreditPolicies.FirstOrDefault(x => x.CreditRequestId == requestId && x.CreditPolicyId == previousPolicyId);
+                            CreditRequestCreditPolicy associationToRemove = db.CreditRequestCreditPolicies.FirstOrDefault(x => x.CreditRequestId == requestId && x.CreditPolicyId == previousPolicyId);
 
                             if (associationToRemove != null)
                             {
@@ -223,7 +223,7 @@ namespace SGSC.Pages
                     {
                         if (!previousSelectedPolicyIds.Contains(policyId))
                         {
-                            CreditRequestCreditPolicies newAssociation = new CreditRequestCreditPolicies
+                            CreditRequestCreditPolicy newAssociation = new CreditRequestCreditPolicy
                             {
                                 CreditRequestId = (int)requestId,
                                 CreditPolicyId = policyId

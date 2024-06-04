@@ -28,7 +28,7 @@ namespace SGSC.Pages
 
 
         private sgscEntities _context;
-        private ObservableCollection<Documents> documentsDataAux;
+        private ObservableCollection<Document> documentsDataAux;
         private int? creditRequestId;
 
         public DocumentsManagerPage(int? creditRequestId)
@@ -46,7 +46,7 @@ namespace SGSC.Pages
                 using (sgscEntities db = new sgscEntities())
                 {
                     var documents = db.Documents.ToList();
-                    documentsDataAux = new ObservableCollection<Documents>(documents);
+                    documentsDataAux = new ObservableCollection<Document>(documents);
                     foreach (var document in documents)
                     {
                         CreateDocumentCard(document.FileName, document.DocumentId, creditRequestId);
@@ -70,7 +70,7 @@ namespace SGSC.Pages
 
                 try
                 {
-                    Documents document = new Documents
+                    Document document = new Document
                     {
                         FileName = fileName,
                         FileContent = fileContent,

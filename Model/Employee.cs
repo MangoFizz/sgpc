@@ -8,11 +8,6 @@ namespace SGSC
 {
     public partial class Employee
     {
-        // Define properties
-        public string Name { get; set; }
-        public string FirstSurname { get; set; }
-        public string SecondSurname { get; set; }
-
         public enum EmployeeRoles : short
         {
             Admin = 0,

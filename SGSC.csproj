@@ -202,6 +202,9 @@
     <Compile Include="Pages\CreditApplicationDetailsWorkCenter.xaml.cs">
       <DependentUpon>CreditApplicationDetailsWorkCenter.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\CreditApplicationDocuments.xaml.cs">
+      <DependentUpon>CreditApplicationDocuments.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CreditPromotionDetails.xaml.cs">
       <DependentUpon>CreditPromotionDetails.xaml</DependentUpon>
     </Compile>
@@ -347,6 +350,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\CreditApplicationDetailsWorkCenter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\CreditApplicationDocuments.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -172,7 +172,7 @@ namespace SGSC.Pages
 			var request = dgCredits.SelectedItem as PendingRequestsTableEntry;
 			if (request != null)
 			{
-				var result = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea eliminar la solicitud seleccionada?\n¡Esta acción es irreversible!.", "Eliminar empleado", System.Windows.Forms.MessageBoxButtons.YesNo);
+				var result = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea eliminar la solicitud seleccionada?\n\n¡ESTA ACCIÓN ES IRREVERSIBLE!", "Eliminar empleado", System.Windows.Forms.MessageBoxButtons.YesNo);
 				if (result == System.Windows.Forms.DialogResult.Yes)
 				{
 					try

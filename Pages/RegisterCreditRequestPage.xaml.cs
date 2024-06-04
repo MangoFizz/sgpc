@@ -21,22 +21,45 @@ namespace SGSC.Pages
     /// <summary>
     /// Lógica de interacción para RegisterCreditRequest.xaml
     /// </summary>
-    public partial class RegisterCreditRequest : Page
+    public partial class RegisterCreditRequestPage : Page
     {
-        private int idCustomer = -1;
+        private int CustomerId = -1;
+        private int? CreditRequestId = null;
         private double totalAmount = 0.0;
-        public RegisterCreditRequest(int idCustomer)
+
+        public RegisterCreditRequestPage(int idCustomer, int? creditRequestId = null)
         {
             InitializeComponent();
 
 			StepsSidebarFrame.Content = new CreditRequestRegisterStepsFrame("PersonalInfo");
 			UserSessionFrame.Content = new UserSessionFrame();
 
-			this.idCustomer = idCustomer;
-            retrieveCreditPromotions();
+			CustomerId = idCustomer;
+            CreditRequestId = creditRequestId;
+
             lbAmountError.Content = "";
             lbPromotionError.Content = "";
             lbPurposeError.Content = "";
+            
+            retrieveCreditPromotions();
+            
+            if(CreditRequestId != null)
+            {
+				GetCreditRequest();
+			}
+		}
+
+        private void GetCreditRequest()
+        {
+            using (var context = new sgscEntities())
+            {
+				var creditRequest = context.CreditRequests.Where(cr => cr.CreditRequestId == CreditRequestId).FirstOrDefault();
+				if (creditRequest != null)
+                {
+					tbPurpose.Text = creditRequest.Purpose;
+					tbAmount.Text = creditRequest.Amount.ToString();
+				}
+			}
         }
 
         private void retrieveCreditPromotions()
@@ -63,17 +86,7 @@ namespace SGSC.Pages
             if (cbCreditPromotions.SelectedIndex != -1)
             {
                 var selectedPromotion = (CreditPromotion)cbCreditPromotions.SelectedItem;
-                if(selectedPromotion.Interval == 1)
-                {
-                    // lbTimePeriod.Content = selectedPromotion.TimePeriod+" Quincenas";
-                }
-                else if(selectedPromotion.Interval == 2)
-                {
-                    // lbTimePeriod.Content = selectedPromotion.TimePeriod+" Meses";
-                }
                 lbInterestRate.Content = selectedPromotion.InterestRate.ToString() + "%";
-
-                //aqui que calcule el monto
                 calculateTotalAmount();
             }
         }
@@ -85,15 +98,10 @@ namespace SGSC.Pages
 
         private void tbAmount_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(tbAmount.Text.Length < 1)
+            if(tbAmount.Text.Length >= 1)
             {
-                // lbTotalAmount.Content = "0.0";
+                calculateTotalAmount();
             }
-            else
-            {
-            calculateTotalAmount();
-            }
-            
         }
 
         private void calculateTotalAmount()
@@ -152,12 +160,19 @@ namespace SGSC.Pages
             }
             if (isValid)
             {
-                registerCreditRequest();
+                if(CreditRequestId == null)
+                {
+                    RegisterCreditRequest();
+                }
+                else
+                {
+                    UpdateCreditRequest();
+				}
             }
             
         }
 
-        private void registerCreditRequest()
+        private void RegisterCreditRequest()
         {
             var selectedPromotion = (CreditPromotion)cbCreditPromotions.SelectedItem;
             using (var context = new sgscEntities())
@@ -172,7 +187,7 @@ namespace SGSC.Pages
                 creditRequest.InterestRate = selectedPromotion.InterestRate;
                 creditRequest.CreationDate = DateTime.Now;
                 creditRequest.EmployeeId = Utils.UserSession.Instance.Id;
-                creditRequest.CustomerId = idCustomer;
+                creditRequest.CustomerId = CustomerId;
                 creditRequest.PaymentsInterval = selectedPromotion.Interval;
                 creditRequest.Description = "";
 				creditRequest.SettlementDate = DateTime.Now.AddMonths((int)(selectedPromotion.Interval == 0 ? Math.Round((decimal)selectedPromotion.TimePeriod / 2) : selectedPromotion.TimePeriod));
@@ -181,17 +196,45 @@ namespace SGSC.Pages
                 try
                 {
                     context.SaveChanges();
-                    var cr = context.CreditRequests.Where(c => c.FileNumber == filenumber).FirstOrDefault();
                     App.Current.NotificationsPanel.ShowSuccess("Datos guardados");
-                    App.Current.MainFrame.Content = new TransferBankAccountPage(idCustomer, cr.CreditRequestId);
+                    App.Current.MainFrame.Navigate(new TransferBankAccountPage(CustomerId, creditRequest.CreditRequestId));
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error al registrar la solicitud de crédito: " + ex.Message);
                     throw;
+                }
             }
-        }
-    }   
+        }   
+
+        private void UpdateCreditRequest()
+        {
+			using (var context = new sgscEntities())
+            {
+				var creditRequest = context.CreditRequests.Where(cr => cr.CreditRequestId == CreditRequestId).FirstOrDefault();
+				if (creditRequest != null)
+                {
+					var selectedPromotion = (CreditPromotion)cbCreditPromotions.SelectedItem;
+					creditRequest.Amount = this.totalAmount;
+					creditRequest.TimePeriod = selectedPromotion.TimePeriod;
+					creditRequest.Purpose = tbPurpose.Text;
+					creditRequest.InterestRate = selectedPromotion.InterestRate;
+					creditRequest.PaymentsInterval = selectedPromotion.Interval;
+					creditRequest.SettlementDate = DateTime.Now.AddMonths((int)(selectedPromotion.Interval == 0 ? Math.Round((decimal)selectedPromotion.TimePeriod / 2) : selectedPromotion.TimePeriod));
+					try
+                    {
+						context.SaveChanges();
+						App.Current.NotificationsPanel.ShowSuccess("Datos actualizados");
+						App.Current.MainFrame.Navigate(new TransferBankAccountPage(CustomerId, creditRequest.CreditRequestId));
+					}
+					catch (Exception ex)
+                    {
+						MessageBox.Show("Error al actualizar la solicitud de crédito: " + ex.Message);
+						throw;
+					}
+				}
+			}
+		}
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {

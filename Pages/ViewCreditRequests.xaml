@@ -11,103 +11,41 @@
 
 
     <Grid Background="White">
-
-        <Frame Name="UserSessionFrame" NavigationUIVisibility="Hidden" Margin="834,10,74,624"/>
+        <Frame>
+            <Frame.Content>
+                <frames:UserSessionFrame Margin="831,23,38,612"/>
+            </Frame.Content>
+        </Frame>
 
         <Frame Name="creditAdvisorSidebar" Margin="0,0,1172,0"/>
 
-        <Grid Margin="118,75,22,67">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="283*"/>
-                <RowDefinition Height="285*"/>
-            </Grid.RowDefinitions>
-            <Grid Height="531" Margin="15,22,15,0" Grid.RowSpan="2" VerticalAlignment="Top">
+        <Label FontFamily="{StaticResource FontPoppins}" FontWeight="Bold" FontSize="36" Content="Solicitudes pendientes" HorizontalAlignment="Left" Margin="136,39,0,0" VerticalAlignment="Top"/>
 
-                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="0,73,0,0" Height="456" VerticalAlignment="Top">
-                    <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
-                        <DataGrid x:Name="creditRequestsDataGrid" CanUserAddRows="False" AutoGenerateColumns="False" BorderThickness="0" HeadersVisibility="Column" RowHeight="50" AlternationCount="2">
-                            <DataGrid.RowStyle>
-                                <Style TargetType="{x:Type DataGridRow}">
-                                    <Style.Triggers>
-                                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                                            <Setter Property="Background" Value="LightGreen"/>
-                                        </Trigger>
-                                        <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                                            <Setter Property="Background" Value="White"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </DataGrid.RowStyle>
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Folio" IsReadOnly="True" CanUserResize="False" Binding="{Binding FileNumber}" Width="100" />
-                                <DataGridTextColumn Header="Cantidad" IsReadOnly="True" CanUserResize="False" Binding="{Binding AmountString}" Width="150" />
-                                <DataGridTextColumn Header="Tasa de interés" IsReadOnly="True" CanUserResize="False" Binding="{Binding InterestRateString}" Width="185"/>
-                                <DataGridTextColumn Header="Plazo" IsReadOnly="True" CanUserResize="False" Binding="{Binding TimePeriodString}" Width="100" />
-                                <DataGridTextColumn Header="RFC" IsReadOnly="True" CanUserResize="False" Binding="{Binding Rfc}" Width="150" />
-                                <DataGridTextColumn Header="Fecha de Creación" IsReadOnly="True" CanUserResize="False" Binding="{Binding CreationDate}" Width="220" />
-                                <DataGridTextColumn Header="Nombre Completo" IsReadOnly="True" CanUserResize="False" Binding="{Binding CustomerName}" Width="229" />
-                                <DataGridTextColumn Header="Estado" IsReadOnly="True" CanUserResize="False" Binding="{Binding Status}" Width="150" />
-                            </DataGrid.Columns>
-                            <DataGrid.ColumnHeaderStyle>
-                                <Style TargetType="{x:Type DataGridColumnHeader}">
-                                    <Setter Property="FontWeight" Value="Bold"/>
-                                    <Setter Property="FontSize" Value="25"/>
-                                    <Setter Property="BorderThickness" Value="0"/>
-                                </Style>
-                            </DataGrid.ColumnHeaderStyle>
+        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Filtrar por Folio " HorizontalAlignment="Left" Margin="136,124,0,0" VerticalAlignment="Top" Height="34" Width="140"/>
+        <TextBox Name="tbPageNumberFilter" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="136,151,843,524" TextChanged="tbFilter_TextChanged"/>
 
-                            <DataGrid.CellStyle>
-                                <Style TargetType="{x:Type DataGridCell}">
-                                    <Setter Property="BorderThickness" Value="0"/>
-                                </Style>
-                            </DataGrid.CellStyle>
-                        </DataGrid>
-                    </Border>
-                </ScrollViewer>
+        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Filtrar por cliente " HorizontalAlignment="Left" Margin="466,124,0,0" VerticalAlignment="Top" Height="34" Width="154"/>
+        <TextBox Name="tbCustomerNameFilter" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="466,151,512,524" TextChanged="tbFilter_TextChanged"/>
 
+        <DataGrid Name="dgCredits" AutoGenerateColumns="False" CanUserAddRows="False" AlternatingRowBackground="#DAEFD0" Margin="136,215,28,99" FontSize="22">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Folio" Binding="{Binding FileNumber}" IsReadOnly="True" Width="220" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
+                <DataGridTextColumn Header="Nombre del cliente" Binding="{Binding CustomerFullName}" IsReadOnly="True" Width="360" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
+                <DataGridTextColumn Header="Plazo" Binding="{Binding Period}" IsReadOnly="True" Width="150" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
+                <DataGridTextColumn Header="Cantidad" Binding="{Binding Amount}" IsReadOnly="True" Width="150" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
+                <DataGridTextColumn Header="Tasa de interés" Binding="{Binding InterestRate}" IsReadOnly="True" Width="200" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
+                <DataGridTextColumn Header="RFC" Binding="{Binding CustomerRFC}" IsReadOnly="True" Width="200" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
+                <DataGridTextColumn Header="Fecha de creación" Binding="{Binding CreationDate}" IsReadOnly="True" Width="200" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
+                <DataGridTextColumn Header="Estado" Binding="{Binding State}" IsReadOnly="True" Width="150" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
+        <Button Name="btnPreviousPage" Style="{StaticResource ButtonStyleCancel}" Content="&lt;" FontSize="20" HorizontalAlignment="Left" Margin="136,655,0,0" VerticalAlignment="Top" Height="28" Width="31" Click="btnPreviousPage_Click" />
+        <Button Name="btnNextPage" Style="{StaticResource ButtonStyleCancel}" Content=">" FontSize="20" HorizontalAlignment="Left" Margin="296,655,0,0" VerticalAlignment="Top" Height="28" Width="31" Click="btnNextPage_Click" />
+        <Label Name="lbCurrentPage" FontSize="20" Content="Página 1/1" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="172,649,0,0" VerticalAlignment="Top" Width="124"/>
+        <ComboBox Name="cbPages" FontSize="17" Margin="354,653,843,38" SelectionChanged="cbPages_SelectionChanged"/>
 
-
-                <Grid Margin="0,0,10,481">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="11*"/>
-                        <ColumnDefinition Width="240*"/>
-                        <ColumnDefinition Width="299*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Style="{StaticResource CustomLabelStyle}" FontSize="15" Content="Filtrar por RFC" HorizontalAlignment="Left" Margin="0,-15,0,0" VerticalAlignment="Top" x:Name="lblRfc" Width="97" Height="27" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="tbRfc" Margin="0,5,252,5" Style="{StaticResource CustomTextBoxStyle}" Height="40" Width="250" TextChanged="TextBox_CreditRequestSearchCustomerRfc" Grid.ColumnSpan="2"/>
-                    <Image Source="../Images/icon-lens.png" Margin="183,8,257,8" Width="40" Grid.Column="1" />
-                    <TextBox x:Name="tbCustomerName" Margin="403,5,425,5" Style="{StaticResource CustomTextBoxStyle}" Height="40" Width="250"  TextChanged="TextBox_CreditRequestSearchCustomerName" Grid.Column="1" Grid.ColumnSpan="2"/>
-                    <Image Source="../Images/icon-lens.png" Margin="132,8,426,8" Width="40" Grid.Column="2" />
-                    <TextBox x:Name="tbStatus" Margin="313,5,35,5" Style="{StaticResource CustomTextBoxStyle}" Height="40" Width="250" TextChanged="TextBox_CreditRequestSearchStatus" Grid.Column="2"/>
-                    <Image Source="/Images/icon-lens.png" Margin="522,8,36,8" Width="40" Grid.Column="2" />
-                    <Label Style="{StaticResource CustomLabelStyle}" FontSize="15" Content="Filtrar por Nombre del Cliente" HorizontalAlignment="Left" Margin="403,-15,0,0" VerticalAlignment="Top" x:Name="lblCustomerName_Copiar" Width="197" Height="27" Grid.Column="1" Grid.ColumnSpan="2"/>
-                    <Label Style="{StaticResource CustomLabelStyle}" FontSize="15" Content="Filtrar por Estado de la Solicitud" HorizontalAlignment="Left" Margin="315,-15,0,0" VerticalAlignment="Top" x:Name="lblStatus_Copiar1" Width="215" Height="27" Grid.Column="2"/>
-
-
-                </Grid>
-
-            </Grid>
-        </Grid>
-
-
-        <Grid Height="52" Margin="330,658,-57,10">
-            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="-130,0,0,4" Width="531">
-                <Button x:Name="btnPreviousPage" Content="Anterior" Style="{StaticResource ButtonStyle}" Click="PreviousPageRequest"/>
-                <TextBlock x:Name="tbCurrentPage" FontSize="16" Width="100" Height="22"/>
-                <Button x:Name="btnNextPage" Content="Siguiente" Style="{StaticResource ButtonStyle}" Click="NextPageRequest"/>
-                <ComboBox x:Name="cbPages" Width="60" SelectionChanged="ComboBox_SelectionChanged" Height="21"/>
-            </StackPanel>
-
-            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" Margin="414,0,0,0" Width="411" Height="52" RenderTransformOrigin="0.5,0.5">
-                <Button Content="Ver Detalles" Style="{StaticResource Button}" Background="#FFFCDC2A" FontSize="22" Height="33" Width="170" Click="ViewCreditRequestsDetails"/>
-                <Button Content="Corregir Solicitud" Style="{StaticResource Button}" Background="#FF114232" Foreground="White" FontSize="22" Click="CorrectCredtiRequests" Height="32" RenderTransformOrigin="0.5,0.5" Width="197"/>
-            </StackPanel>
-
-
-        </Grid>
-        <Label Content="Visualización de solicitudes de crédito" HorizontalAlignment="Left" Margin="133,30,0,0" VerticalAlignment="Top" Width="454" FontWeight="Bold" FontSize="24" />
-
-
+        <Button Style="{StaticResource ButtonStyleCancel}" Content="Eliminar" FontSize="22" HorizontalAlignment="Left" Margin="877,646,0,0" VerticalAlignment="Top" Width="180" Height="40" Click="btnDeleteRequest_Click" />
+        <Button Style="{StaticResource ButtonStyleConfirm}" Content="Modificar" FontSize="22" HorizontalAlignment="Left" Margin="1072,646,0,0" VerticalAlignment="Top" Width="180" Height="40" Click="btnModifyRequest_Click" />
     </Grid>
 </Page>

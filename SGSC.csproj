@@ -247,8 +247,8 @@
     <Compile Include="Pages\ManageEmployeesPage.xaml.cs">
       <DependentUpon>ManageEmployeesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\RegisterCreditRequest.xaml.cs">
-      <DependentUpon>RegisterCreditRequest.xaml</DependentUpon>
+    <Compile Include="Pages\RegisterCreditRequestPage.xaml.cs">
+      <DependentUpon>RegisterCreditRequestPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SearchCustomerPage.xaml.cs">
       <DependentUpon>SearchCustomerPage.xaml</DependentUpon>
@@ -418,7 +418,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\RegisterCreditRequest.xaml">
+    <Page Include="Pages\RegisterCreditRequestPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

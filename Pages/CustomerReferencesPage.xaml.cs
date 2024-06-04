@@ -129,7 +129,7 @@ namespace SGSC.Pages
 
 						if (IsRegisteringCreditRequest)
 						{
-							App.Current.MainFrame.Content = new RegisterCreditRequest(customerId);
+							App.Current.MainFrame.Content = new RegisterCreditRequestPage(customerId);
 						}
 						else
 						{

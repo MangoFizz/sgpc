@@ -36,6 +36,29 @@ namespace SGSC.Pages
 			UserSessionFrame.Content = new UserSessionFrame();
 			CreditRequestId = creditRequestID;
 			CustomerId = customerId;
+			GetBankAccount();
+		}
+
+		private void GetBankAccount()
+		{
+			using (var context = new sgscEntities())
+			{
+				var creditRequest = context.CreditRequests.Find(CreditRequestId);
+				if (creditRequest != null)
+				{
+					if (creditRequest.DirectDebitBankAccountId != null)
+					{
+						var bankAccount = context.BankAccounts.Find(creditRequest.DirectDebitBankAccountId);
+						if (bankAccount != null)
+						{
+							tbTansAccBank.Text = bankAccount.Bank.Name;
+							tbTansAccInterbankCode.Text = bankAccount.InterbankCode;
+							tbTansAccCardNumber.Text = bankAccount.CardNumber;
+							BankAccountId = bankAccount.BankAccountId;
+						}
+					}
+				}
+			}
 		}
 
 		private void btnSearchAccount_Click(object sender, RoutedEventArgs e)

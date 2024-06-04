@@ -27,7 +27,7 @@ namespace SGSC.Pages
         private class ActiveCredit
         {
             public string CreditPageNumber { get; set; }
-            public string ClientFullName { get; set; }
+            public string CustomerFullName { get; set; }
             public string CreditPeriod { get; set; }
             public string CreditAmount { get; set; }
             public string CreditPendingDebt { get; set; }
@@ -109,7 +109,7 @@ namespace SGSC.Pages
                         ActiveCredits.Add(new ActiveCredit
                         {
                             CreditPageNumber = item.FileNumber,
-                            ClientFullName = item.Customer.FullName,
+                            CustomerFullName = item.Customer.FullName,
                             CreditPeriod = item.TimePeriod.Value.ToString(),
                             CreditAmount = $"$ {item.Amount}",
                             CreditPendingDebt = "$ 0",

@@ -53,7 +53,7 @@ namespace SGSC
                 case RequestStatus.Captured:
                     return "Capturada";
                 case RequestStatus.WaitingForCorrection:
-                    return "En espera de corrección";
+                    return "Corrección";
                  case RequestStatus.Pending:
                     return "Pendiente";
                 default:

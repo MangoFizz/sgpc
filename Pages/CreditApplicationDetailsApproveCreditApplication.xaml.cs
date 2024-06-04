@@ -7,6 +7,8 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using SGSC.Utils;
+using static SGSC.Pages.CollectionEfficienciesPage;
+using System.Collections.ObjectModel;
 
 namespace SGSC.Pages
 {
@@ -252,6 +254,57 @@ namespace SGSC.Pages
             }
         }
 
+        public string GenerateRandomPaymentFileNumber()
+        {
+            return "PAGO" + new Random().Next(100000, 999999).ToString();
+        }
+
+        public void GeneratePayments()
+        {
+			using (sgscEntities db = new sgscEntities())
+            {
+				var request = db.CreditRequests.FirstOrDefault(cr => cr.CreditRequestId == requestId);
+                var amount = request.Amount;
+                var interestRate = request.InterestRate;
+                var payments = request.TimePeriod;
+                var interval = (CreditRequest.TimeIntervals)request.PaymentsInterval;
+
+				var totalAmount = amount + (amount * (interestRate / 100));
+				var paymentAmount = totalAmount / payments;
+				var Payments = new List<Payment>();
+
+				for (int i = 1; i <= payments; i++)
+				{
+					DateTime paymentDate;
+					if (interval == CreditRequest.TimeIntervals.Monthly)
+					{
+						paymentDate = DateTime.Now.AddMonths(i);
+					}
+					else
+					{
+						paymentDate = DateTime.Now.AddMonths(i / 2);
+						if (i % 2 == 1)
+						{
+							paymentDate = paymentDate.AddDays(15);
+						}
+					}
+
+                    Payments.Add(new Payment
+                    {
+                        FileNumber = GenerateRandomPaymentFileNumber(),
+                        PaymentDate = paymentDate,
+                        Amount = (decimal)paymentAmount,
+                        CreditRequestId = request.CreditRequestId,
+                        AmountCharged = -1
+                    });
+				}
+
+                db.Payments.AddRange(Payments);
+
+                db.SaveChanges();
+			}
+		}
+
         public void SaveCreditRequestStatus()
         {
             try
@@ -265,6 +318,9 @@ namespace SGSC.Pages
                         if (rbtAutorize.IsChecked == true)
                         {
                             solicitud.Status = (int)CreditRequest.RequestStatus.Authorized;
+
+
+
                         }
                         else if (rbtCorrect.IsChecked == true)
                         {
@@ -276,7 +332,9 @@ namespace SGSC.Pages
                         }
 
                         db.SaveChanges();
-                    }
+
+                        GeneratePayments();
+					}
                     else
                     {
                         MessageBox.Show("No se encontró ninguna solicitud con el ID proporcionado.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);

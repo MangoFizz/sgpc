@@ -184,8 +184,11 @@
     <Compile Include="Model\CreditRequest.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Employee.cs" />
-    <Compile Include="Pages\ActiveCreditsPage.xaml.cs">
-      <DependentUpon>ActiveCreditsPage.xaml</DependentUpon>
+    <Compile Include="Pages\ChooseActiveCreditsPage.xaml.cs">
+      <DependentUpon>ChooseActiveCreditsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ViewActiveCreditsPage.xaml.cs">
+      <DependentUpon>ViewActiveCreditsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\AddCreditPolicy.xaml.cs">
       <DependentUpon>AddCreditPolicy.xaml</DependentUpon>
@@ -336,7 +339,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\ActiveCreditsPage.xaml">
+    <Page Include="Pages\ChooseActiveCreditsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\ViewActiveCreditsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

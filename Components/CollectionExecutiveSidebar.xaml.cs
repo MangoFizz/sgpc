@@ -60,7 +60,7 @@ namespace SGSC.Frames
 
 		private void ActiveCreditsButton_Click(object sender, RoutedEventArgs e)
 		{
-			App.Current.MainFrame.Content = new Pages.ActiveCreditsPage();
+			App.Current.MainFrame.Content = new Pages.ViewActiveCreditsPage();
 		}
 
 		private void CreditRequestButton_MouseEnter(object sender, MouseEventArgs e)

@@ -1,4 +1,4 @@
-﻿<Page x:Class="SGSC.Pages.ActiveCreditsPage"
+﻿<Page x:Class="SGSC.Pages.ViewActiveCreditsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -196,8 +196,8 @@
         <TextBox Name="tbCustomerNameFilter" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="466,151,512,524" TextChanged="tbFilter_TextChanged"/>
 
         <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Filtrar por rango de fechas " HorizontalAlignment="Left" Margin="796,124,0,0" VerticalAlignment="Top" Height="34" Width="245"/>
-        <DatePicker Name="dpDate1Filter" Style="{StaticResource DatePickerIconResizingStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="796,151,263,524"/>
-        <DatePicker Name="dpDate2Filter" Style="{StaticResource DatePickerIconResizingStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="1030,151,27,524"/>
+        <DatePicker Name="dpDate1Filter" Style="{StaticResource DatePickerIconResizingStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="796,151,263,524" SelectedDateChanged="dpDate1Filter_SelectedDateChanged"/>
+        <DatePicker Name="dpDate2Filter" Style="{StaticResource DatePickerIconResizingStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="1030,151,27,524" SelectedDateChanged="dpDate2Filter_SelectedDateChanged"/>
 
         <DataGrid Name="dgCredits" AutoGenerateColumns="False" CanUserAddRows="False" AlternatingRowBackground="#DAEFD0" Margin="136,215,28,99" FontSize="20.1">
             <DataGrid.Columns>
@@ -215,7 +215,7 @@
         <Label Name="lbCurrentPage" FontSize="20" Content="Página 1/1" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="172,649,0,0" VerticalAlignment="Top" Width="124"/>
         <ComboBox Name="cbPages" FontSize="17" Margin="354,653,843,38" SelectionChanged="cbPages_SelectionChanged"/>
 
-        <Button Style="{StaticResource ButtonStyleCancel}" Content="Generar layout de cobros" FontSize="20.1" HorizontalAlignment="Left" Margin="584,646,0,0" VerticalAlignment="Top" Width="278" Height="40" />
+        <Button Name="btnGeneratePaymentLayout" Style="{StaticResource ButtonStyleCancel}" Content="Generar layout de cobros" FontSize="20.1" HorizontalAlignment="Left" Margin="584,646,0,0" VerticalAlignment="Top" Width="278" Height="40" Click="btnGeneratePaymentLayout_Click" />
         <Button Style="{StaticResource ButtonStyleCancel}" Content="Registrar cobros" FontSize="20.1" HorizontalAlignment="Left" Margin="877,646,0,0" VerticalAlignment="Top" Width="180" Height="40" />
         <Button Style="{StaticResource ButtonStyleConfirm}" Content="Ver eficiencias" FontSize="20.1" HorizontalAlignment="Left" Margin="1072,646,0,0" VerticalAlignment="Top" Width="180" Height="40" />
     </Grid>

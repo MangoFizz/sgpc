@@ -14,7 +14,7 @@ namespace SGSC.Pages
 
         private void btnViewActiveCredits_Click(object sender, RoutedEventArgs e)
         {
-            var activeCreditsPage = new ActiveCreditsPage();
+            var activeCreditsPage = new ViewActiveCreditsPage();
             if (NavigationService != null)
             {
                 NavigationService.Navigate(activeCreditsPage);

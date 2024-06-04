@@ -15,14 +15,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static SGSC.Pages.ActiveCreditsPage;
+using static SGSC.Pages.ViewActiveCreditsPage;
 
 namespace SGSC.Pages
 {
     /// <summary>
     /// Interaction logic for ActiveCreditsPage.xaml
     /// </summary>
-    public partial class ActiveCreditsPage : Page
+    public partial class ViewActiveCreditsPage : Page
     {
         private class ActiveCredit
         {
@@ -40,7 +40,7 @@ namespace SGSC.Pages
         private const int ItemsPerPage = 10;
         private bool UpdatingPagination = false;
 
-		public ActiveCreditsPage()
+		public ViewActiveCreditsPage()
         {
             InitializeComponent();
             collectionExecutiveSidebar.Content = new CollectionExecutiveSidebar("activeCredits");
@@ -156,6 +156,21 @@ namespace SGSC.Pages
             }
             CurrentPage = cbPages.SelectedIndex + 1;
 			GetActiveCredits();
+		}
+
+		private void dpDate1Filter_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+		{
+			GetActiveCredits();
+		}
+
+		private void dpDate2Filter_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+		{
+			GetActiveCredits();
+		}
+
+		private void btnGeneratePaymentLayout_Click(object sender, RoutedEventArgs e)
+		{
+            App.Current.MainFrame.Navigate(new ChooseActiveCreditsPage());
 		}
 	}
 }

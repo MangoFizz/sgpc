@@ -201,5 +201,24 @@ namespace SGSC.Pages
 			    App.Current.MainFrame.Content = new HomePageCreditAdvisor();
 			}
         }
-    }
+
+		private void btnPaymentsPreview_Click(object sender, RoutedEventArgs e)
+		{
+            if(tbAmount.Text.Length < 1)
+            {
+				lbAmountError.Content = "Introduzca un monto";
+			}
+			else if (cbCreditPromotions.SelectedIndex == -1)
+            {
+				lbPromotionError.Content = "Seleccione una promoción";
+			}
+			else
+            {
+                var promotion = cbCreditPromotions.SelectedItem as CreditPromotion;
+                var interval = (CreditRequest.TimeIntervals)promotion.Interval;
+                var amount = int.Parse(tbAmount.Text);
+				App.Current.MainFrame.Navigate(new PaymentsPreviewPage(amount, promotion.InterestRate, promotion.TimePeriod, interval));
+			}
+		}
+	}
 }

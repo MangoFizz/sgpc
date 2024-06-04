@@ -205,6 +205,9 @@
     <Compile Include="Pages\CreditPromotionDetails.xaml.cs">
       <DependentUpon>CreditPromotionDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PaymentsPreviewPage.xaml.cs">
+      <DependentUpon>PaymentsPreviewPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\RegisterBankAccountsPage.cs">
       <DependentUpon>RegisterBankAccountsPage.xaml</DependentUpon>
     </Compile>
@@ -350,6 +353,10 @@
     <Page Include="Pages\CreditPromotionDetails.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\PaymentsPreviewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\RegisterBankAccountsPage.xaml">
       <Generator>MSBuild:Compile</Generator>

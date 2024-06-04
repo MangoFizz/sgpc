@@ -106,7 +106,7 @@ namespace SGSC.Pages
 
                 lbInterestRate.Content = selectedPromotion.InterestRate.ToString("0.00") + "%";
 
-                var interval = selectedPromotion.Interval == 1 ? "Quincenas" : "Meses";
+                var interval = selectedPromotion.Interval == 0 ? "Quincenas" : "Meses";
 				lbPeriod.Content = $"{selectedPromotion.TimePeriod} {interval}";
 
 			    if (double.TryParse(tbAmount.Text, out amountIntroduced))
@@ -122,7 +122,8 @@ namespace SGSC.Pages
 
                     var totalAmount = amountIntroduced + (amountIntroduced * (selectedPromotion.InterestRate / 100));
                     lbTotal.Content = "$ " + totalAmount.ToString("0.00");
-                    lbDiscount.Content = "$ " + (totalAmount / selectedPromotion.TimePeriod).ToString("0.00") + " / pago";
+                    lbDiscount.Content = "$ " + (totalAmount / selectedPromotion.TimePeriod).ToString("0.00");
+                    this.totalAmount = totalAmount;
 				}
             }
         }
@@ -165,7 +166,7 @@ namespace SGSC.Pages
                 var filenumber = "CR" + DateTime.Now.ToString("yyyyMMddHHmmss");
                 creditRequest.FileNumber = filenumber;
                 creditRequest.Amount = this.totalAmount;
-                creditRequest.Status = 0;
+                creditRequest.Status = (int)CreditRequest.RequestStatus.Captured;
                 creditRequest.TimePeriod = selectedPromotion.TimePeriod;
                 creditRequest.Purpose = tbPurpose.Text;
                 creditRequest.InterestRate = selectedPromotion.InterestRate;
@@ -174,15 +175,15 @@ namespace SGSC.Pages
                 creditRequest.CustomerId = idCustomer;
                 creditRequest.PaymentsInterval = selectedPromotion.Interval;
                 creditRequest.Description = "";
+				creditRequest.SettlementDate = DateTime.Now.AddMonths((int)(selectedPromotion.Interval == 0 ? Math.Round((decimal)selectedPromotion.TimePeriod / 2) : selectedPromotion.TimePeriod));
 
-                context.CreditRequests.Add(creditRequest);
+				context.CreditRequests.Add(creditRequest);
                 try
                 {
                     context.SaveChanges();
-                    MessageBox.Show("Solicitud de crédito registrada exitosamente");
-
                     var cr = context.CreditRequests.Where(c => c.FileNumber == filenumber).FirstOrDefault();
-                    App.Current.MainFrame.Content = new CustomerBankAccountsPage(idCustomer, cr.CreditRequestId);
+                    App.Current.NotificationsPanel.ShowSuccess("Datos guardados");
+                    App.Current.MainFrame.Content = new TransferBankAccountPage(idCustomer, cr.CreditRequestId);
                 }
                 catch (Exception ex)
                 {
@@ -194,7 +195,11 @@ namespace SGSC.Pages
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            App.Current.MainFrame.Content = new HomePageCreditAdvisor();
+			var result = System.Windows.Forms.MessageBox.Show("Está seguro que desea cancelar el registro?", "Cancelar registro", System.Windows.Forms.MessageBoxButtons.YesNo);
+			if (result == System.Windows.Forms.DialogResult.Yes)
+			{
+			    App.Current.MainFrame.Content = new HomePageCreditAdvisor();
+			}
         }
     }
 }

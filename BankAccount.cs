@@ -26,7 +26,7 @@ namespace SGSC
         public string CardNumber { get; set; }
         public Nullable<int> AccountType { get; set; }
         public Nullable<int> CardType { get; set; }
-        public int CustomerId { get; set; }
+        public Nullable<int> CustomerId { get; set; }
         public Nullable<int> BankBankId { get; set; }
     
         public virtual Customer Customer { get; set; }

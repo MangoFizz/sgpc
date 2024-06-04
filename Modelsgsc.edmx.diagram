@@ -20,7 +20,7 @@
         </AssociationConnector>
         <AssociationConnector Association="sgscModel.FK_CreditRequestCustomer" ManuallyRouted="false" />
         <AssociationConnector Association="sgscModel.CustomerId" ManuallyRouted="false" />
-        <AssociationConnector Association="sgscModel.CreditRequestBankAccount" />
+        <AssociationConnector Association="sgscModel.FK_CreditRequestTransferAccount" />
         <AssociationConnector Association="sgscModel.CreditRequestBankAccount1" ManuallyRouted="false" >
         </AssociationConnector>
         <AssociationConnector Association="sgscModel.CustomerWorkCenter" ManuallyRouted="false" >

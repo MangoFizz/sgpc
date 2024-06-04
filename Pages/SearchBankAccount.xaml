@@ -1,0 +1,43 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SGSC.Pages"
+      xmlns:SGSC="clr-namespace:SGSC" x:Class="SGSC.Pages.SearchBankAccount"
+      xmlns:frames="clr-namespace:SGSC.Frames"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="CustomerBankAccountsPage">
+
+    <Grid>
+        <Border Background="White" Margin="0"/>
+
+        <Frame>
+            <Frame.Content>
+                <frames:UserSessionFrame Margin="831,23,38,612"/>
+            </Frame.Content>
+        </Frame>
+
+        <Label FontFamily="{StaticResource FontPoppins}" FontWeight="Bold" FontSize="36" Content="Buscar cuenta bancaria" HorizontalAlignment="Left" Margin="46,39,0,0" VerticalAlignment="Top"/>
+
+        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Buscar por CLABE " HorizontalAlignment="Left" Margin="61,124,0,0" VerticalAlignment="Top" Height="34" Width="166"/>
+        <TextBox Name="tbInterbankCode" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="61,151,918,524" TextChanged="tbFilter_TextChanged"/>
+
+        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Buscar por número de tarjeta " HorizontalAlignment="Left" Margin="390,124,0,0" VerticalAlignment="Top" Height="34" Width="270"/>
+        <TextBox Name="tbCardNumber" Style="{StaticResource CustomTextBoxStyle}" FontSize="18" VerticalContentAlignment="Center" Margin="390,151,589,524" TextChanged="tbFilter_TextChanged"/>
+
+        <DataGrid Name="dgBankAccounts" AutoGenerateColumns="False" CanUserAddRows="False" AlternatingRowBackground="#DAEFD0" Margin="54,215,28,99" FontSize="22">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="CLABE" Binding="{Binding InterbankCode}" IsReadOnly="True" Width="450" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
+                <DataGridTextColumn Header="Número de tarjeta" Binding="{Binding CardNumber}" IsReadOnly="True" Width="450" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
+                <DataGridTextColumn Header="Banco" Binding="{Binding BankName}" IsReadOnly="True" Width="290" HeaderStyle="{StaticResource CenterGridHeaderStyle}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Name="btnRegisterEmployee" Style="{StaticResource ButtonStyleConfirm}" Content="Registrar cuenta" FontSize="22" HorizontalAlignment="Left" Margin="714,646,0,0" VerticalAlignment="Top" Width="197" Height="40" Click="btnRegisterBankAccount_Click" />
+        <Button Name="btnSelectEmployee" Style="{StaticResource ButtonStyleDanger}" Content="Seleccionar" FontSize="22" HorizontalAlignment="Left" Margin="924,646,0,0" VerticalAlignment="Top" Width="156" Height="40" Click="btnSelectBankAccount_Click" />
+        <Button Style="{StaticResource ButtonStyleCancel}" Content="Cancelar" FontSize="22" HorizontalAlignment="Left" Margin="1092,646,0,0" VerticalAlignment="Top" Width="156" Height="40" Click="btnCancel_Click" />
+
+    </Grid>
+</Page>

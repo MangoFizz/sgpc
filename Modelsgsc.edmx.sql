@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/03/2024 11:31:59
--- Generated from EDMX file: C:\Users\aiwass\source\repos\SGSC\Modelsgsc.edmx
+-- Date Created: 06/03/2024 22:32:48
+-- Generated from EDMX file: C:\Users\aiwass\source\repos\MangoFizz\sgsc\Modelsgsc.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -29,8 +29,8 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_CustomerId]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CustomerContactInfoes] DROP CONSTRAINT [FK_CustomerId];
 GO
-IF OBJECT_ID(N'[dbo].[FK_CreditRequestBankAccount]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[CreditRequests] DROP CONSTRAINT [FK_CreditRequestBankAccount];
+IF OBJECT_ID(N'[dbo].[FK_CreditRequestTransferAccount]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CreditRequests] DROP CONSTRAINT [FK_CreditRequestTransferAccount];
 GO
 IF OBJECT_ID(N'[dbo].[FK_CreditRequestBankAccount1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CreditRequests] DROP CONSTRAINT [FK_CreditRequestBankAccount1];
@@ -121,7 +121,7 @@ CREATE TABLE [dbo].[BankAccounts] (
     [CardNumber] nvarchar(max)  NULL,
     [AccountType] int  NULL,
     [CardType] int  NULL,
-    [CustomerId] int  NOT NULL,
+    [CustomerId] int  NULL,
     [BankBankId] int  NULL
 );
 GO
@@ -162,8 +162,8 @@ CREATE TABLE [dbo].[CreditRequests] (
     [PaymentsInterval] int  NOT NULL,
     [Description] nvarchar(max)  NOT NULL,
     [SettlementDate] datetime  NOT NULL,
-    [TransferBankAccount_BankAccountId] int  NULL,
-    [DirectDebitBankAccount_BankAccountId] int  NULL,
+    [TransferBankAccountId] int  NULL,
+    [DirectDebitBankAccountId] int  NULL,
     [Employee_EmployeeId] int  NULL
 );
 GO
@@ -455,25 +455,25 @@ ON [dbo].[CustomerContactInfoes]
     ([CustomerId]);
 GO
 
--- Creating foreign key on [TransferBankAccount_BankAccountId] in table 'CreditRequests'
+-- Creating foreign key on [TransferBankAccountId] in table 'CreditRequests'
 ALTER TABLE [dbo].[CreditRequests]
-ADD CONSTRAINT [FK_CreditRequestBankAccount]
-    FOREIGN KEY ([TransferBankAccount_BankAccountId])
+ADD CONSTRAINT [FK_CreditRequestTransferAccount]
+    FOREIGN KEY ([TransferBankAccountId])
     REFERENCES [dbo].[BankAccounts]
         ([BankAccountId])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_CreditRequestBankAccount'
-CREATE INDEX [IX_FK_CreditRequestBankAccount]
+-- Creating non-clustered index for FOREIGN KEY 'FK_CreditRequestTransferAccount'
+CREATE INDEX [IX_FK_CreditRequestTransferAccount]
 ON [dbo].[CreditRequests]
-    ([TransferBankAccount_BankAccountId]);
+    ([TransferBankAccountId]);
 GO
 
--- Creating foreign key on [DirectDebitBankAccount_BankAccountId] in table 'CreditRequests'
+-- Creating foreign key on [DirectDebitBankAccountId] in table 'CreditRequests'
 ALTER TABLE [dbo].[CreditRequests]
 ADD CONSTRAINT [FK_CreditRequestBankAccount1]
-    FOREIGN KEY ([DirectDebitBankAccount_BankAccountId])
+    FOREIGN KEY ([DirectDebitBankAccountId])
     REFERENCES [dbo].[BankAccounts]
         ([BankAccountId])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -482,7 +482,7 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_CreditRequestBankAccount1'
 CREATE INDEX [IX_FK_CreditRequestBankAccount1]
 ON [dbo].[CreditRequests]
-    ([DirectDebitBankAccount_BankAccountId]);
+    ([DirectDebitBankAccountId]);
 GO
 
 -- Creating foreign key on [Customer_CustomerId] in table 'WorkCenters'

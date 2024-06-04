@@ -22,7 +22,7 @@
 
             <Button Style="{StaticResource ButtonStyle}" Tag="../Images/User.png"  Content="Detalles"  HorizontalAlignment="Center" Margin="0,110,0,0" VerticalAlignment="Top" Width="250" Height="40" FontSize="18"/>
             <Button Style="{StaticResource ButtonStyle}" Tag="../Images/address-icon.png" Content="Cuentas bancarias" HorizontalAlignment="Center" Margin="0,170,0,0" VerticalAlignment="Top" Width="250" Height="40" FontSize="16"/>
-            <Button Style="{StaticResource ButtonStyle}" Tag="../Images/icon-job.png" Content="Documentos" HorizontalAlignment="Center" Margin="0,230,0,0" VerticalAlignment="Top" Width="250" Height="40" FontSize="16"/>
+            <Button Style="{StaticResource ButtonStyle}" Tag="../Images/icon-job.png" Content="Documentación" HorizontalAlignment="Center" Margin="0,230,0,0" VerticalAlignment="Top" Width="250" Height="40" FontSize="16"/>
         </Grid>
 
     </Grid>

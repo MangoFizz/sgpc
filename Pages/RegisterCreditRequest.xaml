@@ -27,16 +27,16 @@
         <Label x:Name="lbPromotionError" Content="Error" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Width="250" Foreground="#FFCE2222" FontStyle="Italic" Margin="617,259,0,0"/>
 
         <Label Content="Tasa de interés:" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalAlignment="Left" Margin="917,158,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
-        <Label Name="lbInterestRate" Content="--%" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalAlignment="Left" Margin="1065,158,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Width="132"/>
+        <Label Name="lbInterestRate" Content="--%" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalAlignment="Left" Margin="1056,158,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Width="141"/>
 
         <Label Content="Plazo:" FontFamily="{StaticResource FontNunito}" FontSize="18" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="917,194,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="134" FontWeight="Bold"/>
-        <Label x:Name="lbPeriod" Content="-- --" FontFamily="{StaticResource FontNunito}" FontSize="18" HorizontalAlignment="Left" Margin="1036,194,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Width="161"/>
+        <Label x:Name="lbPeriod" Content="-- --" FontFamily="{StaticResource FontNunito}" FontSize="18" HorizontalAlignment="Left" Margin="979,194,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Width="218"/>
 
         <Label Content="Pagaré:" FontFamily="{StaticResource FontNunito}" FontSize="18" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="917,232,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="134" FontWeight="Bold"/>
-        <Label x:Name="lbTotal" Content="$ --.--" FontFamily="{StaticResource FontNunito}" FontSize="18" HorizontalAlignment="Left" Margin="1036,232,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Width="161"/>
+        <Label x:Name="lbTotal" Content="$ --.--" FontFamily="{StaticResource FontNunito}" FontSize="18" HorizontalAlignment="Left" Margin="992,232,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Width="205"/>
 
         <Label Content="Descuento:" FontFamily="{StaticResource FontNunito}" FontSize="18" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="917,270,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="134" FontWeight="Bold"/>
-        <Label x:Name="lbDiscount" Content="$ --.--" FontFamily="{StaticResource FontNunito}" FontSize="18" HorizontalAlignment="Left" Margin="1036,270,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Width="161"/>
+        <Label x:Name="lbDiscount" Content="$ --.--" FontFamily="{StaticResource FontNunito}" FontSize="18" HorizontalAlignment="Left" Margin="1022,270,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Width="175"/>
 
         <Label Content="Destino del crédito:" FontFamily="{StaticResource FontNunitoBold}" FontSize="18" HorizontalAlignment="Left" Margin="363,305,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbPurpose" Style="{StaticResource CustomTextBoxStyle}" Margin="363,342,99,233" VerticalContentAlignment="Top" FontSize="20"/>

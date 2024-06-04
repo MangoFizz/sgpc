@@ -1,0 +1,39 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SGSC.Pages"
+      xmlns:SGSC="clr-namespace:SGSC" x:Class="SGSC.Pages.TransferBankAccountPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="CustomerBankAccountsPage">
+
+    <Grid>
+        <Border Background="White" CornerRadius="22"/>
+
+        <Label FontFamily="{StaticResource FontPoppins}" FontWeight="Bold" FontSize="36" Content="Registrar solicitud de credito" HorizontalAlignment="Left" Margin="46,48,0,0" VerticalAlignment="Top"/>
+
+        <Frame Name="UserSessionFrame" NavigationUIVisibility="Hidden" Margin="831,43,38,592"/>
+        <Frame Name="StepsSidebarFrame" NavigationUIVisibility="Hidden" Margin="27,138,1009,28"/>
+
+        <Rectangle Style="{StaticResource RoundedRectangleStyle}" Margin="277,209,22,226"/>
+
+        <Label Name="lbTitle" Style="{StaticResource CustomLabelStyle}" FontSize="30" Content="Cuenta de transferencias " HorizontalAlignment="Left" Margin="320,227,0,0" VerticalAlignment="Top" Width="382" Height="37"/>
+
+        <SGSC:NumericTextBox x:Name="tbTansAccInterbankCode" Style="{StaticResource CustomTextBoxStyle}" IsReadOnly="True" FontSize="18" VerticalContentAlignment="Center" Margin="320,306,553,369"/>
+        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="CLABE " HorizontalAlignment="Left" Margin="320,276,0,0" VerticalAlignment="Top" x:Name="NombreLabel" Width="64" Height="20"/>
+
+        <SGSC:NumericTextBox x:Name="tbTansAccCardNumber" Style="{StaticResource CustomTextBoxStyle}" IsReadOnly="True" FontSize="18" VerticalContentAlignment="Center" Margin="805,307,68,368"/>
+        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Número de tarjeta " HorizontalAlignment="Left" Margin="805,276,0,0" VerticalAlignment="Top" x:Name="NombreLabel_Copy1" Width="171" Height="21"/>
+
+        <TextBox x:Name="tbTansAccBank" Style="{StaticResource CustomTextBoxStyle}" IsReadOnly="True" FontSize="18" VerticalContentAlignment="Center" Margin="320,404,553,270"/>
+        <Label Style="{StaticResource CustomLabelStyle}" FontSize="20" Content="Banco " HorizontalAlignment="Left" Margin="320,374,0,0" VerticalAlignment="Top" Width="58" Height="20"/>
+
+        <Button Style="{StaticResource ButtonStyleConfirm}" Content="Buscar cuenta" FontSize="22" HorizontalAlignment="Left" Margin="1026,412,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnSearchAccount_Click" />
+
+        <Button x:Name="btnShowPaymentsTable" Style="{StaticResource ButtonStyleCancel}" FontSize="22" Content="Regresar" HorizontalAlignment="Left" Margin="655,617,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnBack_Click" />
+        <Button Style="{StaticResource ButtonStyleConfirm}" x:Name="btnRegister" Content="Continuar" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="54" Margin="855,617,0,0" Click="btnContinue_Click" />
+        <Button x:Name="btnCancel" Style="{StaticResource ButtonStyleDanger}" FontSize="22" Content="Cancelar" HorizontalAlignment="Left" Margin="1055,617,0,0" VerticalAlignment="Top" Height="54" Width="180" Click="btnCancel_Click" />
+    </Grid>
+</Page>

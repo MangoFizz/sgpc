@@ -98,9 +98,33 @@
     <Compile Include="Components\CreditRequestRegisterStepsFrame.xaml.cs">
       <DependentUpon>CreditRequestRegisterStepsFrame.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\NumericTextBox.cs" />
     <Compile Include="Contact.cs">
       <DependentUpon>Modelsgsc.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NumericTextBox.cs" />
+    <Compile Include="Components\CollectionExecutiveSidebar.xaml.cs">
+      <DependentUpon>CollectionExecutiveSidebar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\AdminSidebar.xaml.cs">
+      <DependentUpon>AdminSidebar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\CreditAdvisorSidebar.xaml.cs">
+      <DependentUpon>CreditAdvisorSidebar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\CustomerRegisterStepsSidebar.xaml.cs">
+      <DependentUpon>CustomerRegisterStepsSidebar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\NotificationsPanelFrame.xaml.cs">
+      <DependentUpon>NotificationsPanelFrame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\UserSessionFrame.xaml.cs">
+      <DependentUpon>UserSessionFrame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\SuccessNotification.xaml.cs">
+      <DependentUpon>SuccessNotification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ToastNotification.xaml.cs">
+      <DependentUpon>ToastNotification.xaml</DependentUpon>
     </Compile>
     <Compile Include="CreditPolicy.cs">
       <DependentUpon>Modelsgsc.tt</DependentUpon>
@@ -128,30 +152,6 @@
     </Compile>
     <Compile Include="Employee.cs">
       <DependentUpon>Modelsgsc.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Components\CollectionExecutiveSidebar.xaml.cs">
-      <DependentUpon>CollectionExecutiveSidebar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Components\AdminSidebar.xaml.cs">
-      <DependentUpon>AdminSidebar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Components\CreditAdvisorSidebar.xaml.cs">
-      <DependentUpon>CreditAdvisorSidebar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Components\CustomerRegisterStepsSidebar.xaml.cs">
-      <DependentUpon>CustomerRegisterStepsSidebar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Components\NotificationsPanelFrame.xaml.cs">
-      <DependentUpon>NotificationsPanelFrame.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Components\UserSessionFrame.xaml.cs">
-      <DependentUpon>UserSessionFrame.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Components\SuccessNotification.xaml.cs">
-      <DependentUpon>SuccessNotification.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Components\ToastNotification.xaml.cs">
-      <DependentUpon>ToastNotification.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modelsgsc.Context.cs">
       <AutoGen>True</AutoGen>
@@ -205,6 +205,18 @@
     <Compile Include="Pages\CreditPromotionDetails.xaml.cs">
       <DependentUpon>CreditPromotionDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\RegisterBankAccountsPage.cs">
+      <DependentUpon>RegisterBankAccountsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DirectDebtBankAccountPage.xaml.cs">
+      <DependentUpon>DirectDebtBankAccountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SearchBankAccount.xaml.cs">
+      <DependentUpon>SearchBankAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TransferBankAccountPage.xaml.cs">
+      <DependentUpon>TransferBankAccountPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ManageCreditPromotionsPage.xaml.cs">
       <DependentUpon>ManageCreditPromotionsPage.xaml</DependentUpon>
     </Compile>
@@ -213,9 +225,6 @@
     </Compile>
     <Compile Include="Pages\HomePageCreditAnalyst.xaml.cs">
       <DependentUpon>HomePageCreditAnalyst.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\CustomerBankAccountsPage.xaml.cs">
-      <DependentUpon>CustomerBankAccountsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\EmployeeInfoPage.xaml.cs">
       <DependentUpon>EmployeeInfoPage.xaml</DependentUpon>
@@ -249,6 +258,8 @@
     </Compile>
     <Compile Include="Utils\AddressCustomer.cs" />
     <Compile Include="Utils\Authenticator.cs" />
+    <Compile Include="Utils\IBankAccountRegisterCallback.cs" />
+    <Compile Include="Utils\IBankAccountSearchCallback.cs" />
     <Compile Include="Utils\CreditRequestStatus.cs" />
     <Compile Include="Utils\PaymentLayoutHelper.cs" />
     <Compile Include="Utils\TextValidator.cs" />
@@ -340,6 +351,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pages\RegisterBankAccountsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\DirectDebtBankAccountPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\SearchBankAccount.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\TransferBankAccountPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\ManageCreditPromotionsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -351,10 +378,6 @@
     <Page Include="Pages\HomePageCreditAnalyst.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\CustomerBankAccountsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\EmployeeInfoPage.xaml">
       <Generator>MSBuild:Compile</Generator>

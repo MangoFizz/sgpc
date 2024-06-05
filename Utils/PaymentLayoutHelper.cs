@@ -46,7 +46,6 @@ namespace SGSC.Utils
                 xlWorkSheet.Cells[i + 2, 2] = rowsData[i].Amount;
                 xlWorkSheet.Cells[i + 2, 3] = rowsData[i].PaymentDate;
                 xlWorkSheet.Cells[i + 2, 4] = "# " + rowsData[i].CardNumber;
-                xlWorkSheet.Cells[i + 2, 4].NumberFormat = "@";
                 xlWorkSheet.Cells[i + 2, 5] = rowsData[i].BankName;
             }
 

@@ -30,8 +30,6 @@ namespace SGSC.Pages
 
 		private void btnLogIn_Click(object sender, RoutedEventArgs e)
 		{
-			Utils.Authenticator.AuthUser("rod@bloo", "1", true);
-			return;
 			tblEmailError.Text = "";
             tblPasswordError.Text = "";
 

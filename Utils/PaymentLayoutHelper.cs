@@ -42,7 +42,6 @@ namespace SGSC.Utils
 
             for(int i = 0; i < rowsData.Count; i++)
             {
-                MessageBox.Show(rowsData[i].CardNumber);
                 xlWorkSheet.Cells[i + 2, 1] = rowsData[i].FileNumber;
                 xlWorkSheet.Cells[i + 2, 2] = rowsData[i].Amount;
                 xlWorkSheet.Cells[i + 2, 3] = rowsData[i].PaymentDate;

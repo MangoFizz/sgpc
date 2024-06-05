@@ -73,6 +73,8 @@ namespace SGSC.Pages
 		private string InterbankCodeDomicialization;
 		private string NumberAccountDomicialization;
 
+		private double finalAmount;
+
 		public UploadDocumentation(int idCreditRequest)
 		{
 			this.IdCreditRequest = idCreditRequest;
@@ -153,6 +155,7 @@ namespace SGSC.Pages
 									   CreationDate = request.CreationDate,
 									   TimePeriod = request.TimePeriod,
 									   RequestedAmountNumber = request.Amount,
+									   finalAmount = (request.Amount ?? 0) + ((request.Amount ?? 0) * (request.InterestRate / 100)),
 									   Period = request.TimePeriod,
 									   InterestRate = request.InterestRate,
 									   Purpose = request.Purpose,
@@ -381,13 +384,6 @@ namespace SGSC.Pages
 
 		private void BtnClicGuardar(object sender, RoutedEventArgs e)
 		{
-			// Verificar si hay exactamente 3 archivos en el DataGrid
-			if (dataGridCreditPolicies.Items.Count != 3)
-			{
-				System.Windows.MessageBox.Show("Debes agregar exactamente 3 documentos antes de guardar.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-				return;
-			}
-
 			// Guardar los PDFs en la base de datos
 			using (sgscEntities db = new sgscEntities())
 			{

@@ -24,7 +24,7 @@ namespace SGSC.Pages
 
         private void btnNewRequest_Click(object sender, RoutedEventArgs e)
         {
-            var registerCreditRequest = new RegisterCreditRequestPage(1);
+            var registerCreditRequest = new SearchCustomerPage(true);
             if (NavigationService != null)
             {
                 NavigationService.Navigate(registerCreditRequest);

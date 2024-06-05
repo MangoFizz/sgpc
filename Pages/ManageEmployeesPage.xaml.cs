@@ -89,7 +89,7 @@ namespace SGSC.Pages
                         Employees.Add(new EmployeeEntry
                         {
                             EmployeeId = item.EmployeeId,
-                            //Fullname = item.FullName,
+                            Fullname = item.FullName,
                             Email = item.Email,
                             Role = Employee.GetRoleName(item.Role)
                         });
